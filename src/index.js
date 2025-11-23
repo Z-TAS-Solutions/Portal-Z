@@ -2,11 +2,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import BlueButton from './Components/Buttons/BlueButton';
-
+import { GrayButton } from './Components/Buttons/GrayButton';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BlueButton text={"Launch App"} height={65}/>
+  <>
+    <BlueButton text={"Launch App"} height={65}/>
+    <GrayButton text={"Gray Button"} height={65}/>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function
