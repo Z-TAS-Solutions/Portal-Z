@@ -1,14 +1,12 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import BlueButton from './Components/Buttons/BlueButton';
-import { GrayButton } from './Components/Buttons/GrayButton';
+import Technology from './Pages/Technology/TechnologyPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <BlueButton text={"Launch App"} height={65}/>
-    <GrayButton text={"Gray Button"} height={65}/>
+    <Technology></Technology>
   </>
 );
 

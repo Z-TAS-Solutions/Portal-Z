@@ -1,4 +1,4 @@
-export function GrayButton({ text = "Learn More", height = 65 }) {
+export default function GrayButton({ text = "Learn More", height = 65 }) {
   return (
     <button
       className="w-fit px-8 rounded-full text-white font-medium 
