@@ -1,15 +1,12 @@
 import TechGrid from "./TechGrid";
 import BlueButton from "../../Components/Buttons/BlueButton";
 import GrayButton from "../../Components/Buttons/GrayButton";
+import MainHeading from "../../Components/Headings/MainHeading";
 
 export default function Technology() {
   return (
-    <section className="w-full flex flex-col items-center mt-12 px-4">
-      <h1 className="text-white font-extrabold text-6xl sm:text-7xl text-center leading-tight drop-shadow-[0_0_20px_#007BFF]">
-        Technology Behind Z-TAS
-      </h1>
-
-      {/* Optional subtitle */}
+    <section className="w-full flex flex-col items-center mt-12  px-4">
+      <MainHeading>Technology behind Z-TAS</MainHeading>
       <p className="text-gray-300 mt-4 text-center max-w-2xl text-lg opacity-90">
         A powerful blend of advanced hardware and intelligent software
       </p>
@@ -17,12 +14,12 @@ export default function Technology() {
       <div
         className="
           grid
-          grid-cols-1          /* Mobile: 1 column */
-          sm:grid-cols-2       /* Desktop: 2 columns */
+          grid-cols-1         
+          sm:grid-cols-2      
           gap-4
           mt-8
           w-full
-          max-w-md             /* prevent buttons from stretching too wide */
+          max-w-md            
         "
       >
         <BlueButton text="Software & Security" height={60} />
