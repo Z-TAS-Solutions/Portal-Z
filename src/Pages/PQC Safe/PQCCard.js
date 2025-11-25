@@ -1,6 +1,6 @@
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck }
 
-export default function App() {
+export default function PQCCard() {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4 md:p-8 font-sans">
       
