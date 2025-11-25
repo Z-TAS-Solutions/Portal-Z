@@ -22,8 +22,8 @@ export default function Technology() {
           place-items-center      
         "
       >
-        <BlueButton text="Software & Security"/>
-        <GrayButton text="Hardware"/>
+        <BlueButton>Software & Security</BlueButton>
+        <GrayButton>Hardware</GrayButton>
       </div>
 
       <TechGrid></TechGrid>

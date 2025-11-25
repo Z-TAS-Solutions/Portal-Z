@@ -2,11 +2,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Technology from './Pages/Technology/TechnologyPage';
+import PQCPage from './Pages/PQC Safe/PQCPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <Technology></Technology>
+    <PQCPage></PQCPage>
+    
   </>
 );
 
