@@ -3,7 +3,6 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Technology from './Pages/Technology/TechnologyPage';
 import PQCPage from './Pages/PQC Safe/PQCPage';
-import ToggleView from './Pages/PQC Safe/Toggle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

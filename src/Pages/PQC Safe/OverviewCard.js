@@ -1,3 +1,5 @@
+import FeatureDescription from "../../Components/Paragraphs/FeatureDescription"
+
 export default function OverviewCard(){
     return(
         <div className="relative group w-full">
@@ -31,11 +33,9 @@ export default function OverviewCard(){
                     </div>
                     </div>
 
-                    <p className="text-gray-300 text-sm md:text-base leading-relaxed md:leading-loose text-center md:text-left font-light opacity-90 max-w-xl">
-                    To ensure data protection against current and future cryptographic threats the template 
+                    <FeatureDescription>To ensure data protection against current and future cryptographic threats the template 
                     is transmited via a post :Quantum secure communication tunnel, leveraging kyber for key 
-                    exchange and dilithium for digital signature.
-                    </p>
+                    exchange and dilithium for digital signature.</FeatureDescription>
                 </div>
 
                 <div className="relative mt-2">
