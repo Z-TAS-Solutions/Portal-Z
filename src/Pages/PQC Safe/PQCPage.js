@@ -1,7 +1,7 @@
-import PQCCard from "./PQCCard";
+import ToggleView from "./ToggleView";
 
 export default function PQCPage(){
     return (
-        <PQCCard></PQCCard>
+        <ToggleView></ToggleView>
     )
 }
