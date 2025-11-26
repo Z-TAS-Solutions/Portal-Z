@@ -1,6 +1,6 @@
 import OverviewCard from "./OverviewCard";
 import TechSpecsCard from "./TechSpecsCard";
-import HexToggleView from "./HexToggleView";
+import HexToggleView from "../../Components/Toggles/HexToggleView";
 
 export default function ToggleView() {
   return (
