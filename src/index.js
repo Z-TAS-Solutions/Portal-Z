@@ -3,10 +3,12 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Technology from './Pages/Technology/TechnologyPage';
 import PQCPage from './Pages/PQC Safe/PQCPage';
+import HomePage from './Pages/Home Page/HomePage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
+    <HomePage></HomePage>
     <Technology></Technology>
     <PQCPage></PQCPage>
     
