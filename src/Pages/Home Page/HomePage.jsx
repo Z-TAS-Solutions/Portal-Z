@@ -1,10 +1,10 @@
 import '../../CSS Files/HomePage.css';
 
 // Imported components
-import MainHeading from '../../Components/Headings/MainHeading.js'; 
-import BlueButton from '../../Components/Buttons/BlueButton.js'; 
-import GrayButton from '../../Components/Buttons/GrayButton.js';
-import NormalParagraph from '../../Components/Paragraphs/NormalParagraph.js';
+import MainHeading from '../../Components/Headings/MainHeading.jsx'; 
+import BlueButton from '../../Components/Buttons/BlueButton.jsx'; 
+import GrayButton from '../../Components/Buttons/GrayButton.jsx';
+import NormalParagraph from '../../Components/Paragraphs/NormalParagraph.jsx';
 
 
 export default function Homepage() {

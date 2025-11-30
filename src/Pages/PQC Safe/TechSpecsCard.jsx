@@ -1,4 +1,5 @@
 import { ShieldCheck, Cpu, Lock, Network } from 'lucide-react';
+import TechHeading from '../../Components/Headings/TechHeading';
 
 export default function TechSpecsCard(){
 
@@ -9,11 +10,11 @@ export default function TechSpecsCard(){
             <div className="relative p-[1px] bg-gradient-to-b from-[#06426D]/40 via-[#086CB4]/20 to-transparent rounded-2xl">
             <div className="relative bg-[#02040a] rounded-2xl overflow-hidden shadow-2xl min-h-[400px] flex flex-col">
                 <div className="w-full h-1 bg-gradient-to-r from-[#086CB4] to-[#06426D]"></div>
+
+                
         
-                <div className="p-8 md:p-12 w-full">
-                <h3 className="text-xl font-bold text-white mb-8 border-b border-[#086CB4]/30 pb-4 flex items-center gap-3">
-                    <Cpu className="text-[#086CB4]" /> Technical Specifications
-                </h3>
+                <div className="p-6 md:p-10 flex flex-col h-full">
+                    <TechHeading WhiteText='Technical' BlueText='Specifications'></TechHeading>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="bg-[#086CB4]/5 p-6 rounded-lg border border-[#086CB4]/10 hover:border-[#086CB4]/30 transition-colors">
