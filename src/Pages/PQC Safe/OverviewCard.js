@@ -1,9 +1,9 @@
-import FeatureDescription from "../../Components/Paragraphs/FeatureDescription"
+import TechDescription from "../../Components/Paragraphs/TechDescription"
 
 export default function OverviewCard(){
+
     return(
-        <div className="relative group w-full">
-    
+        <div className="relative group w-full animate-in fade-in zoom-in duration-500">
             <div className="absolute -inset-1 bg-gradient-to-r from-[#086CB4] to-[#06426D] rounded-2xl opacity-20 blur-xl transition duration-1000 group-hover:opacity-30"></div>
     
             <div className="relative p-[1px] bg-gradient-to-b from-[#086CB4]/40 via-[#06426D]/20 to-transparent rounded-2xl">
@@ -22,6 +22,8 @@ export default function OverviewCard(){
                     <div className="flex-shrink-0">
                     <div className="relative w-24 h-24 md:w-28 md:h-28 flex items-center justify-center">
                         <div className="absolute inset-0 bg-[#086CB4] blur-[40px] opacity-20 rounded-full"></div>
+
+                        {/*Shield BRO*/}
                         <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-[#086CB4] drop-shadow-[0_4px_10px_rgba(8,108,180,0.5)]">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                         </svg>
@@ -33,9 +35,11 @@ export default function OverviewCard(){
                     </div>
                     </div>
 
-                    <FeatureDescription>To ensure data protection against current and future cryptographic threats the template 
-                    is transmited via a post :Quantum secure communication tunnel, leveraging kyber for key 
-                    exchange and dilithium for digital signature.</FeatureDescription>
+                    <TechDescription>
+                    To ensure data protection against current and future cryptographic threats the template 
+                    is transmitted via a post-Quantum secure communication tunnel, leveraging Kyber for key 
+                    exchange and Dilithium for digital signature.
+                    </TechDescription>
                 </div>
 
                 <div className="relative mt-2">
@@ -50,4 +54,5 @@ export default function OverviewCard(){
             </div>
         </div>
     )
+
 }
