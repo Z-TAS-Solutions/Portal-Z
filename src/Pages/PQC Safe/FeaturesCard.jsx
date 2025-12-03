@@ -7,17 +7,26 @@ import { FileCheck } from "lucide-react";
 import TechHeading from "../../Components/Headings/TechHeading";
 
 
+const FeatureStyle = {
+    TitleIconStyle : "w-6 h-6 text-[#086CB4]",
+    FeatureIconStyle : "w-5 h-5 text-[#086CB4] mt-1 shrink-0"
+}
+
+
 const feature_1 = {
     Title : "Data Sovereignty",
+    TitleIcon : Database,
     Features : [
         {
             Feature : "PostgreSQL",
-            Description : "Relational integrity & secure storage"
+            Description : "Relational integrity & secure storage",
+            Icon : Server
 
         },
         {
             Feature : "IPFS (Decentralized)",
-            Description : "Distributed immutable file system"
+            Description : "Distributed immutable file system",
+            Icon : Globe
 
         }
     ]
@@ -26,15 +35,18 @@ const feature_1 = {
 
 const feature_2 = {
     Title : "Fraud Prevention",
+    TitleIcon : ShieldAlert,
     Features : [
         {
             Feature : "Palm Geometric Analysis",
-            Description : "Biometric vector verification"
+            Description : "Biometric vector verification",
+            Icon : Fingerprint 
 
         },
         {
             Feature : "Session Confirmation",
-            Description : "Real-time auth token validation"
+            Description : "Real-time auth token validation",
+            Icon : FileCheck 
 
         }
     ]
@@ -44,7 +56,7 @@ const feature_2 = {
 const Features = [feature_1, feature_2]
 
 
-function Feature({children}){
+function Feature({children, data = {}}){
 
     return(
         <div className="group/card relative">
@@ -52,6 +64,29 @@ function Feature({children}){
         blur-sm transition-opacity opacity-0 group-hover/card:opacity-100"></div>
         <div className="relative h-full bg-[#086CB4]/5 border border-[#086CB4]/20 
         rounded-xl p-6 hover:border-[#086CB4]/50 transition-all duration-300 flex flex-col">
+
+            <div className="flex items-center gap-3 mb-6 border-b border-[#086CB4]/20 pb-4">
+            <div className="p-2 bg-[#086CB4]/10 rounded-lg">
+                const TitleIconComponent = data.TitleIcon;
+                <TitleIconComponent className={FeatureStyle.TitleIconStyle}/>
+            </div>
+            <h4 className="text-xl font-bold text-gray-100">{data.Title}</h4>
+            </div>
+
+            <ul className="space-y-4 flex-grow">
+
+            {data.Features.map((item,index) => (
+                <li className="flex items-start gap-3" key={index + "listItem"}>
+                    const IconComponent = item.Icon;
+                    <IconComponent className={FeatureStyle.FeatureIconStyle}/>
+                    <div>
+                    <span className="block text-white font-semibold">{item.Feature}</span>
+                    <span className="text-xs text-gray-400">{item.Description}</span>
+                    </div>
+                </li>
+            ))}
+
+            </ul>
 
             {children}
 
@@ -76,57 +111,9 @@ export default function FeaturesCard(){
                     <TechHeading WhiteText = "Advanced Features &" BlueText = "Fraud Protection"></TechHeading>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
-                    {/* Card 1: Data Sovereignty */}
-                    <Feature>
-                        <div className="flex items-center gap-3 mb-6 border-b border-[#086CB4]/20 pb-4">
-                        <div className="p-2 bg-[#086CB4]/10 rounded-lg">
-                            <Database className="w-6 h-6 text-[#086CB4]" />
-                        </div>
-                        <h4 className="text-xl font-bold text-gray-100">Data Sovereignty</h4>
-                        </div>
-                        <ul className="space-y-4 flex-grow">
-                        <li className="flex items-start gap-3">
-                            <Server className="w-5 h-5 text-[#086CB4] mt-1 shrink-0" />
-                            <div>
-                            <span className="block text-white font-semibold">PostgreSQL</span>
-                            <span className="text-xs text-gray-400">Relational integrity & secure storage</span>
-                            </div>
-                        </li>
-                        <li className="flex items-start gap-3">
-                            <Globe className="w-5 h-5 text-[#086CB4] mt-1 shrink-0" />
-                            <div>
-                            <span className="block text-white font-semibold">IPFS (Decentralized)</span>
-                            <span className="text-xs text-gray-400">Distributed immutable file system</span>
-                            </div>
-                        </li>
-                        </ul>
-                    </Feature>
-
-                    <Feature>
-                        <div className="flex items-center gap-3 mb-6 border-b border-[#086CB4]/20 pb-4">
-                        <div className="p-2 bg-[#086CB4]/10 rounded-lg">
-                            <ShieldAlert className="w-6 h-6 text-[#086CB4]" />
-                        </div>
-                        <h4 className="text-xl font-bold text-gray-100">Fraud Prevention</h4>
-                        </div>
-                        <ul className="space-y-4 flex-grow">
-                        <li className="flex items-start gap-3">
-                            <Fingerprint className="w-5 h-5 text-[#086CB4] mt-1 shrink-0" />
-                            <div>
-                            <span className="block text-white font-semibold">Palm Geometric Analysis</span>
-                            <span className="text-xs text-gray-400">Biometric vector verification</span>
-                            </div>
-                        </li>
-                        <li className="flex items-start gap-3">
-                            <FileCheck className="w-5 h-5 text-[#086CB4] mt-1 shrink-0" />
-                            <div>
-                            <span className="block text-white font-semibold">Session Confirmation</span>
-                            <span className="text-xs text-gray-400">Real-time auth token validation</span>
-                            </div>
-                        </li>
-                        </ul>
-                    </Feature>
-
+                    {Features.map((item, index) => (
+                        <Feature key={index + "Feature"} data={item}></Feature>
+                    ))}
                 </div>
                 </div>
             </div>
