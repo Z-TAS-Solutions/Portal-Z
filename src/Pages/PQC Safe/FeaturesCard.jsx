@@ -58,6 +58,8 @@ const Features = [feature_1, feature_2]
 
 function Feature({children, data = {}}){
 
+    const TitleIconComponent = data.TitleIcon;
+
     return(
         <div className="group/card relative">
         <div className="absolute inset-0 bg-[#086CB4]/5 rounded-xl 
@@ -67,7 +69,6 @@ function Feature({children, data = {}}){
 
             <div className="flex items-center gap-3 mb-6 border-b border-[#086CB4]/20 pb-4">
             <div className="p-2 bg-[#086CB4]/10 rounded-lg">
-                const TitleIconComponent = data.TitleIcon;
                 <TitleIconComponent className={FeatureStyle.TitleIconStyle}/>
             </div>
             <h4 className="text-xl font-bold text-gray-100">{data.Title}</h4>
@@ -75,16 +76,21 @@ function Feature({children, data = {}}){
 
             <ul className="space-y-4 flex-grow">
 
-            {data.Features.map((item,index) => (
-                <li className="flex items-start gap-3" key={index + "listItem"}>
-                    const IconComponent = item.Icon;
-                    <IconComponent className={FeatureStyle.FeatureIconStyle}/>
-                    <div>
-                    <span className="block text-white font-semibold">{item.Feature}</span>
-                    <span className="text-xs text-gray-400">{item.Description}</span>
-                    </div>
-                </li>
-            ))}
+            {data.Features.map((item,index) => {
+                const IconComponent = item.Icon;
+                
+                return(
+                    <li className="flex items-start gap-3" key={index + "listItem"}>
+                        <IconComponent className={FeatureStyle.FeatureIconStyle}/>
+                        <div>
+                        <span className="block text-white font-semibold">{item.Feature}</span>
+                        <span className="text-xs text-gray-400">{item.Description}</span>
+                        </div>
+                    </li>
+                );
+
+            }
+            )}
 
             </ul>
 

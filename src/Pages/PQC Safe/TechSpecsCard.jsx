@@ -1,5 +1,79 @@
-import { ShieldCheck, Cpu, Lock, Network } from 'lucide-react';
+import { ShieldCheck, Lock, Network } from 'lucide-react';
 import TechHeading from '../../Components/Headings/TechHeading';
+
+
+const TitleIconStyle = "w-5 h-5 text-[#086CB4]";
+
+const TechSpec_0 = {
+    Title : "Kyber-1024",
+    TitleIcon : Lock,
+    Spec : [
+        {
+            SpecTitle : "Security Level",
+            SpecDetail : "AES-256"
+        },
+        {
+            SpecTitle : "Public Key",
+            SpecDetail : "1568 bytes"
+        },
+        {
+            SpecTitle : "Ciphertext",
+            SpecDetail : "1568 bytes"
+        },
+    ]
+}
+
+const TechSpec_1 = {
+    Title : "Dilithium-5",
+    TitleIcon : ShieldCheck,
+    Spec : [
+        {
+            SpecTitle : "Signature",
+            SpecDetail : "Deterministic"
+        },
+        {
+            SpecTitle : "Public Key",
+            SpecDetail : "2592 bytes"
+        },
+        {
+            SpecTitle : "Signature Size",
+            SpecDetail : "4595 bytes"
+        },
+    ]
+}
+
+const TechSpecs = [TechSpec_0, TechSpec_1]
+
+function TechSpec({ data, children }){
+
+    const TitleIconComp = data.TitleIcon
+
+    return(
+
+        <>
+            <div className="bg-[#086CB4]/5 p-6 rounded-lg border border-[#086CB4]/10 hover:border-[#086CB4]/30 transition-colors">
+            <div className="flex items-center gap-3 mb-3"> 
+                <TitleIconComp className={TitleIconStyle} />
+                <h4 className="text-white font-semibold tracking-wide">{data.Title}</h4>
+            </div>
+            <div className="space-y-2 text-sm text-gray-400 font-mono">
+                {
+                    data.Spec.map((item, index) => {
+                        return(
+                            <div className="flex justify-between" key={index + "Spec"}><span>{item.SpecTitle}:</span> <span className="text-[#086CB4]">{item.SpecDetail}</span></div>
+                        );
+                    })
+                }
+
+                {children}
+
+            </div>
+            </div>
+        </>
+    )
+
+
+}
 
 export default function TechSpecsCard(){
 
@@ -17,28 +91,14 @@ export default function TechSpecsCard(){
                     <TechHeading WhiteText='Technical' BlueText='Specifications'></TechHeading>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-[#086CB4]/5 p-6 rounded-lg border border-[#086CB4]/10 hover:border-[#086CB4]/30 transition-colors">
-                    <div className="flex items-center gap-3 mb-3"> <Lock className="w-5 h-5 text-[#086CB4]" />
-                        <h4 className="text-white font-semibold tracking-wide">Kyber-1024</h4>
-                    </div>
-                    <div className="space-y-2 text-sm text-gray-400 font-mono">
-                        <div className="flex justify-between"><span>Security Level:</span> <span className="text-[#086CB4]">AES-256</span></div>
-                        <div className="flex justify-between"><span>Public Key:</span> <span className="text-white">1568 bytes</span></div>
-                        <div className="flex justify-between"><span>Ciphertext:</span> <span className="text-white">1568 bytes</span></div>
-                    </div>
-                    </div>
+                    {
+                        TechSpecs.map((item, index) => {
 
-                    <div className="bg-[#086CB4]/5 p-6 rounded-lg border border-[#086CB4]/10 hover:border-[#086CB4]/30 transition-colors">
-                    <div className="flex items-center gap-3 mb-3">
-                        <ShieldCheck className="w-5 h-5 text-[#086CB4]" />
-                        <h4 className="text-white font-semibold tracking-wide">Dilithium-5</h4>
-                    </div>
-                    <div className="space-y-2 text-sm text-gray-400 font-mono">
-                        <div className="flex justify-between"><span>Signature:</span> <span className="text-[#086CB4]">Deterministic</span></div>
-                        <div className="flex justify-between"><span>Public Key:</span> <span className="text-white">2592 bytes</span></div>
-                        <div className="flex justify-between"><span>Signature Size:</span> <span className="text-white">4595 bytes</span></div>
-                    </div>
-                    </div>
+                            return(
+                                <TechSpec data={item} key={index + "TechSpec"}></TechSpec>
+                            )
+                        })
+                    }
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-[#086CB4]/20 flex items-start gap-4">
