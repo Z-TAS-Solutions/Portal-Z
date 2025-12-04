@@ -4,8 +4,6 @@ import { Globe } from "lucide-react";
 import { ShieldAlert } from "lucide-react";
 import { Fingerprint } from "lucide-react";
 import { FileCheck } from "lucide-react";
-import TechHeading from "../../Components/Headings/TechHeading";
-
 
 const FeatureStyle = {
     TitleIconStyle : "w-6 h-6 text-[#086CB4]",
@@ -53,10 +51,10 @@ const feature_2 = {
 }
 
 
-const Features = [feature_1, feature_2]
+export const Features = [feature_1, feature_2]
 
 
-function Feature({children, data = {}}){
+export default function FeatureCard({children, data = {}}){
 
     const TitleIconComponent = data.TitleIcon;
 
@@ -100,31 +98,4 @@ function Feature({children, data = {}}){
         </div>
     )
 
-}
-
-
-export default function FeaturesCard(){
-    
-    return(
-        <div className="relative group w-full animate-in fade-in zoom-in duration-500">
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#06426D] via-[#086CB4] to-[#06426D] rounded-2xl opacity-10 blur-xl group-hover:opacity-20 transition duration-1000"></div>
-    
-            <div className="relative p-[1px] bg-gradient-to-b from-[#086CB4]/40 via-[#06426D]/20 to-transparent rounded-2xl">
-            <div className="relative bg-[#02040a] rounded-2xl overflow-hidden shadow-2xl min-h-[400px] flex flex-col">
-                <div className="w-full h-1 bg-gradient-to-r from-[#086CB4] via-white/20 to-[#086CB4]"></div>
-
-                <div className="p-6 md:p-10 flex flex-col h-full">
-                    <TechHeading WhiteText = "Advanced Features &" BlueText = "Fraud Protection"></TechHeading>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
-                    {Features.map((item, index) => (
-                        <Feature key={index + "Feature"} data={item}></Feature>
-                    ))}
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-
-    );
 }
