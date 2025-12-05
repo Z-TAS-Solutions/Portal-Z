@@ -2,11 +2,12 @@ import TechHeading from "../Headings/TechHeading";
 
 export default function SpecCard(
 { 
-    WhiteTitle = "Bleh White Text", 
-    BlueTitle = "Bleh Blue Text",
+    WhiteTitle = "", 
+    BlueTitle = "",
     gridSize = "", 
-    cards = {},
-    children
+    cards = null,
+    children,
+    AlternateTitle = null
 }
 )
 {
@@ -22,6 +23,7 @@ export default function SpecCard(
 
                     <div className= "p-6 md:p-10 flex flex-col h-full">
                         <TechHeading WhiteText = {WhiteTitle} BlueText = {BlueTitle} ></TechHeading>
+                        {AlternateTitle}
 
                     <div className={gridSize}>
                         {cards}

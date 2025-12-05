@@ -1,4 +1,3 @@
-import OverviewCard from "./OverviewCard";
 import HexTriToggleView from "../../Components/Toggles/HexTriToggleView";
 import SpecCard from "../../Components/TechCards/SpecCard";
 import FeatureCard from "./Features";
@@ -6,6 +5,8 @@ import { Features } from "./Features";
 import TechSpec from "./TechSpecs";
 import { TechSpecs } from "./TechSpecs";
 import { Network } from "lucide-react";
+import SubHeading from "../../Components/Headings/SubHeading";
+import Overview from "./Overview";
 
 export default function ToggleView({children, text="Interactive Button"}) {
   return (
@@ -21,8 +22,15 @@ export default function ToggleView({children, text="Interactive Button"}) {
       <HexTriToggleView
         labels={["OVERVIEW", "SPECS", "FEATURES"]}
         components={[
-          <OverviewCard key="overview" />,
           <SpecCard
+            key = "Overview Card"
+            WhiteTitle="Secure"
+            BlueTitle="Biometric Architecture"
+            AlternateTitle={<SubHeading>Zero-Touch Authentication Flow</SubHeading>}>
+              { <Overview></Overview> }
+          </SpecCard>,
+          <SpecCard
+            key = "TechSpec Card"
             WhiteText = "Technical"
             BlueText = "Specifications"
             gridSize = "grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -43,6 +51,7 @@ export default function ToggleView({children, text="Interactive Button"}) {
             </div>
           </SpecCard>,
           <SpecCard
+              key = "Advncd Features Card"
               WhiteText="Advanced Features &"
               BlueText = "Fraud Protection"
               gridSize = "grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow"
