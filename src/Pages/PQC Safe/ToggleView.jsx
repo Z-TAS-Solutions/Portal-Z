@@ -31,8 +31,8 @@ export default function ToggleView({children, text="Interactive Button"}) {
           </SpecCard>,
           <SpecCard
             key = "TechSpec Card"
-            WhiteText = "Technical"
-            BlueText = "Specifications"
+            WhiteTitle = "Technical"
+            BlueTitle = "Specifications"
             gridSize = "grid grid-cols-1 md:grid-cols-2 gap-6"
             cards = {TechSpecs.map((item, index) => {
 
@@ -52,8 +52,8 @@ export default function ToggleView({children, text="Interactive Button"}) {
           </SpecCard>,
           <SpecCard
               key = "Advncd Features Card"
-              WhiteText="Advanced Features &"
-              BlueText = "Fraud Protection"
+              WhiteTitle="Advanced Features &"
+              BlueTitle = "Fraud Protection"
               gridSize = "grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow"
               cards = {Features.map((item, index) => (
                               <FeatureCard key={index + "FeatureCard"} data={item}></FeatureCard>
