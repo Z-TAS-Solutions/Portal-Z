@@ -25,7 +25,7 @@ function ResponsiveGrid({ items }) {
     ">
       {items.map((item, index) => (
         <TechCard
-          key={index}
+          key={index + "Tech Card Item"}
           title={item.title}
           description={item.description}
         />
