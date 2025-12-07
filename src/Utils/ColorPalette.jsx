@@ -1,23 +1,42 @@
 export const Colors = {
   // --- Aether Plane Colors ---
-  PAGE_BG: '#000000',
-    
+  PAGE_BG: "#000000",
+  SECONDARY_BG: "#02040a",
+
   // --- Rune Script Colors ---
-  PRIMARY_TEXT: '#FFFFFF',
-  SECONDARY_TEXT: '#D3CCCC',
-  BORDER_COLOR: '#374151',
-  
+  PRIMARY_TEXT: "#FFFFFF",
+  SECONDARY_TEXT: "#D3CCCC",
+
+  PRIMARY_BLUE_LIGHT: "#086CB4",
+  PRIMARY_BLUE_DARK: "#06426D",
+
+  // --- Ageis Line Colors ---
+  BORDER_BLUE: "#374151",
+
   // --- LumenVeil ! ---
-  GLOW_BLUE: '#3B82F6', 
-  GLOW_CYAN: '#22D3EE',
-  GLOW_TEAL: '#357a8f',
+  GLOW_BLUE: "#3B82F6",
+  GLOW_CYAN: "#22D3EE",
+  GLOW_TEAL: "#357a8f",
 
   // --- SHADOW BURST ---
-  SHADOW_TUPLE1: 'from-[#000000] via-[#1E2433] via-[#121C2D] to-[#000000]',
+  SHADOW_TUPLE1: "from-[#000000] via-[#1E2433] via-[#121C2D] to-[#000000]",
+  SHADOW_EFFECT_BLUE1: "rgba(37,99,235,0.6)",
+  SHADOW_EFFECT_BLUE2: "rgba(59,130,246,0.4)",
 
   // --- Glyph Edge Colors ---
-  BORDER_BLUE: '#1E90FF',
-  BORDER_DARK_BLUE: '#1C2736',
-
-  
+  BORDER_BLUE: "#1E90FF",
+  BORDER_DARK_BLUE: "#1C2736",
 };
+
+export const TailwindColors = {
+  TXT_G1: "text-gray-900",
+  TXT_W1: "text-white-800",
+
+  BG_GRAY1: "bg-gray-950",
+  BG_BLACK: "bg-black",
+
+  ACCENT_BLUE: "blue-500",
+
+  BORDER_BLUE: "border-blue-900",
+};
+
