@@ -29,7 +29,7 @@ export default function Error403() {
           Access Denied
         </h1>
         <p className="text-slate-400 text-center text-sm mb-6">
-          Biometric template hash mismatch. The security enclave has rejected your authorization request.
+            Authentication signature mismatch detected. The system has halted the request for security compliance.
         </p>
 
         <div className="bg-red-950/20 border border-red-900/50 p-3 rounded mb-6 text-xs text-red-400 font-mono">
