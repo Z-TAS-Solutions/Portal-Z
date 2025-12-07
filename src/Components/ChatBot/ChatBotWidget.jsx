@@ -77,7 +77,10 @@ export default function ChatBotWidget({ buttonSize }) {
             rounded-full
             border-3 border-cyan-400
             overflow-hidden
-            flex items-center justify-center      
+            flex items-center justify-center
+            hover: cursor-pointer
+            z-1
+            ${widgetStatus === true && chatInput !== "" ? "hidden" : ""}
           `}
         style={{
           width: buttonSize,
@@ -105,7 +108,11 @@ export default function ChatBotWidget({ buttonSize }) {
 
       <Activity mode={widgetStatus ? "visible" : "hidden"}>
         <ChatBoxCard
-          className="w-[350px] h-[520px] fixed bottom-0 right-0 mb-4 mr-4"
+          className="
+          w-[350px] h-[520px] 
+          fixed bottom-0 right-0 
+          mb-4 mr-4 
+          transition duration-800 ease-in-out"
           strokeColor="cyan"
           strokeWidth="2"
           fill="#180b39"
@@ -120,7 +127,13 @@ export default function ChatBotWidget({ buttonSize }) {
             </div>
             <button
               onClick={widgetToggle}
-              className="flex items-center justify-center p-2 rounded-full hover:bg-white/10 transition-colors duration-100"
+              className="
+              flex items-center justify-center
+              p-2 
+              rounded-full 
+              hover:bg-white/10
+              hover:cursor-pointer
+              transition-colors duration-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -184,19 +197,22 @@ export default function ChatBotWidget({ buttonSize }) {
 
             <button
               type="submit"
-              className="
+              className={`
                 fixed bottom-5 right-5
-                flex-1
+                flex-1    
                 bg-gray-900
                 rounded-full
-                border-2 border-cyan-400
+                border-2 ${TColors.BORDER_BLUE}
                 overflow-hidden
-                flex items-center justify-center"
+                flex items-center justify-center
+                hover: cursor-pointer
+                disabled:border-gray-400
+              `}
               style={{
                 width: buttonSize,
                 height: buttonSize,
               }}
-              disabled={status !== "ready"}
+              disabled={status !== "ready" || chatInput === ""}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
