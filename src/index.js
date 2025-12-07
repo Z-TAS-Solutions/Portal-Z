@@ -6,6 +6,7 @@ import PQCPage from './Pages/PQC Safe/PQCPage';
 import HomePage from './Pages/Home Page/HomePage';
 import ProcessFlow from './Pages/ProcessFlow/ProcessFlow';
 import Error403 from './Pages/Error/Error403';
+import Error404 from './Pages/Error/Error404';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +16,7 @@ root.render(
     <PQCPage></PQCPage>
     <ProcessFlow></ProcessFlow>
     <Error403></Error403>
+    <Error404></Error404>
   </>
 );
 
