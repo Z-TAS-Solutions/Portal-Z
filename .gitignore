@@ -2,6 +2,9 @@
 node_modules/
 /node_modules
 /.pnp
+dist
+dist-ssr
+*.local        
 
 # build outputs
 build/
@@ -14,15 +17,27 @@ dist/
 .env.production.local
 
 # Log files
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
 # Editor directories and files
 .idea/
 .vscode/
 *.iml
 .DS_Store
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?        
 
 #testing
 /coverage
