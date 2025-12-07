@@ -116,27 +116,41 @@ export default function ChatBotWidget({ buttonSize }) {
         })}
       </div>
 
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="flex w-full h-[12%] gap-x-4">
         <input
           type="text"
           value={chatInput}
           onChange={handleInputUI}
+          placeholder="Type your message here..."
+          aria-label="Chat input field"
           className={`
-              border border-cyan-400 
-              rounded-4xl 
+              border-2 border-cyan-400
+              shadow-lg
+              w-[77%] 
+              rounded-4xl
+              py-3 px-4
+              mr-2 ml-2 mb-2
               ${TColors.TXT_W1}
+              focus:outline-none
+              focus:border-cyan-600  
               `}
         />
 
         <button
           type="submit"
           className="
+                fixed bottom-5 right-5
+                flex-1
                 bg-gray-900
-                rounded-full"
+                rounded-full
+                border-2 border-cyan-400
+                overflow-hidden
+                flex items-center justify-center"
           style={{
             width: buttonSize,
             height: buttonSize,
           }}
+          disabled={status !== "ready"}
         ></button>
       </form>
     </>
