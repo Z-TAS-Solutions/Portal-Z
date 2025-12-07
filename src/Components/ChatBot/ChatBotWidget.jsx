@@ -62,16 +62,28 @@ export default function ChatBotWidget({ buttonSize }) {
 
   return (
     <>
-      <div className="overflow-y-auto rounded-xl">
-        {messages.map((message) => (
-          <div key={message.id} className="rounded-2xl">
-            {message.parts.map((part, index) =>
-              part.type === "text" ? (
-                <span key={index}>{part.text}</span>
-              ) : null,
-            )}
-          </div>
-        ))}
+      {/*chat display*/}
+      <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
+        {messages.map((message) => {
+          const isUser = message.role === "user";
+
+          const msgClass = isUser
+            ? "self-end bg-[#3F00B2] text-white text-left"
+            : "self-start bg-gray-700 text-gray-100 text-left";
+
+          return (
+            <div
+              key={message.id}
+              className={`max-w-[85%] sm:max-w-[75%] rounded-2xl p-3 shadow-md ${msgClass}`}
+            >
+              {message.parts.map((part, index) =>
+                part.type === "text" ? (
+                  <span key={index}>{part.text}</span>
+                ) : null,
+              )}
+            </div>
+          );
+        })}
       </div>
 
       <form onSubmit={onSubmit}>
