@@ -39,3 +39,45 @@ code {
   scrollbar-width: thin; /* Firefox */
   scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
 }
+
+@keyframes Gigantification {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-gigantification:hover {
+  animation: Gigantification 1s;
+}
+
+@keyframes Wiggle {
+  0%,
+  25% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+  75% {
+    transform: rotate(4deg);
+  }
+  100% {
+    transform: rotate(-4deg);
+  }
+}
+
+.animate-wiggle:hover {
+  animation: Wiggle 0.5s infinite;
+}
