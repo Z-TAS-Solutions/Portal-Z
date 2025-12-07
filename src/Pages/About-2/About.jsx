@@ -1,3 +1,5 @@
+import { Clock, MapPin, Key, Timer, AlertTriangle, Wrench } from 'lucide-react';
+
 function AegisGlyph({ iconObject, title, desc }) {
   return (
     <div className="rounded-xl border border-cyan-400 p-5">
@@ -12,12 +14,36 @@ function AegisGlyph({ iconObject, title, desc }) {
 
 export default function About() {
   const problemPoints = [
-    "Slow Entry Systems",
-    "Unhygienic Touchpoints",
-    "Weak Credentials",
-    "Operational Delays",
-    "Security Risks",
-    "High Maintenance",
+    {
+      icon: Clock,
+      title: "Slow Entry",
+      description: "later..",
+      color: "cyan"
+    },
+    {
+      icon: MapPin,
+      title: "Touchpoints",
+      description: "later...",
+      color: "red"
+    },
+    {
+      icon: Timer,
+      title: "Delays",
+      description: "later...",
+      color: "cyan"
+    },
+    {
+      icon: AlertTriangle,
+      title: "Risks",
+      description: "later...",
+      color: "red"
+    },
+    {
+      icon: Wrench,
+      title: "Maintenance",
+      description: "later...",
+      color: "purple"
+    }
   ];
 
   return (
@@ -32,7 +58,7 @@ export default function About() {
 
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto w-full">
           {problemPoints.map((point, index) => (
-            <AegisGlyph iconObject={point} title={point} desc={point} />
+            <AegisGlyph iconObject={<point.icon />} title={point.title} desc={point.description} />
           ))}
         </section>
       </div>
