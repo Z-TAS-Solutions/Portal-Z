@@ -56,12 +56,35 @@ export default function ChatBotWidget({ buttonSize }) {
   const { chatInput, setChatInput, messages, status, onSubmit } =
     ChatBotInterface();
 
+  const [widgetStatus, setWidgetStatus] = useState(false);
+
+  const widgetToggle = () => {
+    setWidgetStatus(!widgetStatus);
+  };
+
   const handleInputUI = (e) => {
     setChatInput(e.target.value);
   };
 
   return (
     <>
+      <button
+        type="button"
+        onClick={widgetToggle}
+        className={`
+            bg-gray-900
+            fixed bottom-5 right-5
+            rounded-full
+            border-3 border-cyan-400
+            overflow-hidden
+            flex items-center justify-center      
+          `}
+        style={{
+          width: buttonSize,
+          height: buttonSize,
+        }}
+      ></button>
+
       {/*chat display*/}
       <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
         {messages.map((message) => {
