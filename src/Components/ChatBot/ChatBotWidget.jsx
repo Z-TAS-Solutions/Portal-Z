@@ -85,6 +85,13 @@ export default function ChatBotWidget({ buttonSize }) {
         }}
       ></button>
 
+      <ChatBoxCard
+        className="w-[350px] h-[520px] fixed bottom-0 right-0 mb-4 mr-4"
+        strokeColor="cyan"
+        strokeWidth="2"
+        fill="#180b39"
+      />
+
       {/*chat display*/}
       <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
         {messages.map((message) => {
