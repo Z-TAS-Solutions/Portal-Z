@@ -93,6 +93,14 @@ export default function ChatBotWidget({ buttonSize }) {
           fill="#180b39"
         />
         <div className="flex flex-col w-[348px] h-[518px] fixed bottom-0 right-0 mb-4 mr-4">
+          {/*chat header box..*/}
+          <div className="flex items-center w-full h-[9%] rounded-2xl bg-[#3F00B2] text-white overflow-hidden p-3">
+            {/*chat title box.. maybe with an icon idk */}
+            <div className="flex-1 text-base font-semibold">
+              <span className="mr-2">^_^</span>
+              ZTAS AI Sentinel
+            </div>
+          </div>
           {/*chat display*/}
           <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
             {messages.map((message) => {
