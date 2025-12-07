@@ -184,19 +184,23 @@ export default function ChatBotWidget({ buttonSize }) {
 
             <button
               type="submit"
-              className="
+              className={`
                 fixed bottom-5 right-5
-                flex-1
+                flex-1    
                 bg-gray-900
                 rounded-full
-                border-2 border-cyan-400
+                border-2 ${TColors.BORDER_BLUE}
                 overflow-hidden
-                flex items-center justify-center"
+                flex items-center justify-center
+                hover: cursor-pointer
+                disabled:border-gray-400
+                ${widgetStatus === true && chatInput === "" ? "hidden" : null}
+              `}
               style={{
                 width: buttonSize,
                 height: buttonSize,
               }}
-              disabled={status !== "ready"}
+              disabled={status !== "ready" || chatInput === ""}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
