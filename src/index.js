@@ -5,6 +5,7 @@ import Technology from './Pages/Technology/TechnologyPage';
 import PQCPage from './Pages/PQC Safe/PQCPage';
 import HomePage from './Pages/Home Page/HomePage';
 import ProcessFlow from './Pages/ProcessFlow/ProcessFlow';
+import Error403 from './Pages/Error/Error403';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,6 +14,7 @@ root.render(
     <Technology></Technology>
     <PQCPage></PQCPage>
     <ProcessFlow></ProcessFlow>
+    <Error403></Error403>
   </>
 );
 
