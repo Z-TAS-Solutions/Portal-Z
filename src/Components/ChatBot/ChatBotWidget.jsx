@@ -3,7 +3,7 @@
 import { Activity } from "react";
 import { useState } from "react";
 import ChatBotInterface from "./ChatBot";
-import { TailwindColors as TColors } from "../../ColorPalette.jsx";
+import {TailwindColors as TColors } from "../../Utils/ColorPalette.jsx";
 
 function ChatBoxCard({
   className = "",
