@@ -83,7 +83,25 @@ export default function ChatBotWidget({ buttonSize }) {
           width: buttonSize,
           height: buttonSize,
         }}
-      ></button>
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="36"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="cyan"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          className="animate-gigantification"
+        >
+          <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+          <path d="M7.5 12h10" />
+          <path d="M7.5 16h6" />
+          <path d="M7.5 8h8" />
+        </svg>
+      </button>
 
       <Activity mode={widgetStatus ? "visible" : "hidden"}>
         <ChatBoxCard
@@ -103,7 +121,21 @@ export default function ChatBotWidget({ buttonSize }) {
             <button
               onClick={widgetToggle}
               className="flex items-center justify-center p-2 rounded-full hover:bg-white/10 transition-colors duration-100"
-            ></button>
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
           </div>
           {/*chat display*/}
           <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
@@ -165,7 +197,23 @@ export default function ChatBotWidget({ buttonSize }) {
                 height: buttonSize,
               }}
               disabled={status !== "ready"}
-            ></button>
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="cyan"
+                stroke-width="2"
+                stroke-linecap="round"
+                strokeLinejoin="round"
+                className="animate-wiggle"
+              >
+                <path d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z" />
+                <path d="M6 12h16" />
+              </svg>
+            </button>
           </form>
         </div>
       </Activity>
