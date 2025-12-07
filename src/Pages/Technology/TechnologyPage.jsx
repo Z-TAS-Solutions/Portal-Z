@@ -3,11 +3,9 @@ import HardwareSpecs from "./HardwareSpecs";
 export default function Technology() {
   return (
     <section className="relative w-full bg-zinc-950 text-white py-24 px-6 overflow-hidden">
-      {/* Background ambient glow - subtle and professional */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-900/20 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
-        {/* Header Section */}
         <div className="mb-20 text-center md:text-left">
           <h2 className="text-sm font-mono text-blue-400 tracking-widest uppercase mb-4">
             Under the Hood
@@ -21,7 +19,6 @@ export default function Technology() {
           </p>
         </div>
 
-        {/* The Content Layout */}
         <HardwareSpecs />
       </div>
     </section>

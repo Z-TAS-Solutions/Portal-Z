@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Cpu, Eye, ShieldCheck, Zap, Thermometer, Layers, Wifi, Camera } from "lucide-react"; // Assuming you have lucide-react or similar icons
+import { Cpu, Eye, ShieldCheck, Zap, Thermometer, Layers, Wifi, Camera } from "lucide-react";
 
-// Enhanced Data - We made the descriptions "Sell" the product
 const specs = [
   {
     category: "Vision System",
@@ -68,7 +67,6 @@ const specs = [
   }
 ];
 
-// A sleek, horizontal row component instead of a card
 function SpecRow({ item }) {
   return (
     <div className="
@@ -96,7 +94,6 @@ function SpecRow({ item }) {
         </div>
       </div>
 
-      {/* Technical Stat - Shows on right, usually hidden on mobile */}
       <div className="hidden sm:block text-right">
         <span className="text-xs font-mono text-zinc-600 uppercase tracking-wider block mb-1">Spec</span>
         <span className="text-sm font-bold text-zinc-300 group-hover:text-white">{item.stat}</span>
@@ -112,12 +109,9 @@ export default function HardwareSpecs() {
   return (
     <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
       
-      {/* LEFT: Sticky Visual Anchor */}
-      {/* This mimics a product render or blueprint layout */}
       <div className="hidden lg:block w-1/3 relative">
         <div className="sticky top-24">
           <div className="aspect-[4/5] bg-zinc-900 rounded-3xl border border-zinc-800 p-8 flex flex-col justify-between overflow-hidden relative group">
-            {/* Abstract Tech Visual using CSS gradients */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-blue-500/30 flex items-center justify-center animate-pulse">
                <div className="w-32 h-32 rounded-full border border-emerald-500/30" />
@@ -139,7 +133,6 @@ export default function HardwareSpecs() {
         </div>
       </div>
 
-      {/* RIGHT: The Scrolling List */}
       <div className="w-full lg:w-2/3">
         <div className="space-y-16">
           {specs.map((section, catIndex) => (
