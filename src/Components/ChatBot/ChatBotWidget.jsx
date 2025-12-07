@@ -1,0 +1,114 @@
+"use client";
+
+import { Activity } from "react";
+import { useState } from "react";
+import ChatBotInterface from "./ChatBot";
+import { TailwindColors as TColors } from "../../ColorPalette.jsx";
+
+function ChatBoxCard({
+  className = "",
+  fill = "",
+  strokeColor = "",
+  strokeWidth = 0,
+}) {
+  const w = 350;
+  const h = 520;
+  const r = 20;
+  const RCut = 10;
+  const st = 56;
+
+  const pathData = `
+    M ${r} 0 
+    H ${w - r} 
+    Q ${w} 0 ${w} ${r} 
+    
+    V ${h - st} 
+    
+    A 7 10 0 0 1 ${w - 7} ${h - st}
+    A ${RCut} ${RCut} 0 0 0 ${w - st} ${h - 7}
+    A 10 7 0 0 1 ${w - st} ${h}
+
+    H ${r} 
+    
+    Q 0 ${h} 0 ${h - r} 
+    V ${r} 
+    Q 0 0 ${r} 0 
+    Z
+  `;
+  return (
+    <svg
+      width="100%"
+      height="100%"
+      viewBox="0 0 100% 100%"
+      className={`overflow-visible ${className}`}
+    >
+      <path
+        d={pathData}
+        fill={fill}
+        stroke={strokeColor}
+        strokeWidth={strokeWidth}
+      />
+    </svg>
+  );
+}
+
+export default function ChatBotWidget({ buttonSize }) {
+  const { chatInput, setChatInput, messages, status, onSubmit } =
+    ChatBotInterface();
+
+  const handleInputUI = (e) => {
+    setChatInput(e.target.value);
+  };
+
+  return (
+    <>
+      {/*chat display*/}
+      <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
+        {messages.map((message) => {
+          const isUser = message.role === "user";
+
+          const msgClass = isUser
+            ? "self-end bg-[#3F00B2] text-white text-left"
+            : "self-start bg-gray-700 text-gray-100 text-left";
+
+          return (
+            <div
+              key={message.id}
+              className={`max-w-[85%] sm:max-w-[75%] rounded-2xl p-3 shadow-md ${msgClass}`}
+            >
+              {message.parts.map((part, index) =>
+                part.type === "text" ? (
+                  <span key={index}>{part.text}</span>
+                ) : null,
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          value={chatInput}
+          onChange={handleInputUI}
+          className={`
+              border border-cyan-400 
+              rounded-4xl 
+              ${TColors.TXT_W1}
+              `}
+        />
+
+        <button
+          type="submit"
+          className="
+                bg-gray-900
+                rounded-full"
+          style={{
+            width: buttonSize,
+            height: buttonSize,
+          }}
+        ></button>
+      </form>
+    </>
+  );
+}
