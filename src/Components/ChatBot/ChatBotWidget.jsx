@@ -100,6 +100,10 @@ export default function ChatBotWidget({ buttonSize }) {
               <span className="mr-2">^_^</span>
               ZTAS AI Sentinel
             </div>
+            <button
+              onClick={widgetToggle}
+              className="flex items-center justify-center p-2 rounded-full hover:bg-white/10 transition-colors duration-100"
+            ></button>
           </div>
           {/*chat display*/}
           <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
