@@ -85,45 +85,47 @@ export default function ChatBotWidget({ buttonSize }) {
         }}
       ></button>
 
-      <ChatBoxCard
-        className="w-[350px] h-[520px] fixed bottom-0 right-0 mb-4 mr-4"
-        strokeColor="cyan"
-        strokeWidth="2"
-        fill="#180b39"
-      />
+      <Activity mode={widgetStatus ? "visible" : "hidden"}>
+        <ChatBoxCard
+          className="w-[350px] h-[520px] fixed bottom-0 right-0 mb-4 mr-4"
+          strokeColor="cyan"
+          strokeWidth="2"
+          fill="#180b39"
+        />
+        <div className="flex flex-col w-[348px] h-[518px] fixed bottom-0 right-0 mb-4 mr-4">
+          {/*chat display*/}
+          <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
+            {messages.map((message) => {
+              const isUser = message.role === "user";
 
-      {/*chat display*/}
-      <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
-        {messages.map((message) => {
-          const isUser = message.role === "user";
+              const msgClass = isUser
+                ? "self-end bg-[#3F00B2] text-white text-left"
+                : "self-start bg-gray-700 text-gray-100 text-left";
 
-          const msgClass = isUser
-            ? "self-end bg-[#3F00B2] text-white text-left"
-            : "self-start bg-gray-700 text-gray-100 text-left";
+              return (
+                <div
+                  key={message.id}
+                  className={`max-w-[85%] sm:max-w-[75%] rounded-2xl p-3 shadow-md ${msgClass}`}
+                >
+                  {message.parts.map((part, index) =>
+                    part.type === "text" ? (
+                      <span key={index}>{part.text}</span>
+                    ) : null,
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          {/*chat inputs*/}
 
-          return (
-            <div
-              key={message.id}
-              className={`max-w-[85%] sm:max-w-[75%] rounded-2xl p-3 shadow-md ${msgClass}`}
-            >
-              {message.parts.map((part, index) =>
-                part.type === "text" ? (
-                  <span key={index}>{part.text}</span>
-                ) : null,
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      <form onSubmit={onSubmit} className="flex w-full h-[12%] gap-x-4">
-        <input
-          type="text"
-          value={chatInput}
-          onChange={handleInputUI}
-          placeholder="Type your message here..."
-          aria-label="Chat input field"
-          className={`
+          <form onSubmit={onSubmit} className="flex w-full h-[12%] gap-x-4">
+            <input
+              type="text"
+              value={chatInput}
+              onChange={handleInputUI}
+              placeholder="Type your message here..."
+              aria-label="Chat input field"
+              className={`
               border-2 border-cyan-400
               shadow-lg
               w-[77%] 
@@ -134,11 +136,11 @@ export default function ChatBotWidget({ buttonSize }) {
               focus:outline-none
               focus:border-cyan-600  
               `}
-        />
+            />
 
-        <button
-          type="submit"
-          className="
+            <button
+              type="submit"
+              className="
                 fixed bottom-5 right-5
                 flex-1
                 bg-gray-900
@@ -146,13 +148,15 @@ export default function ChatBotWidget({ buttonSize }) {
                 border-2 border-cyan-400
                 overflow-hidden
                 flex items-center justify-center"
-          style={{
-            width: buttonSize,
-            height: buttonSize,
-          }}
-          disabled={status !== "ready"}
-        ></button>
-      </form>
+              style={{
+                width: buttonSize,
+                height: buttonSize,
+              }}
+              disabled={status !== "ready"}
+            ></button>
+          </form>
+        </div>
+      </Activity>
     </>
   );
 }
