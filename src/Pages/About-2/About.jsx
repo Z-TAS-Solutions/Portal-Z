@@ -27,40 +27,71 @@ function GlyphMaestroRune({ accentLine, primaryLine, secondaryLine }) {
 
 function AegisGlyph({ IconObject, title, desc }) {
   return (
-    <div
-      className={`
-            w-50
-            relative group aspect-square 
-            bg-slate-950/80             
-            backdrop-blur-m 
-            transition-all 
-            duration-300 
+    <>
+      <div className="relative w-50 aspect-square group">
+
+        <div
+          className={`
+            absolute inset-0
+            bg-slate-950/80
+            backdrop-blur-m
+            transition-all
+            duration-300
             overflow-hidden
             border-2 border-cyan-400
             flex justify-center items-center
+            rotate-45
           `}
-      style={{
-        clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
-      }} >
+          style={{
+            clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
+          }}
+        >
+        </div>
 
-      <div className="inset-0 flex flex-col items-center justify-center p-6 text-center">
         <div
-          className={`
-          absolute inset-0
-          bg-gradient-to-b from-transparent via-white/5 to-transparent -translate-y-full 
-          group-hover:translate-y-full transition-transform duration-1000 pointer-events-none
-          `}>
-        </div>
-        <div className={`w-14 h-14 bg-cyan-500/10 rounded-full flex items-center justify-center mb-3 border border-current/20 relative z-10`}>
-          <IconObject className="w-7 h-7 text-cyan-400" />
-        </div>
-        <h3 className="text-slate-100 mb-2 tracking-wide relative z-10">
-          {title}
-        </h3>
-      </div>
+          className="
+            absolute inset-0
+            flex flex-col items-center justify-center p-6 text-center
+            rotate-45 group
+          "
+          style={{
+            clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
+          }}
+        >
+          <div
+            className={`
+              absolute inset-0
+              bg-gradient-to-b from-transparent via-white/5 to-transparent -translate-y-full
+              group-hover:translate-y-full 
+              transition-transform duration-1000
+              pointer-events-none
+            `}
+          >
+          </div>
 
-    </div >
+          <div className='-rotate-45 flex flex-col items-center justify-center'>
+            <div className={`w-14 h-14 bg-cyan-500/10 rounded-full flex items-center justify-center mb-3 border border-current/20 relative z-10`}>
+              <IconObject className="w-7 h-7 text-cyan-400" />
+            </div>
 
+            <h3 className="text-slate-100 mb-2 tracking-wide relative z-10">
+              {title}
+            </h3>
+          </div>
+        </div>
+
+        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+          <div className={`bg-slate-950/95 backdrop-blur-md border rounded-lg p-4 shadow-2xl`}>
+            <div className={`absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45`}></div>
+            <p className="text-slate-300 text-sm relative z-10">
+              {desc}
+            </p>
+          </div>
+        </div>
+
+      </div >
+
+    </>
 
   );
 }
@@ -111,20 +142,20 @@ export default function About() {
       <div
         className="
         absolute inset-0
-        bg-[linear-gradient(rgba(0,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.03)_1px,transparent_1px)] 
-        bg-[size:50px_50px]">
+        bg-[linear-gradient(rgba(0,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.04)_1px,transparent_1px)] 
+        bg-[size:50px_50px] pointer-events-none">
       </div>
 
       <div
         className="
         absolute inset-0 z-10
-        bg-gradient-to-br from-cyan-500/8 via-transparent to-pink-500/5"
+        bg-gradient-to-br from-cyan-500/8 via-transparent to-pink-500/5 pointer-events-none"
       >
       </div>
       <div
         className="
         absolute inset-0 h-[30%] w-[120%]
-        bg-[linear-gradient(transparent_50%,rgba(0,255,255,0.03)_50%)] 
+        bg-[linear-gradient(transparent_50%,rgba(0,255,255,0.15)_50%)] 
         bg-[length:100%_4px] 
         pointer-events-none 
         animate-scan blur-lg
