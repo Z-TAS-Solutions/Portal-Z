@@ -1,11 +1,36 @@
 import { Snail, Skull, ShieldAlert, Timer, AlertTriangle, Wrench } from 'lucide-react';
 
+function GlyphMaestroRune({ accentLine, primaryLine, secondaryLine }) {
+  return (
+    <div className="flex gap-6">
+
+      <div className="w-1 bg-blue-700 rounded-full" />
+
+      <div className="space-y-2">
+        <p className="uppercase tracking-widest text-xs text-gray-400 leading-none">
+          {accentLine}
+        </p>
+
+        <span className="text-5xl font-semibold text-white leading-tight">
+          {primaryLine}
+        </span >
+
+        <p className="text-gray-300 max-w-2xl">
+          {secondaryLine}
+        </p>
+      </div>
+
+    </div>
+  );
+}
+
+
 function AegisGlyph({ IconObject, title, desc }) {
   return (
     <div
       className={`
             w-50
-            relative aspect-square 
+            relative group aspect-square 
             bg-slate-950/80             
             backdrop-blur-m 
             transition-all 
@@ -16,7 +41,7 @@ function AegisGlyph({ IconObject, title, desc }) {
           `}
       style={{
         clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
-      }}>
+      }} >
 
       <div className="inset-0 flex flex-col items-center justify-center p-6 text-center">
         <div
@@ -34,7 +59,7 @@ function AegisGlyph({ IconObject, title, desc }) {
         </h3>
       </div>
 
-    </div>
+    </div >
 
 
   );
@@ -81,14 +106,52 @@ export default function About() {
   ];
 
   return (
-    <section className="flex flex-col items-center">
-      <div className="text-center mb-20">
-        <h1 className="text-5xl font-bold mb-4 text-white">
-          The problem we saw
-        </h1>
-        <p className="text-xl text-gray-400">Why traditional systems fail</p>
+    <section className="relative flex flex-col items-center p-6 min-h-screen h-[300px] overflow-hidden">
+
+      <div
+        className="
+        absolute inset-0
+        bg-[linear-gradient(rgba(0,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.03)_1px,transparent_1px)] 
+        bg-[size:50px_50px]">
       </div>
-      <div className="bg-slate-900 rounded-xl px-24 py-10">
+
+      <div
+        className="
+        absolute inset-0 z-10
+        bg-gradient-to-br from-cyan-500/8 via-transparent to-pink-500/5"
+      >
+      </div>
+      <div
+        className="
+        absolute inset-0 h-[30%] w-[120%]
+        bg-[linear-gradient(transparent_50%,rgba(0,255,255,0.03)_50%)] 
+        bg-[length:100%_4px] 
+        pointer-events-none 
+        animate-scan blur-lg
+        rotate-30
+        overflow-hidden">
+      </div>
+
+      <div className="w-full mb-4">
+        <GlyphMaestroRune
+          accentLine="THE PROBLEM WE SAW"
+          primaryLine={
+            <h2>
+              The{" "}
+              <span className="
+                bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500
+                drop-shadow-[0_0_12px_rgba(0,200,255,0.1)]
+                bg-clip-text 
+                text-transparent">
+                Collapse
+              </span>{" "}
+              of Legacy Authorization
+            </h2>
+          }
+          secondaryLine="Six inherent blind spots embedded in conventional authorization - each
+        one a structural gap that silently weakens your security architecture." />
+      </div>
+      <div className="rounded-xl px-24 py-10">
         <div
           className="
           grid grid-cols-1
@@ -96,7 +159,7 @@ export default function About() {
           lg:grid-cols-3
           gap-18
           max-w-6xl w-full
-          mx-auto">
+          mx-auto z-15">
           {problemPoints.map((point, index) => (
             <AegisGlyph IconObject={point.icon} title={point.title} desc={point.description} />
           ))}
