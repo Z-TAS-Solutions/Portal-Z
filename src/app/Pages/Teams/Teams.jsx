@@ -70,7 +70,6 @@ const HexagonProfile = ({
   onMouseEnter = null,
   onMouseLeave = null,
 }) => {
-  console.log({ src });
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -208,7 +207,7 @@ export default function TeamsPage({ id }) {
 
         <div className="relative h-[600px] w-[650px]">
           {hoomans.map((hooman, index) => (
-            <>
+            <div key={index}>
               <div
                 className={`w-1/4 h-[3px] absolute ${hooman.line} ${
                   innerLinks[index] ? ACTIVE_T : INACTIVE_T
@@ -262,7 +261,7 @@ export default function TeamsPage({ id }) {
                 title={hooman.Title}
                 className={hooman.npos}
               />
-            </>
+            </div>
           ))}
         </div>
         <img

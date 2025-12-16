@@ -16,7 +16,7 @@ export default function Home() {
       <Technology />
       <PQCPage />
       <ProcessFlow />
-      <Team />
+      <Team id="team" />
       <ChatBotWidget buttonSize="55px" />
     </main>
   );

@@ -26,7 +26,7 @@ function NavItem({ label, id }) {
   const isActive = activeHash === id;
 
   return (
-    <a href={fullHref} scroll={false}>
+    <a href={fullHref}>
       <div className="group flex flex-col items-center cursor-pointer">
         <span className="text-gray-300 group-hover:text-white transition-colors">
           {label}
