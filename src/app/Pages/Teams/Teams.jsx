@@ -23,7 +23,7 @@ const hoomans = [
     name: "Nidula Weerasinghe",
     npos: "absolute top-1/2 left-6/6 -translate-y-1/2",
     pos: "absolute top-1/2 right-0 -translate-y-1/2",
-    line: "top-1/2 left-1/2",
+    line: "top-1/2 left-1/2 rotate-180",
     hooman: null,
   },
   {
@@ -31,7 +31,7 @@ const hoomans = [
     name: "Alisha",
     npos: "absolute bottom-0 left-6/6 -translate-x-1/2",
     pos: "absolute bottom-0 left-4/6 -translate-x-1/2",
-    line: "bottom-3/8 right-6/14 transform rotate-120",
+    line: "bottom-3/8 left-6/14 transform rotate-240",
     hooman: "/Assets/ali.png",
   },
   {
@@ -39,7 +39,7 @@ const hoomans = [
     name: "Amna",
     npos: "absolute bottom-0 left-0 -translate-x-1/2",
     pos: "absolute bottom-0 left-2/6 -translate-x-1/2",
-    line: "bottom-3/8 left-6/14 transform rotate-60 ",
+    line: "bottom-3/8 right-6/14 transform rotate-300 ",
     hooman: "/Assets/amna.png",
   },
   {
@@ -59,7 +59,10 @@ const HexagonProfile = ({
   stroke = "blue",
   strokeWidth = 0.5,
   className = "",
+  imgClassName = "",
   size = "150",
+  onMouseEnter = null,
+  onMouseLeave = null,
 }) => {
   console.log({ src });
   return (
@@ -69,6 +72,8 @@ const HexagonProfile = ({
       height={size}
       viewBox="0 0 24 24"
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <defs>
         <clipPath id="hexClip">
@@ -145,9 +150,21 @@ function GlyphMaestroRune({ accentLine, primaryLine, secondaryLine }) {
 }
 
 export default function TeamsPage({ id }) {
-  const [hoveredNode, setHoveredNode] = useState("");
+  const [outerLink, setOuterLink] = useState(false);
 
-  const refs = useRef(null);
+  const [innerLinks, setInnerLinks] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+
+  const ACTIVE = "#2b7fff";
+  const INACTIVE = "#0d2373";
+  const ACTIVE_T = "bg-[#2b7fff]";
+  const INACTIVE_T = "bg-[#0d2373]";
 
   return (
     <section
@@ -174,19 +191,40 @@ export default function TeamsPage({ id }) {
           secondaryLine="HOOMANS EVERYWHERE !"
         />
       </div>
+
       <div className="relative mt-0 ml-50">
         <HexagonProfile
           className={`absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2`}
           size="600"
           strokeWidth="0.2"
-          stroke="#0f2f71"
+          stroke={outerLink ? ACTIVE : INACTIVE}
         />
+
         <div className="relative h-[600px] w-[650px]">
-          {hoomans.map((hooman) => (
+          {hoomans.map((hooman, index) => (
             <>
               <div
-                className={`bg-[#0f2f71] w-1/4 h-[3px] absolute ${hooman.line}`}
-              ></div>
+                className={`w-1/4 h-[3px] absolute ${hooman.line} ${
+                  innerLinks[index] ? ACTIVE_T : INACTIVE_T
+                }`}
+              >
+                <div
+                  className={`
+                    w-1/4 h-[8px] 
+                    rounded-full bg-cyan-400 blur 
+                    absolute top-0 left-0 -translate-y-1/4 -translate-x-1/2
+                    ${innerLinks[index] ? "animate-slow-move" : "animate-none"}
+                  `}
+                ></div>
+                <div
+                  className={`
+                    w-1/4 h-[8px] 
+                    rounded-full ${ACTIVE_T} blur-sm 
+                    absolute top-0 left-0 -translate-y-1/4 -translate-x-1/2
+                    ${innerLinks[index] ? "animate-slow-move" : "animate-none"}  
+                  `}
+                ></div>
+              </div>
 
               <HexagonProfile
                 className={`${hooman.pos} z-1`}
@@ -194,7 +232,23 @@ export default function TeamsPage({ id }) {
                 src={hooman.hooman}
                 alt={`Hooman Number ${hooman.id}`}
                 fill="black"
-                stroke="#0f2f71"
+                stroke={`${innerLinks[index] ? ACTIVE : INACTIVE}`}
+                onMouseEnter={() => {
+                  setInnerLinks((prev) => {
+                    const tempLinks = [...prev];
+                    tempLinks[index] = true;
+                    return tempLinks;
+                  });
+                  setOuterLink(true);
+                }}
+                onMouseLeave={() => {
+                  setInnerLinks((prev) => {
+                    const tempLinks = [...prev];
+                    tempLinks[index] = false;
+                    return tempLinks;
+                  });
+                  setOuterLink(false);
+                }}
               />
 
               <NameTag
@@ -206,9 +260,22 @@ export default function TeamsPage({ id }) {
           ))}
         </div>
         <img
+          onMouseEnter={() => {
+            setInnerLinks(Array(6).fill(true));
+            setOuterLink(true);
+          }}
+          onMouseLeave={() => {
+            setInnerLinks(Array(6).fill(false));
+            setOuterLink(false);
+          }}
           src="Assets/ZTAS.png"
           alt="ZTAS-Logo"
-          className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 object-cover w-[150px]"
+          className="
+          absolute top-1/2 left-1/2 
+          -translate-y-1/2 -translate-x-1/2 
+          object-cover 
+          w-[150px]
+          "
         />
       </div>
     </section>
