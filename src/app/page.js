@@ -5,6 +5,7 @@ import ChatBotWidget from "./components/ChatBot/ChatBotWidget";
 import Technology from "./Pages/Technology/TechnologyPage";
 import PQCPage from "./Pages/PQC Safe/PQCPage";
 import ProcessFlow from "./Pages/ProcessFlow/ProcessFlow";
+import Team from "./Pages/Teams/Teams";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Technology />
       <PQCPage />
       <ProcessFlow />
+      <Team />
       <ChatBotWidget buttonSize="55px" />
     </main>
   );

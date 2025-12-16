@@ -35,7 +35,9 @@ function NavItem({ label, id }) {
         <div
           className={
             "h-[2px] w-full bg-sky-500 transition-all duration-300 origin-left " +
-            (isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100")
+            (activeHash === id
+              ? "scale-x-100"
+              : "scale-x-0 group-hover:scale-x-100")
           }
         ></div>
       </div>
