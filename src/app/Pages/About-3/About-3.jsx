@@ -80,11 +80,11 @@ export default function About3({ id }) {
     {
       icon: Cloud,
       title: "Cloud-Native Verification",
-      hlabel: "",
-      hvalue: "",
+      hlabel: "LATENCY",
+      hvalue: "<900ms",
       flabel: "Encryption",
-      fvalue: "",
-      desc: "i dunno what to add here for now, later...",
+      fvalue: "AES-256 | KYBER | DILITHIUM",
+      desc: "Quantum secure transmission to verification nodes. Sub-second authentication with enterprise-grade security.",
     },
     {
       icon: Shield,

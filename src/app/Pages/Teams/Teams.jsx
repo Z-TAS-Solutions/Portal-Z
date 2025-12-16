@@ -4,7 +4,8 @@ import { useState, useRef } from "react";
 const hoomans = [
   {
     id: 1,
-    name: "Ruffian",
+    name: "Rufa Rizvi",
+    Title: "ruffian",
     npos: "absolute top-0 left-0 -translate-x-1/2",
     pos: "absolute top-0 left-2/6 -translate-x-1/2",
     line: "top-3/8 right-6/14 transform rotate-60",
@@ -12,7 +13,8 @@ const hoomans = [
   },
   {
     id: 2,
-    name: "Saffiya",
+    name: "Saffiya Sanhar",
+    Title: "suffian",
     npos: "absolute top-0 left-6/6 -translate-x-1/2",
     pos: "absolute top-0 left-4/6 -translate-x-1/2",
     line: "top-3/8 left-6/14 transform rotate-120",
@@ -21,6 +23,7 @@ const hoomans = [
   {
     id: 3,
     name: "Nidula Weerasinghe",
+    Title: "",
     npos: "absolute top-1/2 left-6/6 -translate-y-1/2",
     pos: "absolute top-1/2 right-0 -translate-y-1/2",
     line: "top-1/2 left-1/2 rotate-180",
@@ -28,7 +31,8 @@ const hoomans = [
   },
   {
     id: 4,
-    name: "Alisha",
+    name: "Alisha Mohomed",
+    Title: "alien",
     npos: "absolute bottom-0 left-6/6 -translate-x-1/2",
     pos: "absolute bottom-0 left-4/6 -translate-x-1/2",
     line: "bottom-3/8 left-6/14 transform rotate-240",
@@ -36,7 +40,8 @@ const hoomans = [
   },
   {
     id: 5,
-    name: "Amna",
+    name: "Amna Yousuf",
+    Title: "amnian",
     npos: "absolute bottom-0 left-0 -translate-x-1/2",
     pos: "absolute bottom-0 left-2/6 -translate-x-1/2",
     line: "bottom-3/8 right-6/14 transform rotate-300 ",
@@ -44,7 +49,8 @@ const hoomans = [
   },
   {
     id: 6,
-    name: "Oshadha",
+    name: "Oshadha Bhanu",
+    Title: "",
     npos: "absolute top-1/2 right-6/6 -translate-y-1/2",
     pos: "absolute top-1/2 left-0 -translate-y-1/2",
     line: "top-1/2 right-1/2",
@@ -253,7 +259,7 @@ export default function TeamsPage({ id }) {
 
               <NameTag
                 name={hooman.name}
-                title="blehhh"
+                title={hooman.Title}
                 className={hooman.npos}
               />
             </>
