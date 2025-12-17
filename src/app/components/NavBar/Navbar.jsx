@@ -50,9 +50,9 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full flex gap-8 p-6 bg-black/70 backdrop-blur justify-center z-50">
       <NavItem label="Home" id="#home" />
       <NavItem label="About" id="#about" />
-      <NavItem label="Features" id="#features" />
+      <NavItem label="Our Solution" id="#solution" />
       <NavItem label="Technology" id="#technology" />
-      <NavItem label="Our Journey" id="#journey" />
+      <NavItem label="Features" id="#features" />
       <NavItem label="Team" id="#team" />
     </nav>
   );

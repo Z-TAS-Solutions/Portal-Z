@@ -12,9 +12,9 @@ export default function Home() {
     <main className="min-h-screen font-sans dark:bg-black bg-white">
       <HomePage id="home" />
       <About2 id="about" />
-      <About3 id="" />
-      <Technology />
-      <PQCPage />
+      <About3 id="solution" />
+      <Technology id="technology" />
+      <PQCPage id="features" />
       <ProcessFlow />
       <Team id="team" />
       <ChatBotWidget buttonSize="55px" />
