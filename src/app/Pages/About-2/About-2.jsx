@@ -103,37 +103,43 @@ export default function About2({ id }) {
     {
       icon: Snail,
       title: "Slow Entry",
-      description: "later..",
+      description:
+        "Slow processing and frequent re-scans create bottlenecks, wasting employee time and slowing down facility throughput.",
       color: "cyan",
     },
     {
       icon: Skull,
       title: "Unhygenic Contact",
-      description: "later...",
+      description:
+        "Shared touchpoints raise health concerns by spreading germs, especially in high-traffic areas.",
       color: "red",
     },
     {
       icon: ShieldAlert,
       title: "Weak Credentials",
-      description: "later...",
+      description:
+        "Traditional biometrics can be easy to replicate; fake fingerprints or high-res photos can compromise security.",
       color: "pink",
     },
     {
       icon: Timer,
       title: "Operational Delays",
-      description: "later...",
+      description:
+        "Slow authentication speeds decrease overall facility efficiency and cause queuing at entry points.",
       color: "cyan",
     },
     {
       icon: AlertTriangle,
       title: "Security Risks",
-      description: "later...",
+      description:
+        "Easy to repliiate, Legacy biometrics are physically deposited on the environment. Every time you touch a glass or a door handle, you are leaving a copy of your password behind.",
       color: "red",
     },
     {
       icon: Wrench,
       title: "High Maintenance",
-      description: "later...",
+      description:
+        "Physical hardware wears down over time, requiring frequent cleaning, recalibration, and expensive repairs.",
       color: "purple",
     },
   ];
@@ -141,7 +147,7 @@ export default function About2({ id }) {
   return (
     <section
       id={id}
-      className="relative flex flex-col items-center p-6 min-h-screen h-[300px] overflow-hidden"
+      className="relative flex flex-col items-center p-6 min-h-screen h-[300px] "
     >
       <div
         className="
