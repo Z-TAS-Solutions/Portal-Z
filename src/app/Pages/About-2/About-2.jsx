@@ -90,7 +90,7 @@ function AegisGlyph({ IconObject, title, desc }) {
             <div
               className={`absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45`}
             ></div>
-            <p className="text-slate-300 text-sm relative z-10">{desc}</p>
+            <p className="text-slate-300 text-sm relative">{desc}</p>
           </div>
         </div>
       </div>
@@ -147,55 +147,35 @@ export default function About2({ id }) {
   return (
     <section
       id={id}
-      className="relative flex flex-col items-center p-6 min-h-screen h-[300px] "
+      className="relative min-h-screen flex flex-col items-center justify-center p-6 mb-10 w-full"
     >
-      <div
-        className="
-        absolute inset-0 z-10
-        bg-gradient-to-br from-cyan-500/8 via-transparent to-pink-500/5 pointer-events-none"
-      ></div>
-      {/*  <div
-        className="
-        absolute inset-0 h-[30%] w-[120%]
-        bg-[linear-gradient(transparent_50%,rgba(0,255,255,0.15)_50%)] 
-        bg-[length:100%_4px] 
-        pointer-events-none 
-        animate-scan blur-lg
-        rotate-30
-        overflow-hidden"
-      ></div> */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-cyan-500/8 via-transparent to-pink-500/5 pointer-events-none"></div>
 
-      <div className="w-full mb-4">
+      <div className="w-full mb-12 z-10 text-center">
         <GlyphMaestroRune
           accentLine="THE PROBLEM WE SAW"
           primaryLine={
             <h2>
               The{" "}
-              <span
-                className="
-                bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500
-                drop-shadow-[0_0_12px_rgba(0,200,255,0.1)]
-                bg-clip-text 
-                text-transparent"
-              >
+              <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
                 Collapse
               </span>{" "}
               of Legacy Authorization
             </h2>
           }
-          secondaryLine="Six inherent blind spots embedded in conventional authorization - each
-        one a structural gap that silently weakens your security architecture."
+          secondaryLine="Six inherent blind spots embedded in conventional authorization..."
         />
       </div>
-      <div className="rounded-xl px-24 py-10">
+
+      <div className="relative flex flex-col justify-center items-center ">
         <div
           className="
           grid grid-cols-1
           md:grid-cols-2
           lg:grid-cols-3
-          gap-18
-          max-w-6xl w-full
-          mx-auto z-15"
+          gap-8 md:gap-18 
+          space-x-30
+          w-[70%]"
         >
           {problemPoints.map((point, index) => (
             <AegisGlyph
