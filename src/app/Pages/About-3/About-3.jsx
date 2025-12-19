@@ -40,9 +40,29 @@ function ImageCard({ src, alt, properties = "" }) {
 
 function LuneVeilSigil({ Title, Desc, Icon, HLabel, HValue, FLabel, FValue }) {
   return (
-    <div className="bg-slate-900/50 backdrop-blur-sm rounded-xl p-6 border border-cyan-500/30 shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:shadow-[0_0_50px_rgba(6,182,212,0.5)] hover:border-cyan-500/60 transition-all duration-300 group">
+    <div
+      className="
+      bg-slate-900/50 
+      backdrop-blur-sm 
+      rounded-xl 
+      p-6 
+      border border-cyan-500/30 
+      shadow-[0_0_30px_rgba(6,182,212,0.3)] 
+      hover:shadow-[0_0_50px_rgba(6,182,212,0.5)] 
+      hover:border-cyan-500/60 transition-all duration-300 group
+      "
+    >
       <div className="flex items-start justify-between mb-4">
-        <div className="bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 w-12 h-12 rounded-lg flex items-center justify-center border border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+        <div
+          className="
+          bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 
+          w-12 h-12 
+          rounded-lg 
+          flex items-center justify-center 
+          border border-cyan-500/50 
+          shadow-[0_0_20px_rgba(6,182,212,0.4)]
+          "
+        >
           <Icon className="w-6 h-6 text-cyan-400" />
         </div>
         <div className="text-right">
@@ -69,15 +89,6 @@ function LuneVeilSigil({ Title, Desc, Icon, HLabel, HValue, FLabel, FValue }) {
 export default function About3({ id }) {
   const featurePoints = [
     {
-      icon: Hand,
-      title: "Zero-Touch Interface",
-      hlabel: "Mode",
-      hvalue: "Contactless",
-      flabel: "Detection Range",
-      fvalue: "5-15cm",
-      desc: "Hover-detection with proximity sensors. No physical contact, no contamination vectors, no bottlenecks.",
-    },
-    {
       icon: Cloud,
       title: "Cloud-Native Verification",
       hlabel: "LATENCY",
@@ -85,6 +96,15 @@ export default function About3({ id }) {
       flabel: "Encryption",
       fvalue: "AES-256 | KYBER | DILITHIUM",
       desc: "Quantum secure transmission to verification nodes. Sub-second authentication with enterprise-grade security.",
+    },
+    {
+      icon: Hand,
+      title: "Zero-Touch Interface",
+      hlabel: "Mode",
+      hvalue: "Contactless",
+      flabel: "Detection Range",
+      fvalue: "5-15cm",
+      desc: "Hover-detection with proximity sensors. No physical contact, no contamination vectors, no bottlenecks. no compromises",
     },
     {
       icon: Shield,
@@ -98,7 +118,10 @@ export default function About3({ id }) {
   ];
 
   return (
-    <section id={id} className="flex flex-col items-center p-6 min-h-screen ">
+    <section
+      id={id}
+      className="flex flex-col items-center p-6 min-h-screen mb-10 "
+    >
       <div className="mb-20">
         <div className="grid md:grid-cols-2 gap-12 items-center mx-10">
           <div>
@@ -220,9 +243,12 @@ export default function About3({ id }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 w-[90%] gap-10 flex-wrap">
+      <div className="flex flex-wrap justify-center w-[95%] gap-x-[5%] lg:gap-x-[4%] gap-y-10">
         {featurePoints.map((feature, index) => (
-          <div className="flex-1 " key={index}>
+          <div
+            className="sm:w-[65%] md:w-[47%] lg:max-w-[40%] xl:w-[30%] h-full"
+            key={index}
+          >
             <LuneVeilSigil
               Title={feature.title}
               Desc={feature.desc}
