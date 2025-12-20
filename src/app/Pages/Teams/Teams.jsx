@@ -164,6 +164,7 @@ const HexagonProfile = ({
         clipPath="url(#hexClip)"
         className=""
         preserveAspectRatio="xMidYMid slice"
+        loading="lazy"
       />
     </svg>
   );
@@ -348,6 +349,7 @@ export default function TeamsPage({ id }) {
           object-cover 
           w-[30%]
           "
+            loading="lazy"
           />
         </div>
       </div>

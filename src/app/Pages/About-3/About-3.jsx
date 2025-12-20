@@ -180,8 +180,8 @@ export default function About3({ id }) {
                 w-[70%] 
                 object-cover 
                 block inset-0
-                
                 "
+                loading="lazy"
               />
               <img
                 src="Assets/vein-scan.webp"
@@ -193,6 +193,7 @@ export default function About3({ id }) {
                 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
                 animate-slide-mask
                 "
+                loading="lazy"
                 style={{
                   WebkitMaskImage: "url(/Assets/solid-color-image.png)",
                   WebkitMaskRepeat: "no-repeat",
