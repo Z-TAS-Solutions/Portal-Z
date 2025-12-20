@@ -120,7 +120,7 @@ export default function About3({ id }) {
   return (
     <section
       id={id}
-      className="flex flex-col items-center p-6 min-h-screen mb-10 "
+      className="flex flex-col items-center p-6 min-h-screen mb-10 overflow-hidden"
     >
       <div className="mb-20">
         <div className="grid md:grid-cols-2 gap-12 items-center mx-10">

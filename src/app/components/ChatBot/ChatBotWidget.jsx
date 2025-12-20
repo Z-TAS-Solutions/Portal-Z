@@ -82,7 +82,7 @@ export default function ChatBotWidget({ buttonSize }) {
   };
 
   return (
-    <>
+    <div className="fixed bottom-5 right-5 z-99">
       <button
         type="button"
         onClick={widgetToggle}
@@ -109,10 +109,10 @@ export default function ChatBotWidget({ buttonSize }) {
           viewBox="0 0 24 24"
           fill="none"
           stroke={`${cyan_strokes}`}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="animate-gigantification z-49"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          className="animate-gigantification"
         >
           <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
           <path d="M7.5 12h10" />
@@ -137,7 +137,7 @@ export default function ChatBotWidget({ buttonSize }) {
           <div
             className={`flex items-center w-full h-[9%] rounded-2xl ${purple1} text-white overflow-hidden p-3`}
           >
-            {/*chat title box.. maybe with an icon later idk */}
+            {/*chat title box.. maybe with an icon idk */}
             <div className="flex-1 text-base font-semibold">
               <span className="mr-2">^_^</span>
               ZTAS AI Sentinel
@@ -160,8 +160,8 @@ export default function ChatBotWidget({ buttonSize }) {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
                 <path d="m6 9 6 6 6-6" />
               </svg>
@@ -173,8 +173,8 @@ export default function ChatBotWidget({ buttonSize }) {
               const isUser = message.role === "user";
 
               const msgClass = isUser
-                ? `self-end ${SentMsgCol}`
-                : `self-start  ${RecvMsgCol}`;
+                ? "self-end" + { SentMsgCol }
+                : "self-start" + { RecvMsgCol };
 
               return (
                 <div
@@ -238,8 +238,8 @@ export default function ChatBotWidget({ buttonSize }) {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke={`${cyan_strokes}`}
-                strokeWidth="2"
-                strokeLinecap="round"
+                stroke-width="2"
+                stroke-linecap="round"
                 strokeLinejoin="round"
                 className="animate-wiggle"
               >
@@ -250,6 +250,6 @@ export default function ChatBotWidget({ buttonSize }) {
           </form>
         </div>
       </Activity>
-    </>
+    </div>
   );
 }

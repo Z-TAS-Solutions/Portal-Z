@@ -8,8 +8,8 @@ import NormalParagraph from "../../components/Paragraphs/NormalParagraph.jsx";
 
 export default function Homepage({ id = "home" }) {
   return (
-    <section id="home">
-      <div className="hero-section">
+    <section id="home" className="w-full overflow-hidden">
+      <div className="hero-section w-full">
         <div className="angled-background"></div>
         <div className="hero-content">
           <h1 className="heading-sub">ZERO-TOUCH AUTHENTICATION</h1>

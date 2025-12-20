@@ -147,11 +147,19 @@ export default function About2({ id }) {
   return (
     <section
       id={id}
-      className="relative min-h-screen flex flex-col items-center justify-center p-6 mb-10 w-full"
+      className="
+      relative min-h-screen flex flex-col items-center justify-center 
+      p-6 mb-10 w-full overflow-hidden scroll-mt-5 "
     >
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-cyan-500/8 via-transparent to-pink-500/5 pointer-events-none"></div>
+      <div
+        className="
+        absolute inset-0 z-0 
+        bg-gradient-to-br from-cyan-500/8 via-transparent to-pink-500/5 
+        pointer-events-none
+        "
+      ></div>
 
-      <div className="w-full mb-12 z-10 text-center">
+      <div className="w-full mb-12 z-10 ">
         <GlyphMaestroRune
           accentLine="THE PROBLEM WE SAW"
           primaryLine={
