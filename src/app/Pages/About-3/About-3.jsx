@@ -157,7 +157,7 @@ export default function About3({ id }) {
             </div>
           </div>
 
-          <div className="relative group mx-10 ">
+          <div className="relative group mb-5 mt-15 ">
             <div className="absolute inset-0 overflow-hidden rounded-xl z-20 pointer-events-none h-full w-full animate-slide">
               <div className="absolute w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
             </div>
