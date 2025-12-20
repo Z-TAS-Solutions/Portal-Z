@@ -9,7 +9,7 @@ const hoomans = [
     npos: "absolute -top-[2%] -translate-x-[70%] text-right",
     pos: "absolute left-5/16 -translate-x-1/2",
     line: "top-4/10 right-6/14 transform rotate-55",
-    hooman: "/Assets/rafa.png",
+    hooman: "/Assets/rafa.webp",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const hoomans = [
     npos: "absolute -top-[2%] left-[90%] text-left",
     pos: "absolute right-0 -translate-x-1/2",
     line: "top-4/10 left-6/14 transform rotate-125",
-    hooman: "/Assets/saffy.png",
+    hooman: "/Assets/saffy.webp",
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const hoomans = [
     npos: "absolute -bottom-[2%] left-[90%] text-left",
     pos: "absolute top-4 right-0/16 -translate-x-1/2",
     line: "bottom-4/10 left-6/14 transform rotate-235",
-    hooman: "/Assets/ali.png",
+    hooman: "/Assets/ali.webp",
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const hoomans = [
     npos: "absolute -bottom-[2%]  -translate-x-[70%] text-right",
     pos: "absolute top-4 left-5/16 -translate-x-1/2",
     line: "bottom-4/10 right-6/14 transform rotate-305 ",
-    hooman: "/Assets/amna.png",
+    hooman: "/Assets/amna.webp",
   },
   {
     id: 6,
@@ -340,7 +340,7 @@ export default function TeamsPage({ id }) {
               setInnerLinks(Array(6).fill(false));
               setOuterLink(false);
             }}
-            src="Assets/ZTAS.png"
+            src="Assets/ZTAS.webp"
             alt="ZTAS-Logo"
             className="
           absolute top-1/2 left-1/2 

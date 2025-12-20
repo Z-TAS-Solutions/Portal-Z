@@ -174,7 +174,7 @@ export default function About3({ id }) {
 
             <div className="relative flex items-center justify-center">
               <img
-                src="Assets/veinless-scan.png"
+                src="Assets/veinless-scan.webp"
                 alt="Vein Scan Image"
                 className="
                 w-[70%] 
@@ -184,7 +184,7 @@ export default function About3({ id }) {
                 "
               />
               <img
-                src="Assets/vein-scan.png"
+                src="Assets/vein-scan.webp"
                 alt="Vein Scan Image"
                 className="
                 w-[70%] 
