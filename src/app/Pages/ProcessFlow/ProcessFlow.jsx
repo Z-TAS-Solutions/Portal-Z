@@ -25,9 +25,9 @@ const processSteps = [
 
 export default function ProcessFlow({ id }) {
   return (
-    <section className="" id={id}>
+    <section className="w-full" id={id}>
       <div className="min-h-screen bg-black flex items-center justify-center px-8">
-        <div className="flex flex-col md:flex-row items-stretch justify-center gap-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch justify-center gap-6">
           {processSteps.map((step, index) => (
             <React.Fragment key={step.id}>
               <div className="w-full md:w-80 lg:w-96 flex-none flex flex-col">
