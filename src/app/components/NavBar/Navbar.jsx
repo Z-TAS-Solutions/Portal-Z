@@ -99,11 +99,14 @@ export default function Navbar() {
 
   return (
     <>
+      {/* -right-10 */}
       <nav className="fixed top-0 w-full h-16 z-50 bg-transparent py-4 animate-[slideDown_0.6s_ease-in-out]">
-        <div className="absolute top-0  bg-black h-5 w-full"></div>
+        <div className="absolute top-0 bg-black h-4 w-full"></div>
         <div
+          // left-1/2 -translate-x-1/2
           className="
-          absolute top-0 -right-10
+          -right-10
+          absolute top-0 
           w-auto h-full
           grid grid-cols-1 grid-rows-1 
           place-items-center 
@@ -115,14 +118,50 @@ export default function Navbar() {
             <NavItem label="Home" id="#home" />
             <NavItem label="About" id="#about" />
             <NavItem label="Solution" id="#solution" />
+
+            {/* <div className="z-1 h-18 w-full">
+              <img
+                src="/Assets/ZTAS-Text.webp"
+                className="w-auto h-full object-contain"
+              />
+            </div> */}
+
             <NavItem label="Technology" id="#technology" />
             <NavItem label="Features" id="#features" />
             <NavItem label="Team" id="#team" />
           </div>
         </div>
 
-        <div className="absolute px-8 z-10 h-18">
-          <img src="/Assets/ZTAS-Text.webp" />
+        <div
+          className="
+          absolute top-0  
+          h-full w-[12%] flex justify-center items-center
+          "
+        >
+          <div
+            className="
+              absolute top-0 left-0
+              bg-black
+              border border-t-blue-800 border-x-0 border-b-0
+              rounded-full
+              h-full w-full
+              transform rotate-180
+              transition-[clip-path] duration-300 ease-out
+              [clip-path:polygon(15%_0%,85%_0%,100%_100%,0%_100%)]
+            "
+          >
+            {" "}
+          </div>
+          <div
+            className="
+               relative h-full w-fit px-8
+            "
+          >
+            <img
+              src="/Assets/ZTAS-Text.webp"
+              className="w-auto h-full object-contain"
+            />
+          </div>
         </div>
       </nav>
       {/* <div class="fixed top-1/2 right-5 h-[30%] bg-white/20 backdrop-blur-lg p-5 rounded-full border border-blue/50 z-50 "></div> */}
