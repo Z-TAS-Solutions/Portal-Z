@@ -28,7 +28,12 @@ function NavItem({ label, id }) {
   return (
     <a href={fullHref}>
       <div className="group flex flex-col items-center cursor-pointer">
-        <span className="text-gray-300 group-hover:text-white transition-colors">
+        <span
+          className={
+            "group-hover:text-blue-300 transition-colors " +
+            (activeHash === id ? "text-blue-300" : "text-gray-300")
+          }
+        >
           {label}
         </span>
 
@@ -58,7 +63,7 @@ const NavTapezroider = ({ fill1 = "", fill2 = "", properties = "" }) => (
       fill="rgba(10, 10, 190, 0.2)"
       strokeWidth="0.6"
       filter="url(#softBlur)"
-      className="drop-shadow-[0_0_12px_rgba(34,211,238,0.6)] stroke-slate-200/30"
+      className="drop-shadow-[0_0_12px_rgba(17,13,238,0.6)] stroke-slate-200/30"
     />
     <path
       d="M-31.327 39.744h175.83c1.32 0 3.508-.789 4.751-2.092l21.223-27.208c1.399-1.789 3.305-3.872 1.269-3.872H-57.502c-2.038 0-.489 2.062.789 3.872l20.604 27.208c1.362 1.648 3.462 2.092 4.782 2.092"
@@ -91,11 +96,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 w-full h-18 z-50 bg-transparent py-4 animate-[slideDown_0.6s_ease-in-out]">
-        <div className="absolute top-0 bg-black-700 h-8 w-full"></div>
+      <nav className="fixed top-0 w-full h-16 z-50 bg-transparent py-4 animate-[slideDown_0.6s_ease-in-out]">
+        <div className="absolute top-0  bg-black h-5 w-full"></div>
         <div
           className="
-          absolute top-0 left-1/2 
+          absolute top-0 -right-2/7 
           w-auto h-full 
           -translate-x-1/2 
           grid grid-cols-1 grid-rows-1 
