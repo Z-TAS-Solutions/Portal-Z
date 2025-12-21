@@ -53,7 +53,7 @@ function NavItem({ label, id }) {
 const NavTapezroider = ({ fill1 = "", fill2 = "", properties = "" }) => (
   <svg
     className={`w-full h-full overflow-visible drop-shadow-[0_0_10px_rgba(59,130,246,0.6)]  ${properties}`}
-    viewBox="-60.935 5.656 216.926 36.652"
+    viewBox="-55.935 5.656 216.926 36.652"
     // viewBox="-60.935 5.692 235.997 36.616"
     fill="black"
     xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +103,7 @@ export default function Navbar() {
         <div className="absolute top-0  bg-black h-5 w-full"></div>
         <div
           className="
-          absolute top-0 -right-[5%]
+          absolute top-0 -right-10
           w-auto h-full
           grid grid-cols-1 grid-rows-1 
           place-items-center 
