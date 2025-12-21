@@ -306,6 +306,7 @@ export default function TeamsPage({ id }) {
               <div className={`h-[95%] w-[95%]`}>
                 {hoomans.map((hooman, index) => (
                   <HexagonProfile
+                    key={index}
                     className={`${hooman.pos} z-1 size-[31%] aspect-square scale-125`}
                     src={hooman.hooman}
                     alt={`Hooman Number ${hooman.id}`}

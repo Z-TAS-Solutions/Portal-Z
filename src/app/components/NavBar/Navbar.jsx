@@ -114,11 +114,9 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* <div className="absolute px-8 z-10">
-          <span className="text-lg font-bold tracking-widest text-white uppercase italic">
-            ZTAS
-          </span>
-        </div> */}
+        <div className="absolute px-8 z-10 h-18">
+          <img src="/Assets/ZTAS-Text.webp" />
+        </div>
       </nav>
       {/* <div class="fixed top-1/2 right-5 h-[30%] bg-white/20 backdrop-blur-lg p-5 rounded-full border border-blue/50 z-50 "></div> */}
     </>
