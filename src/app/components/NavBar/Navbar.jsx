@@ -135,7 +135,7 @@ export default function Navbar() {
         <div
           className="
           absolute top-0  
-          h-full w-[12%] flex justify-center items-center
+          h-full min-w-31 w-[10%] flex justify-center items-center
           "
         >
           <div
@@ -154,12 +154,12 @@ export default function Navbar() {
           </div>
           <div
             className="
-               relative h-full w-fit px-8
+               relative h-full w-full px-8
             "
           >
             <img
               src="/Assets/ZTAS-Text.webp"
-              className="w-auto h-full object-contain"
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
