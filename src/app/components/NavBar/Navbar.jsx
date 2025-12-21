@@ -53,20 +53,23 @@ function NavItem({ label, id }) {
 const NavTapezroider = ({ fill1 = "", fill2 = "", properties = "" }) => (
   <svg
     className={`w-full h-full overflow-visible drop-shadow-[0_0_10px_rgba(59,130,246,0.6)]  ${properties}`}
-    viewBox="-60.935 5.692 235.997 36.616"
+    viewBox="-60.935 5.656 216.926 36.652"
+    // viewBox="-60.935 5.692 235.997 36.616"
     fill="black"
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="none"
   >
     <path
-      d="M-31.725 42.308h177.056c1.505 0 2.855-.976 3.888-2.409l23.592-29.75c1.423-2.21 3.367-4.116 1.447-4.457H-59.951c-1.995.195-.555 2.181.777 4.328l22.401 29.879c1.342 1.879 3.543 2.409 5.048 2.409"
+      d="M-31.725 42.308h177.801c1.505 0 3.427-.658 3.888-2.409l5.681-29.75c.948-5.197-.048-4.457-3.099-4.457H-59.951c-1.995.195-.555 2.181.777 4.328l22.401 29.879c1.342 1.879 3.543 2.409 5.048 2.409"
+      // d="M-31.725 42.308h177.056c1.505 0 2.855-.976 3.888-2.409l23.592-29.75c1.423-2.21 3.367-4.116 1.447-4.457H-59.951c-1.995.195-.555 2.181.777 4.328l22.401 29.879c1.342 1.879 3.543 2.409 5.048 2.409"
       fill="rgba(10, 10, 190, 0.2)"
       strokeWidth="0.6"
       filter="url(#softBlur)"
       className="drop-shadow-[0_0_12px_rgba(17,13,238,0.6)] stroke-slate-200/30"
     />
     <path
-      d="M-31.327 39.744h175.83c1.32 0 3.508-.789 4.751-2.092l21.223-27.208c1.399-1.789 3.305-3.872 1.269-3.872H-57.502c-2.038 0-.489 2.062.789 3.872l20.604 27.208c1.362 1.648 3.462 2.092 4.782 2.092"
+      d="M-31.327 39.744h175.83c1.526 0 4.069.465 4.751-2.092l5.115-27.208c.889-4.336-.182-3.872-2.337-3.872H-57.502c-2.038 0-.489 2.062.789 3.872l20.604 27.208c1.362 1.648 3.462 2.092 4.782 2.092"
+      // d="M-31.327 39.744h175.83c1.32 0 3.508-.789 4.751-2.092l21.223-27.208c1.399-1.789 3.305-3.872 1.269-3.872H-57.502c-2.038 0-.489 2.062.789 3.872l20.604 27.208c1.362 1.648 3.462 2.092 4.782 2.092"
       fill="#08080B"
       stroke="none"
       className=""
@@ -96,20 +99,19 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 w-full h-16 z-50 bg-transparent py-4 animate-[slideDown_0.6s_ease-in-out] ">
+      <nav className="fixed top-0 w-full h-16 z-50 bg-transparent py-4 animate-[slideDown_0.6s_ease-in-out]">
         <div className="absolute top-0  bg-black h-5 w-full"></div>
         <div
           className="
-          absolute top-0 -right-2/7 
-          w-auto h-full 
-          -translate-x-1/2 
+          absolute top-0 -right-[5%]
+          w-auto h-full
           grid grid-cols-1 grid-rows-1 
           place-items-center 
           "
         >
           <NavTapezroider properties="col-start-1 row-start-1" />
 
-          <div className="col-start-1 row-start-1 z-1 flex gap-8 w-auto justify-between items-center mx-25">
+          <div className="col-start-1 row-start-1 z-1 flex gap-8 w-auto justify-between items-center mx-20">
             <NavItem label="Home" id="#home" />
             <NavItem label="About" id="#about" />
             <NavItem label="Solution" id="#solution" />
