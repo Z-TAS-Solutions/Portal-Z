@@ -122,8 +122,8 @@ export default function About3({ id }) {
       id={id}
       className="relative flex flex-col items-center p-6 min-h-screen overflow-hidden bg-zinc-950"
     >
-      <div class="absolute top-1/3 left-1/4 -translate-x-1/2 w-full h-1/3 bg-blue-900/20 blur-[160px] rounded-full pointer-events-none"></div>
-      <div class="absolute -top-1/3 left-1/2 -translate-x-1/2 w-full h-1/3 bg-blue-900/20 blur-[200px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-1/3 left-1/4 -translate-x-1/2 w-full h-1/3 bg-blue-900/20 blur-[160px] rounded-full pointer-events-none"></div>
+      <div className="absolute -top-1/3 left-1/2 -translate-x-1/2 w-full h-1/3 bg-blue-900/20 blur-[200px] rounded-full pointer-events-none"></div>
 
       <div className="mb-20">
         <div className="grid md:grid-cols-2 gap-12 items-center mx-10">
@@ -220,8 +220,8 @@ export default function About3({ id }) {
             <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-blue-400" />
             <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-blue-400" />
 
-            <div class="absolute inset-0 overflow-hidden rounded-xl z-20 pointer-events-none h-full w-full animate-slide">
-              <div class="absolute w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+            <div className="absolute inset-0 overflow-hidden rounded-xl z-20 pointer-events-none h-full w-full animate-slide">
+              <div className="absolute w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
             </div>
           </div>
         </div>

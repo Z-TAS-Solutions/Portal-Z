@@ -231,7 +231,7 @@ export default function TeamsPage({ id }) {
       id={id}
       className="relative flex flex-col w-full h-dvh overflow-hidden scroll-mt-18 mt-18 bg-zinc-950"
     >
-      <div class="absolute top-1/4 left-1/3 -translate-x-1/2 w-full h-full bg-blue-900/20 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 w-full h-full bg-blue-900/20 blur-[120px] rounded-full pointer-events-none"></div>
       <div className=" ml-10">
         <GlyphMaestroRune
           primaryLine={

@@ -93,10 +93,7 @@ const NavTapezroider = ({ fill1 = "", fill2 = "", properties = "" }) => (
   </svg>
 );
 
-export default function Navbar() {
-  const [active, setActive] = useState("Home");
-  const navItems = ["Home", "Forums", "Shop", "FAQ"];
-
+function DesktopNav() {
   return (
     <>
       {/* -right-10 */}
@@ -167,4 +164,91 @@ export default function Navbar() {
       {/* <div class="fixed top-1/2 right-5 h-[30%] bg-white/20 backdrop-blur-lg p-5 rounded-full border border-blue/50 z-50 "></div> */}
     </>
   );
+}
+
+function MobileNav() {
+  return (
+    <nav
+      className="
+        fixed top-0 left-1/2 -translate-x-1/2 z-50
+        h-14 w-fit
+        flex justify-center items-center
+        gap-10 mt-2 px-2
+        "
+    >
+      <div
+        className="
+        absolute
+        w-full h-[90%]
+        bg-[#08080B]/60 backdrop-blur-sm
+        border-[1px] border-white/10
+        rounded-2xl
+        drop-shadow-2xl
+        "
+      ></div>
+
+      <div
+        className="
+        z-50 rounded-2xl
+        w-[24%] h-full 
+        px-[2%]
+        transition-all duration-300
+        active:scale-95
+        active:ring-2 active:ring-blue-500/50 
+        active:bg-blue-500/10 
+        active:shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+      >
+        <img
+          src="Assets/ZTAS-Text.webp"
+          className="w-auto h-full object-contain"
+        />
+      </div>
+      <div
+        className="
+        z-50 rounded-2xl
+        w-[46%] h-full 
+        px-[2%] 
+        flex items-center justify-center 
+        tracking-[0.2em] font-mono uppercase text-slate-400 text-center
+        "
+      >
+        whereami?
+      </div>
+      <div
+        className="
+        z-50 rounded-2xl
+        w-[24%] h-full 
+        px-[2%] 
+        flex items-center justify-center 
+        tracking-[0.2em] font-mono uppercase text-slate-400 text-center
+        "
+      >
+        ☰
+      </div>
+    </nav>
+  );
+}
+
+export default function Navbar() {
+  const [displayMode, setDisplayMode] = useState(false);
+
+  const listener = () => {};
+
+  const mmObj = window.matchMedia("(max-width: 768px)");
+  useEffect(() => {
+    setDisplayMode(mmObj.matches);
+    console.log(mmObj);
+
+    mmObj.addEventListener("change", function () {
+      setDisplayMode(mmObj.matches);
+    });
+
+    return () =>
+      mmObj.removeEventListener("change", function () {
+        console.log("blehhhh");
+        setDisplayMode(mmObj.matches);
+      });
+  }, []);
+
+  return displayMode ? <MobileNav /> : <DesktopNav />;
 }
