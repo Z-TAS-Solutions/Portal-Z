@@ -11,18 +11,18 @@ const SentMsgCol =
 const RecvMsgCol =
   "bg-[#0A192F]/90 text-blue-100 text-left border border-[#00D4FF]/30 backdrop-blur-sm";
 
-const border_cyan = "border-[#00D4FF]/50";
-const gray1 = "bg-[#1E293B]";
-const gray2 = "bg-[#020617]";
-const gray3 = "border-[#1E293B]";
+const TextBoxBorder = "border-[#00D4FF]/50";
+const ButtonBG = "bg-[#020617]";
+const ButtonInactiveBG = "border-[#1E293B]";
+const ButtonBorder = "border-[#00D4FF]";
 
 const cyan2 = "border-[#00FFFF]/20";
 const IconPrimary = "#00FFFF";
-const white1 = "bg-white/10";
+const TitleToggleHover = "bg-white/10";
 
 const TitleBG = "bg-[#1e293b]";
 const MainCol = "#020617";
-const stroke_col = "#00D4FF";
+const MainBorder = "#00B4D8";
 
 function ChatBoxCard({
   className = "",
@@ -91,10 +91,10 @@ export default function ChatBotWidget({ buttonSize }) {
         type="button"
         onClick={widgetToggle}
         className={`
-            ${gray2}
+            ${ButtonBG}
             fixed bottom-5 right-5
             rounded-full
-            border-3 ${border_cyan}
+            border-3 ${ButtonBorder}
             overflow-hidden
             flex items-center justify-center
             hover: cursor-pointer
@@ -132,7 +132,7 @@ export default function ChatBotWidget({ buttonSize }) {
           fixed bottom-0 right-0 
           mb-4 mr-4 
           transition duration-800 ease-in-out"
-          strokeColor={`${stroke_col}`}
+          strokeColor={`${MainBorder}`}
           strokeWidth="2"
           fill={`${MainCol}`}
         />
@@ -152,7 +152,7 @@ export default function ChatBotWidget({ buttonSize }) {
               flex items-center justify-center
               p-2 
               rounded-full 
-              hover:${white1}
+              hover:${TitleToggleHover}
               hover:cursor-pointer
               transition-colors duration-100`}
             >
@@ -204,7 +204,7 @@ export default function ChatBotWidget({ buttonSize }) {
               placeholder="Type your message here..."
               aria-label="Chat input field"
               className={`
-              border-2 ${border_cyan}
+              border-2 ${TextBoxBorder}
               shadow-lg
               w-[77%] 
               rounded-4xl
@@ -221,13 +221,13 @@ export default function ChatBotWidget({ buttonSize }) {
               className={`
                 fixed bottom-5 right-5
                 flex-1    
-                ${gray2}
+                ${ButtonBG}
                 rounded-full
-                border-2 ${TColors.BORDER_BLUE}
+                border-2 ${ButtonBorder}
                 overflow-hidden
                 flex items-center justify-center
                 hover: cursor-pointer
-                disabled:${gray3}
+                disabled:${ButtonInactiveBG}
               `}
               style={{
                 width: buttonSize,
