@@ -151,7 +151,9 @@ export default function About2({ id }) {
       relative min-h-screen flex flex-col items-center justify-center 
       p-6 w-full overflow-hidden scroll-mt-5 bg-zinc-950 "
     >
-      {/* <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-blue-900/20 blur-[50px] rounded-full pointer-events-none"></div> */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2/4 w-full h-1/3 bg-blue-900/20 blur-[100px] rounded-full pointer-events-none"></div>
+
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2/4 w-full h-1/3 bg-blue-900/19 blur-[170px] rounded-full pointer-events-none"></div>
       {/* <div
         className="
         absolute inset-0 z-0 
