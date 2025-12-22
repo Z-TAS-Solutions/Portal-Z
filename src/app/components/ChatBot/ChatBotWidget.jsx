@@ -5,20 +5,24 @@ import { useState } from "react";
 import ChatBotInterface from "./ChatBot";
 import { TailwindColors as TColors } from "../../ColorPalette.jsx";
 
-const SentMsgCol = "bg-[#3F00B2] text-white text-left";
-const RecvMsgCol = "bg-gray-700 text-gray-100 text-left";
+const SentMsgCol =
+  "bg-[#2E40AF]/60 text-white text-left rounded-bl-xl shadow-lg shadow-blue-900 border border-[#00D4FF]/30";
 
-const border_cyan = "border-cyan-400";
-const gray1 = "bg-gray-400";
-const gray2 = "bg-gray-900";
-const gray3 = "border-gray-400";
-const cyan2 = "border-cyan-600";
-const cyan_strokes = "cyan";
+const RecvMsgCol =
+  "bg-[#0A192F]/90 text-blue-100 text-left border border-[#00D4FF]/30 backdrop-blur-sm";
+
+const border_cyan = "border-[#00D4FF]/50";
+const gray1 = "bg-[#1E293B]";
+const gray2 = "bg-[#020617]";
+const gray3 = "border-[#1E293B]";
+
+const cyan2 = "border-[#00FFFF]/20";
+const IconPrimary = "#00FFFF";
 const white1 = "bg-white/10";
 
-const purple1 = "bg-[#3F00B2]";
-
-const stroke_col = "cyan";
+const TitleBG = "bg-[#1e293b]";
+const MainCol = "#020617";
+const stroke_col = "#00D4FF";
 
 function ChatBoxCard({
   className = "",
@@ -108,7 +112,7 @@ export default function ChatBotWidget({ buttonSize }) {
           height="36"
           viewBox="0 0 24 24"
           fill="none"
-          stroke={`${cyan_strokes}`}
+          stroke={`${IconPrimary}`}
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -130,12 +134,12 @@ export default function ChatBotWidget({ buttonSize }) {
           transition duration-800 ease-in-out"
           strokeColor={`${stroke_col}`}
           strokeWidth="2"
-          fill="#180b39"
+          fill={`${MainCol}`}
         />
         <div className="flex flex-col w-[348px] h-[518px] fixed bottom-0 right-0 mb-4 mr-4">
           {/*chat header box..*/}
           <div
-            className={`flex items-center w-full h-[9%] rounded-2xl ${purple1} text-white overflow-hidden p-3`}
+            className={`flex items-center w-full h-[9%] rounded-2xl ${TitleBG} text-white overflow-hidden p-3`}
           >
             {/*chat title box.. maybe with an icon idk */}
             <div className="flex-1 text-base font-semibold">
@@ -173,8 +177,8 @@ export default function ChatBotWidget({ buttonSize }) {
               const isUser = message.role === "user";
 
               const msgClass = isUser
-                ? "self-end" + { SentMsgCol }
-                : "self-start" + { RecvMsgCol };
+                ? `self-end  ${SentMsgCol}`
+                : `self-start ${RecvMsgCol}`;
 
               return (
                 <div
@@ -237,7 +241,7 @@ export default function ChatBotWidget({ buttonSize }) {
                 height="32"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke={`${cyan_strokes}`}
+                stroke={`${IconPrimary}`}
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
