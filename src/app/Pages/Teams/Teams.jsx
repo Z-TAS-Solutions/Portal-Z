@@ -174,7 +174,7 @@ const NameTag = ({ name, title, className }) => {
   return (
     <div
       className={`
-        flex flex-col bg-black text-white font-sans 
+        flex flex-col text-white font-sans 
         border-2 border-transparent 
         hover:border-cyan-400 
         transition-colors duration-300 ${className}
@@ -229,8 +229,9 @@ export default function TeamsPage({ id }) {
   return (
     <section
       id={id}
-      className="relative flex flex-col w-full h-dvh overflow-hidden scroll-mt-18 mt-18"
+      className="relative flex flex-col w-full h-dvh overflow-hidden scroll-mt-18 mt-18 bg-zinc-950"
     >
+      <div class="absolute top-1/4 left-1/3 -translate-x-1/2 w-full h-full bg-blue-900/20 blur-[120px] rounded-full pointer-events-none"></div>
       <div className=" ml-10">
         <GlyphMaestroRune
           primaryLine={

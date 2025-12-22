@@ -46,40 +46,40 @@ function LuneVeilSigil({ Title, Desc, Icon, HLabel, HValue, FLabel, FValue }) {
       backdrop-blur-sm 
       rounded-xl 
       p-6 
-      border border-cyan-500/30 
-      shadow-[0_0_30px_rgba(6,182,212,0.3)] 
-      hover:shadow-[0_0_50px_rgba(6,182,212,0.5)] 
-      hover:border-cyan-500/60 transition-all duration-300 group
+      border border-blue-500/30 
+      shadow-[0_0_30px_rgba(6,104,212,0.3)] 
+      hover:shadow-[0_0_50px_rgba(6,102,212,0.5)] 
+      hover:border-blue-500/60 transition-all duration-300 group
       "
     >
       <div className="flex items-start justify-between mb-4">
         <div
           className="
-          bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 
+          bg-gradient-to-br from-blue-500/20 to-blue-600/20 
           w-12 h-12 
           rounded-lg 
           flex items-center justify-center 
-          border border-cyan-500/50 
-          shadow-[0_0_20px_rgba(6,182,212,0.4)]
+          border border-blue-500/50 
+          shadow-[0_0_20px_rgba(6,103,212,0.4)]
           "
         >
-          <Icon className="w-6 h-6 text-cyan-400" />
+          <Icon className="w-6 h-6 text-blue-400" />
         </div>
         <div className="text-right">
-          <div className="text-xs text-cyan-500 tracking-wider uppercase mb-1">
+          <div className="text-xs text-blue-500 tracking-wider uppercase mb-1">
             {HLabel}
           </div>
           <div className="text-white">{HValue}</div>
         </div>
       </div>
 
-      <h3 className="text-cyan-100 mb-3">{Title}</h3>
+      <h3 className="text-blue-100 mb-3">{Title}</h3>
       <p className="text-slate-400 text-sm mb-4">{Desc}</p>
 
-      <div className="pt-3 border-t border-cyan-500/20">
+      <div className="pt-3 border-t border-blue-500/20">
         <div className="flex justify-between text-xs">
           <span className="text-slate-500">{FLabel}</span>
-          <span className="text-cyan-400">{FValue}</span>
+          <span className="text-blue-500">{FValue}</span>
         </div>
       </div>
     </div>
@@ -120,8 +120,10 @@ export default function About3({ id }) {
   return (
     <section
       id={id}
-      className="flex flex-col items-center p-6 min-h-screen mb-10 overflow-hidden"
+      className="relative flex flex-col items-center p-6 min-h-screen overflow-hidden bg-zinc-950"
     >
+      <div class="absolute top-1/4 left-1/4 -translate-x-1/2 w-full h-1/2 bg-blue-900/20 blur-[160px] rounded-full pointer-events-none"></div>
+
       <div className="mb-20">
         <div className="grid md:grid-cols-2 gap-12 items-center mx-10">
           <div>
@@ -136,7 +138,7 @@ export default function About3({ id }) {
                 Vein Driven
               </h1>
               <div className="relative inline-block">
-                <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-5xl md:text-7xl lg:text-8xl animate-pulse mb-0">
+                <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-500 text-5xl md:text-7xl lg:text-8xl animate-pulse mb-0">
                   Precision.
                 </h1>
               </div>
@@ -158,21 +160,20 @@ export default function About3({ id }) {
           </div>
 
           <div className="relative group mb-5 mt-15 ">
-            <div className="absolute inset-0 overflow-hidden rounded-xl z-20 pointer-events-none h-full w-full animate-slide">
-              <div className="absolute w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
-            </div>
-
-            <div className="absolute bg-black w-full h-full mix-blend-overlay z-1 opacity-75"></div>
-
             <div className="absolute top-4 left-4 text-cyan-400 text-xs font-mono">
               <div className="flex items-center gap-2 mb-1">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-                <span>SCANNING ACTIVE</span>
+                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+                <span className="text-blue-500">SCANNING ACTIVE</span>
               </div>
-              <div className="text-cyan-500/100">NIR_SENSOR_01</div>
+              <div className="text-blue-500">NIR_SENSOR_01</div>
             </div>
 
-            <div className="relative flex items-center justify-center">
+            <div
+              className="
+                relative flex items-center justify-center 
+                saturate-[1.1]
+              "
+            >
               <img
                 src="Assets/veinless-scan.webp"
                 alt="Vein Scan Image"
@@ -209,14 +210,18 @@ export default function About3({ id }) {
             </div>
 
             <div className="absolute bottom-4 right-4 text-right text-xs font-mono">
-              <div className="text-cyan-400 mb-1">MATCH: 99.97%</div>
-              <div className="text-cyan-500/100">AUTH_VERIFIED</div>
+              <div className="text-blue-500 mb-1">MATCH: 99.97%</div>
+              <div className="text-blue-500/100">AUTH_VERIFIED</div>
             </div>
 
-            <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyan-400" />
-            <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-400" />
-            <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-cyan-400" />
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-400" />
+            <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-blue-400" />
+            <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-blue-400" />
+            <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-blue-400" />
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-blue-400" />
+
+            <div class="absolute inset-0 overflow-hidden rounded-xl z-20 pointer-events-none h-full w-full animate-slide">
+              <div class="absolute w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -227,6 +232,7 @@ export default function About3({ id }) {
             className="
               h-px flex-1
               bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent
+              
             "
           />
           <h2

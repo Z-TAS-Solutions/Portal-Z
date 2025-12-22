@@ -25,7 +25,8 @@ const processSteps = [
 
 export default function ProcessFlow({ id }) {
   return (
-    <section className="w-full" id={id}>
+    <section className="w-full bg-zinc-950" id={id}>
+      {/* <div class="absolute top-1/4 left-1/3 -translate-x-1/2 w-full h-full bg-blue-900/20 blur-[120px] rounded-full pointer-events-none"></div> */}
       <div className="min-h-screen bg-black flex items-center justify-center px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch justify-center gap-6">
           {processSteps.map((step, index) => (
