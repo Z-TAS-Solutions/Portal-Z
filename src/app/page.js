@@ -9,7 +9,7 @@ import Team from "./Pages/Teams/Teams";
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full font-sans dark:bg-black bg-white">
+    <main className="min-h-screen w-full font-sans bg-zinc-950">
       <HomePage id="home" />
       <About2 id="about" />
       <About3 id="solution" />
