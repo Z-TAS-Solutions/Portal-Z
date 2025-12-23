@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tailwind-scrollbar-hide/v4";
 
+@theme {
+  --font-audiowide: var(--font-audiowide);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

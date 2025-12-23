@@ -232,7 +232,7 @@ function MobileNav() {
                   className={`
                     
                     cursor-pointer 
-                    font-mono
+                    font-audiowide
                     text-[3rem]
                     tracking-widest 
                     uppercase 
