@@ -41,16 +41,6 @@ function NavItem({ label, id }) {
   const pathname = usePathname();
   const fullHref = `${pathname}#${id}`;
 
-  const NavItems = {
-    home: "Home",
-    about: "About",
-    solution: "Solution",
-    technology: "Technology",
-    features: "Features",
-    process: "The Flow",
-    team: "Our Team",
-  };
-
   const activeHash = useActiveObserver({ query: "section" });
 
   return (
@@ -199,25 +189,80 @@ function MobileNav() {
     home: "Home",
     about: "About",
     solution: "Solution",
-    technology: "Technology",
+    technology: "The Tech",
     features: "Features",
     process: "The Flow",
     team: "Our Team",
   };
 
+  const [toggleState, setToggleState] = useState(false);
+
+  const ToggleHandler = () => setToggleState(!toggleState);
+
   const activeID = useActiveObserver({ query: "section" });
 
+  const MobileNavMenu = () => {
+    const pathname = usePathname();
+
+    return (
+      <div
+        className="
+      fixed top-0 left-1/2 -translate-x-1/2 z-50
+      flex justify-center items-center
+      h-screen w-screen
+      z-45
+      "
+      >
+        <div
+          className="
+            w-[90%] h-[95%]
+            bg-black/70 backdrop-blur-sm
+            rounded-2xl
+            border border-white/10
+            flex flex-col  
+            pt-18 px-10
+          "
+        >
+          {Object.entries(NavItems).map(([key, value]) => {
+            return (
+              <a href={`${pathname}#${key}`}>
+                <span
+                  key={key}
+                  className={`
+                    
+                    cursor-pointer 
+                    font-mono
+                    text-[3rem]
+                    tracking-widest 
+                    uppercase 
+                    transition-all
+                    duration-300
+                    ${activeID === key ? "text-white" : "text-zinc-400 hover:text-zinc-200"}
+                  `}
+                >
+                  {value}
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <nav
-      className="
+    <>
+      {toggleState ? <MobileNavMenu /> : null}
+      <nav
+        className="
         fixed top-0 left-1/2 -translate-x-1/2 z-50
         h-14 w-[95%] sm:w-fit
         flex justify-center items-center 
         gap-10 mt-2
         "
-    >
-      <div
-        className="
+      >
+        <div
+          className="
         absolute
         w-full h-full
         bg-[#08080B]/60 backdrop-blur-sm
@@ -225,10 +270,10 @@ function MobileNav() {
         rounded-2xl
         drop-shadow-2xl
         "
-      ></div>
+        ></div>
 
-      <div
-        className="
+        <div
+          className="
         z-50 rounded-2xl
         w-[26%] h-full 
         px-[4%]
@@ -239,14 +284,14 @@ function MobileNav() {
         active:border-blue-500/50 
         active:shadow-[0_0_15px_rgba(59,130,246,0.5)]
         "
-      >
-        <img
-          src="Assets/ZTAS-Text.webp"
-          className="w-auto h-full object-contain"
-        />
-      </div>
-      <div
-        className="
+        >
+          <img
+            src="Assets/ZTAS-Text.webp"
+            className="w-auto h-full object-contain"
+          />
+        </div>
+        <div
+          className="
         z-50 rounded-2xl
         w-[46%] h-full 
         px-[2%] 
@@ -265,33 +310,38 @@ function MobileNav() {
         hover:border-l-cyan-500/50 
         hover:border-r-white/0 
         "
-      >
-        {NavItems[activeID]}
-      </div>
-      <div
-        className="
-        z-50 rounded-2xl
+        >
+          {NavItems[activeID]}
+        </div>
+        <button
+          className="z-50 rounded-2xl
         w-[24%] h-full 
-        px-[2%] 
+        pl-[2%]"
+          onClick={ToggleHandler}
+        >
+          <div
+            className="
+        z-50 rounded-2xl
+        w-full h-full 
         flex items-center justify-center 
         tracking-[0.2em] font-mono uppercase text-slate-400 text-center
         active:scale-95
         active:border 
         active:border-blue-500/50 
         active:shadow-[0_0_15px_rgba(59,130,246,0.5)]
-
+        transition-all duration-500
         "
-      >
-        ☰
-      </div>
-    </nav>
+          >
+            {toggleState ? "X" : "☰"}
+          </div>
+        </button>
+      </nav>
+    </>
   );
 }
 
 export default function Navbar() {
   const [displayMode, setDisplayMode] = useState(false);
-
-  const listener = () => {};
 
   const mmObj = window.matchMedia("(max-width: 768px)");
   useEffect(() => {
