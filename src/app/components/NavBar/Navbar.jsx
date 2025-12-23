@@ -344,21 +344,20 @@ function MobileNav() {
 export default function Navbar() {
   const [displayMode, setDisplayMode] = useState(false);
 
-  const mmObj = window.matchMedia("(max-width: 768px)");
-  useEffect(() => {
-    setDisplayMode(mmObj.matches);
-    console.log(mmObj);
-
-    mmObj.addEventListener("change", function () {
+  if (typeof window !== "undefined") {
+    const mmObj = window.matchMedia("(max-width: 768px)");
+    useEffect(() => {
       setDisplayMode(mmObj.matches);
-    });
 
-    return () =>
-      mmObj.removeEventListener("change", function () {
-        console.log("blehhhh");
+      mmObj.addEventListener("change", function () {
         setDisplayMode(mmObj.matches);
       });
-  }, []);
 
+      return () =>
+        mmObj.removeEventListener("change", function () {
+          setDisplayMode(mmObj.matches);
+        });
+    }, []);
+  }
   return displayMode ? <MobileNav /> : <DesktopNav />;
 }
