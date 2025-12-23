@@ -10,7 +10,7 @@ import Overview from "./Overview";
 
 export default function ToggleView({ children, text = "Interactive Button" }) {
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center justify-center p-4 md:p-8 font-sans">
+    <div className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center p-4 md:p-8 font-sans">
       <div className="mb-8 text-center space-y-2">
         <div
           className="inline-block px-3 py-1 rounded-full bg-[#086CB4]/10 border 
@@ -73,4 +73,3 @@ export default function ToggleView({ children, text = "Interactive Button" }) {
     </div>
   );
 }
-
