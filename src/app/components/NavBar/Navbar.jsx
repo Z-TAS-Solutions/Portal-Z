@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, act } from "react";
 
 function NavItem({ label, id }) {
   const pathname = usePathname();
@@ -48,6 +48,41 @@ function NavItem({ label, id }) {
       </div>
     </a>
   );
+}
+
+function useActiveObserver({ query = "section" }) {
+  const [activeID, setActiveID] = useState(null);
+
+  console.log(activeID);
+
+  const observerCallback = (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setActiveID(entry.target.id);
+      }
+    });
+  };
+
+  const observerOptions = {
+    threshold: 0,
+    rootMargin: "-60% 0px -60% 0px",
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
+
+    const elements = document.querySelectorAll(query);
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [query]);
+
+  return activeID;
 }
 
 const NavTapezroider = ({ fill1 = "", fill2 = "", properties = "" }) => (
@@ -167,19 +202,31 @@ function DesktopNav() {
 }
 
 function MobileNav() {
+  const NavItems = {
+    home: "Home",
+    about: "About",
+    solution: "Solution",
+    technology: "Technology",
+    features: "Features",
+    process: "The Flow",
+    team: "Our Team",
+  };
+
+  const activeID = useActiveObserver({ query: "section" });
+
   return (
     <nav
       className="
         fixed top-0 left-1/2 -translate-x-1/2 z-50
         h-14 w-fit
         flex justify-center items-center
-        gap-10 mt-2 px-2
+        gap-10 mt-2
         "
     >
       <div
         className="
         absolute
-        w-full h-[90%]
+        w-full h-full
         bg-[#08080B]/60 backdrop-blur-sm
         border-[1px] border-white/10
         rounded-2xl
@@ -190,13 +237,15 @@ function MobileNav() {
       <div
         className="
         z-50 rounded-2xl
-        w-[24%] h-full 
-        px-[2%]
-        transition-all duration-300
+        w-[26%] h-full 
+        px-[4%]
+        border-none
+        transition-all duration-100
         active:scale-95
-        active:ring-2 active:ring-blue-500/50 
-        active:bg-blue-500/10 
-        active:shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+        active:border 
+        active:border-blue-500/50 
+        active:shadow-[0_0_15px_rgba(59,130,246,0.5)]
+        "
       >
         <img
           src="Assets/ZTAS-Text.webp"
@@ -210,9 +259,21 @@ function MobileNav() {
         px-[2%] 
         flex items-center justify-center 
         tracking-[0.2em] font-mono uppercase text-slate-400 text-center
+        border-none
+        active:scale-95
+        active:border 
+        active:border-x-cyan-500/50 
+        active:border-l-cyan-500/50 
+        active:border-r-white/0 
+
+        hover:scale-95
+        hover:border 
+        hover:border-x-cyan-500/50 
+        hover:border-l-cyan-500/50 
+        hover:border-r-white/0 
         "
       >
-        whereami?
+        {NavItems[activeID]}
       </div>
       <div
         className="
@@ -221,6 +282,11 @@ function MobileNav() {
         px-[2%] 
         flex items-center justify-center 
         tracking-[0.2em] font-mono uppercase text-slate-400 text-center
+        active:scale-95
+        active:border 
+        active:border-blue-500/50 
+        active:shadow-[0_0_15px_rgba(59,130,246,0.5)]
+
         "
       >
         ☰

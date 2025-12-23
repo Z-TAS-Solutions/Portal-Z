@@ -15,7 +15,7 @@ export default function Home() {
       <About3 id="solution" />
       <Technology id="technology" />
       <PQCPage id="features" />
-      <ProcessFlow />
+      <ProcessFlow id="process" />
       <Team id="team" />
       <ChatBotWidget buttonSize="55px" />
     </main>
