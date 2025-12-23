@@ -3,62 +3,14 @@
 import { usePathname } from "next/navigation";
 import { useState, useEffect, act } from "react";
 
-function NavItem({ label, id }) {
-  const pathname = usePathname();
-  const fullHref = `${pathname}${id}`;
-
-  const [activeHash, setActiveHash] = useState("");
-
-  useEffect(() => {
-    setActiveHash(window.location.hash);
-
-    const handleHashChange = () => {
-      setActiveHash(window.location.hash);
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
-
-  const isActive = activeHash === id;
-
-  return (
-    <a href={fullHref}>
-      <div className="group flex flex-col items-center cursor-pointer">
-        <span
-          className={
-            "group-hover:text-blue-300 transition-colors " +
-            (activeHash === id ? "text-blue-300" : "text-gray-300")
-          }
-        >
-          {label}
-        </span>
-
-        <div
-          className={
-            "h-[2px] w-full bg-sky-500 transition-all duration-300 origin-left " +
-            (activeHash === id
-              ? "scale-x-100"
-              : "scale-x-0 group-hover:scale-x-100")
-          }
-        ></div>
-      </div>
-    </a>
-  );
-}
-
 function useActiveObserver({ query = "section" }) {
   const [activeID, setActiveID] = useState(null);
-
-  console.log(activeID);
 
   const observerCallback = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         setActiveID(entry.target.id);
+        location.hash = entry.target.id;
       }
     });
   };
@@ -83,6 +35,47 @@ function useActiveObserver({ query = "section" }) {
   }, [query]);
 
   return activeID;
+}
+
+function NavItem({ label, id }) {
+  const pathname = usePathname();
+  const fullHref = `${pathname}#${id}`;
+
+  const NavItems = {
+    home: "Home",
+    about: "About",
+    solution: "Solution",
+    technology: "Technology",
+    features: "Features",
+    process: "The Flow",
+    team: "Our Team",
+  };
+
+  const activeHash = useActiveObserver({ query: "section" });
+
+  return (
+    <a href={fullHref}>
+      <div className="group flex flex-col items-center cursor-pointer">
+        <span
+          className={
+            "font-mono text-slate-300 group-hover:text-blue-300 transition-colors" +
+            (activeHash === id ? "text-blue-300" : "text-gray-300")
+          }
+        >
+          {label}
+        </span>
+
+        <div
+          className={
+            "h-[2px] w-full bg-sky-500 transition-all duration-300 origin-left " +
+            (activeHash === id
+              ? "scale-x-100"
+              : "scale-x-0 group-hover:scale-x-100")
+          }
+        ></div>
+      </div>
+    </a>
+  );
 }
 
 const NavTapezroider = ({ fill1 = "", fill2 = "", properties = "" }) => (
@@ -147,9 +140,9 @@ function DesktopNav() {
           <NavTapezroider properties="col-start-1 row-start-1" />
 
           <div className="col-start-1 row-start-1 z-1 flex gap-8 w-auto justify-between items-center mx-20">
-            <NavItem label="Home" id="#home" />
-            <NavItem label="About" id="#about" />
-            <NavItem label="Solution" id="#solution" />
+            <NavItem label="Home" id="home" />
+            <NavItem label="About" id="about" />
+            <NavItem label="Solution" id="solution" />
 
             {/* <div className="z-1 h-18 w-full">
               <img
@@ -158,9 +151,9 @@ function DesktopNav() {
               />
             </div> */}
 
-            <NavItem label="Technology" id="#technology" />
-            <NavItem label="Features" id="#features" />
-            <NavItem label="Team" id="#team" />
+            <NavItem label="Technology" id="technology" />
+            <NavItem label="Features" id="features" />
+            <NavItem label="Team" id="team" />
           </div>
         </div>
 
@@ -218,8 +211,8 @@ function MobileNav() {
     <nav
       className="
         fixed top-0 left-1/2 -translate-x-1/2 z-50
-        h-14 w-fit
-        flex justify-center items-center
+        h-14 w-[95%] sm:w-fit
+        flex justify-center items-center 
         gap-10 mt-2
         "
     >
