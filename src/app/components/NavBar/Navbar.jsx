@@ -228,6 +228,7 @@ function MobileNav() {
               <a href={`${pathname}#${key}`}>
                 <span
                   key={key}
+                  onClick={ToggleHandler}
                   className={`
                     
                     cursor-pointer 
