@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useState, useEffect, act } from "react";
+import FracturedRunes from "../../components/GlitchyText/GlitchyText.jsx";
 
 function useActiveObserver({ query = "section" }) {
   const [activeID, setActiveID] = useState(null);
@@ -46,14 +47,13 @@ function NavItem({ label, id }) {
   return (
     <a href={fullHref}>
       <div className="group flex flex-col items-center cursor-pointer">
-        <span
+        <FracturedRunes
+          text={label}
           className={
             "font-mono text-slate-300 group-hover:text-blue-300 transition-colors" +
             (activeHash === id ? "text-blue-300" : "text-gray-300")
           }
-        >
-          {label}
-        </span>
+        />
 
         <div
           className={
@@ -226,23 +226,21 @@ function MobileNav() {
           {Object.entries(NavItems).map(([key, value]) => {
             return (
               <a href={`${pathname}#${key}`}>
-                <span
+                <FracturedRunes
                   key={key}
-                  onClick={ToggleHandler}
+                  text={value}
                   className={`
-                    
-                    cursor-pointer 
-                    font-audiowide
-                    text-[3rem]
-                    tracking-widest 
-                    uppercase 
-                    transition-all
-                    duration-300
-                    ${activeID === key ? "text-white" : "text-zinc-400 hover:text-zinc-200"}
-                  `}
-                >
-                  {value}
-                </span>
+                      cursor-pointer 
+                      font-audiowide
+                      text-[2.4rem]
+                      tracking-widest 
+                      uppercase 
+                      transition-all
+                      duration-300
+                      ${activeID === key ? "text-white" : "text-zinc-400 hover:text-zinc-200"}
+                    `}
+                  onClick={ToggleHandler}
+                />
               </a>
             );
           })}
