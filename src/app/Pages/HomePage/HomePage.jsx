@@ -8,7 +8,7 @@ import NormalParagraph from "../../components/Paragraphs/NormalParagraph.jsx";
 
 export default function Homepage({ id = "home" }) {
   return (
-    <section id="home" className="w-full overflow-hidden">
+    <section id="home" className="w-full overflow-hidden min-h-screen">
       <div className="hero-section w-full">
         <div className="angled-background"></div>
         <div className="hero-content">

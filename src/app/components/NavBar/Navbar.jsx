@@ -14,14 +14,12 @@ function useActiveObserver({ query = "section" }) {
         setActiveID(id);
         window.history.replaceState(null, "", `#${id}`);
       }
-      console.log(entry);
     });
   };
 
   const observerOptions = {
-    threshold: 0.2,
-    root: null,
-    rootMargin: "0px 0px 0px 0px",
+    threshold: 0,
+    rootMargin: "-50% 0px -49% 0px",
   };
 
   useEffect(() => {

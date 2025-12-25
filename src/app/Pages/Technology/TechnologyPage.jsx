@@ -3,7 +3,7 @@ import HardwareSpecs from "./HardwareSpecs";
 export default function Technology({ id = "technology" }) {
   return (
     <section
-      className="relative w-full bg-zinc-950 text-white py-24 px-6 overflow-hidden"
+      className="relative w-full min-h-screen bg-zinc-950 text-white py-24 px-6 overflow-hidden"
       id={id}
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-900/20 blur-[120px] rounded-full pointer-events-none" />
@@ -31,4 +31,3 @@ export default function Technology({ id = "technology" }) {
     </section>
   );
 }
-
