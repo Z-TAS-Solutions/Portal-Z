@@ -39,7 +39,7 @@ function AegisGlyph({ IconObject, title, desc }) {
             transition-all
             duration-300
             overflow-hidden
-            border-2 border-cyan-400
+            border-2 border-red-500
             flex justify-center items-center
             rotate-45
           `}
@@ -72,9 +72,9 @@ function AegisGlyph({ IconObject, title, desc }) {
 
           <div className="-rotate-45 flex flex-col items-center justify-center">
             <div
-              className={`w-14 h-14 bg-cyan-500/10 rounded-full flex items-center justify-center mb-3 border border-current/20 relative z-10`}
+              className={`w-14 h-14 bg-red-500/10 rounded-full flex items-center justify-center mb-3 border border-current/20 relative z-10`}
             >
-              <IconObject className="w-7 h-7 text-cyan-400" />
+              <IconObject className="w-7 h-7 text-red-400" />
             </div>
 
             <h3 className="text-slate-100 mb-2 tracking-wide relative z-10">
@@ -105,42 +105,36 @@ export default function About2({ id }) {
       title: "Slow Entry",
       description:
         "Slow processing and frequent re-scans create bottlenecks, wasting employee time and slowing down facility throughput.",
-      color: "cyan",
     },
     {
       icon: Skull,
       title: "Unhygenic Contact",
       description:
         "Shared touchpoints raise health concerns by spreading germs, especially in high-traffic areas.",
-      color: "red",
     },
     {
       icon: ShieldAlert,
       title: "Weak Credentials",
       description:
         "Traditional biometrics can be easy to replicate; fake fingerprints or high-res photos can compromise security.",
-      color: "pink",
     },
     {
       icon: Timer,
       title: "Operational Delays",
       description:
         "Slow authentication speeds decrease overall facility efficiency and cause queuing at entry points.",
-      color: "cyan",
     },
     {
       icon: AlertTriangle,
       title: "Security Risks",
       description:
         "Easy to repliiate, Legacy biometrics are physically deposited on the environment. Every time you touch a glass or a door handle, you are leaving a copy of your password behind.",
-      color: "red",
     },
     {
       icon: Wrench,
       title: "High Maintenance",
       description:
         "Physical hardware wears down over time, requiring frequent cleaning, recalibration, and expensive repairs.",
-      color: "purple",
     },
   ];
 
@@ -149,7 +143,7 @@ export default function About2({ id }) {
       id={id}
       className="
       relative min-h-screen flex flex-col items-center justify-center 
-      p-6 w-full overflow-hidden scroll-mt-5 bg-zinc-950 "
+      p-6 w-full overflow-hidden scroll-mt-5 bg-zinc-950 gap-8"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2/4 w-full h-1/3 bg-blue-900/20 blur-[100px] rounded-full pointer-events-none"></div>
 
@@ -162,16 +156,16 @@ export default function About2({ id }) {
         "
       ></div> */}
 
-      <div className="w-full mb-12 z-10 ">
+      <div className="w-full z-10 ">
         <GlyphMaestroRune
           accentLine="THE PROBLEM WE SAW"
           primaryLine={
             <h2>
               The{" "}
               <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
-                Collapse
+                State
               </span>{" "}
-              of Legacy Authorization
+              of Authorization
             </h2>
           }
           secondaryLine="Six inherent blind spots embedded in conventional authorization..."

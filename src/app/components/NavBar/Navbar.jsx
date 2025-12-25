@@ -10,15 +10,17 @@ function useActiveObserver({ query = "section" }) {
   const observerCallback = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        setActiveID(entry.target.id);
-        location.hash = entry.target.id;
+        const id = entry.target.id;
+        setActiveID(id);
+        window.history.replaceState(null, "", `#${id}`);
       }
     });
   };
 
   const observerOptions = {
     threshold: 0,
-    rootMargin: "-60% 0px -60% 0px",
+    root: null,
+    rootMargin: "-50% 0px -60% 0px",
   };
 
   useEffect(() => {
@@ -38,11 +40,9 @@ function useActiveObserver({ query = "section" }) {
   return activeID;
 }
 
-function NavItem({ label, id }) {
+function NavItem({ label, id, activeHash }) {
   const pathname = usePathname();
   const fullHref = `${pathname}#${id}`;
-
-  const activeHash = useActiveObserver({ query: "section" });
 
   return (
     <a href={fullHref}>
@@ -112,6 +112,8 @@ const NavTapezroider = ({ fill1 = "", fill2 = "", properties = "" }) => (
 );
 
 function DesktopNav() {
+  const activeHash = useActiveObserver({ query: "section" });
+
   return (
     <>
       {/* -right-10 */}
@@ -130,9 +132,9 @@ function DesktopNav() {
           <NavTapezroider properties="col-start-1 row-start-1" />
 
           <div className="col-start-1 row-start-1 z-1 flex gap-8 w-auto justify-between items-center mx-20">
-            <NavItem label="Home" id="home" />
-            <NavItem label="About" id="about" />
-            <NavItem label="Solution" id="solution" />
+            <NavItem label="Home" id="home" activeHash={activeHash} />
+            <NavItem label="About" id="about" activeHash={activeHash} />
+            <NavItem label="Solution" id="solution" activeHash={activeHash} />
 
             {/* <div className="z-1 h-18 w-full">
               <img
@@ -141,9 +143,13 @@ function DesktopNav() {
               />
             </div> */}
 
-            <NavItem label="Technology" id="technology" />
-            <NavItem label="Features" id="features" />
-            <NavItem label="Team" id="team" />
+            <NavItem
+              label="Technology"
+              id="technology"
+              activeHash={activeHash}
+            />
+            <NavItem label="Features" id="features" activeHash={activeHash} />
+            <NavItem label="Team" id="team" activeHash={activeHash} />
           </div>
         </div>
 
