@@ -179,6 +179,28 @@ export default function ChatBotWidget({ buttonSize }) {
           </div>
           {/*chat display*/}
           <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
+            {messages?.map((message) => {
+              const isUser = message.role === "user";
+
+              const msgClass = isUser
+                ? `self-end  ${SentMsgCol}`
+                : `self-start ${RecvMsgCol}`;
+
+              return (
+                <div
+                  ref={msgRef}
+                  key={message.id}
+                  className={`max-w-[85%] sm:max-w-[75%] rounded-2xl p-3 shadow-md ${msgClass}`}
+                >
+                  {message.parts.map((part, index) =>
+                    part.type === "text" ? (
+                      <span key={index}>{part.text}</span>
+                    ) : null,
+                  )}
+                </div>
+              );
+            })}
+
             {(() => {
               if (status === "submitted") {
                 return (
@@ -202,28 +224,6 @@ export default function ChatBotWidget({ buttonSize }) {
                     quota for the day, come back tommorow, or dont, whatever.
                   </div>
                 );
-              } else {
-                messages?.map((message) => {
-                  const isUser = message.role === "user";
-
-                  const msgClass = isUser
-                    ? `self-end  ${SentMsgCol}`
-                    : `self-start ${RecvMsgCol}`;
-
-                  return (
-                    <div
-                      ref={msgRef}
-                      key={message.id}
-                      className={`max-w-[85%] sm:max-w-[75%] rounded-2xl p-3 shadow-md ${msgClass}`}
-                    >
-                      {message.parts.map((part, index) =>
-                        part.type === "text" ? (
-                          <span key={index}>{part.text}</span>
-                        ) : null,
-                      )}
-                    </div>
-                  );
-                });
               }
             })()}
           </div>
