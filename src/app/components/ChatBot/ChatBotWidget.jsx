@@ -217,7 +217,10 @@ export default function ChatBotWidget({ buttonSize }) {
                 ButtonBorder = "border-[#8B0000]";
                 TextBoxBorder = "border-[#8B0000]/80";
                 return (
-                  <div className="self-center font-sans text-gray-300 max-w-[95%] rounded-2xl p-3 shadow-md bg-[#8B0000]/60 text-left rounded-bl-xl shadow-lg shadow-red-900 border border-[#FF4D4D]/30">
+                  <div
+                    ref={msgRef}
+                    className="self-center font-sans text-gray-300 max-w-[95%] rounded-2xl p-3 shadow-md bg-[#8B0000]/60 text-left rounded-bl-xl shadow-lg shadow-red-900 border border-[#FF4D4D]/30"
+                  >
                     ZTAS AI Sentinel just got killed in action fighting an
                     intergalactic war looking for information on ZTAS , the
                     world is ending, it was not nice meeting you. exceeded msg
