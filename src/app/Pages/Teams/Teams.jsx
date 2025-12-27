@@ -165,6 +165,7 @@ const HexagonProfile = ({
         className=""
         preserveAspectRatio="xMidYMid slice"
         loading="lazy"
+        priority={false}
       />
     </svg>
   );

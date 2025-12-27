@@ -184,6 +184,7 @@ export default function About3({ id }) {
                 block inset-0
                 "
                 loading="lazy"
+                priority={false}
               />
               <img
                 src="Assets/vein-scan.webp"
@@ -196,13 +197,14 @@ export default function About3({ id }) {
                 animate-slide-mask
                 "
                 loading="lazy"
+                priority={false}
                 style={{
-                  WebkitMaskImage: "url(/Assets/solid-color-image.png)",
+                  WebkitMaskImage: "url(/Assets/solid-color-image.webp)",
                   WebkitMaskRepeat: "no-repeat",
                   WebkitMaskPosition: "center",
                   WebkitMaskSize: "100% 20%",
 
-                  maskImage: "url(/Assets/solid-color-image.png)",
+                  maskImage: "url(/Assets/solid-color-image.webp)",
                   maskRepeat: "no-repeat",
                   maskPosition: "0% 80%",
                   maskSize: "100% 20%",
