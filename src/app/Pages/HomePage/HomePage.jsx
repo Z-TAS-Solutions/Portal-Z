@@ -5,13 +5,18 @@ import MainHeading from "../../components/Headings/MainHeading.jsx";
 import BlueButton from "../../components/Buttons/BlueButton.jsx";
 import GrayButton from "../../components/Buttons/GrayButton.jsx";
 import NormalParagraph from "../../components/Paragraphs/NormalParagraph.jsx";
+import AetherLimb from "../../components/AetherLimb/AetherLimb";
 
 export default function Homepage({ id = "home" }) {
   return (
     <section id="home" className="w-full overflow-hidden min-h-screen">
       <div className="hero-section w-full">
         <div className="angled-background"></div>
-        <div className="hero-content">
+        <div className="absolute top-1/2 left-1/2 -translate-1/2 w-full h-auto">
+          <AetherLimb />
+        </div>
+
+        <div className="hero-content z-5">
           <h1 className="text-xl tracking-widest font-medium mb-6 text-[var(--color-text-light)] text-center">
             ZERO-TOUCH AUTHENTICATION
           </h1>
