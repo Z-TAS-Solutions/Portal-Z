@@ -2,7 +2,7 @@
 
 import { Activity } from "react";
 import { useState } from "react";
-import ChatBotInterface from "./ChatBot";
+import ChatBotInterface from "../../lib/ChatBot/ChatBot";
 import { TailwindColors as TColors } from "../../ColorPalette.jsx";
 
 const SentMsgCol =
@@ -74,7 +74,6 @@ function ChatBoxCard({
 export default function ChatBotWidget({ buttonSize }) {
   const { chatInput, setChatInput, messages, status, onSubmit } =
     ChatBotInterface();
-
   const [widgetStatus, setWidgetStatus] = useState(false);
 
   const widgetToggle = () => {
@@ -173,7 +172,7 @@ export default function ChatBotWidget({ buttonSize }) {
           </div>
           {/*chat display*/}
           <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
-            {messages.map((message) => {
+            {messages?.map((message) => {
               const isUser = message.role === "user";
 
               const msgClass = isUser

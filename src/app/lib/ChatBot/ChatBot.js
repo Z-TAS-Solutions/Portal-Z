@@ -18,9 +18,10 @@ export default function ChatBotInterface() {
   };
 
   return {
-    chatInput,
-    setChatInput,
-    ...ChatInterface,
-    onSubmit,
+    chatInput: chatInput,
+    setChatInput: setChatInput,
+    messages: ChatInterface.messages || [],
+    status: ChatInterface.status,
+    onSubmit: onSubmit,
   };
 }

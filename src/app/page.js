@@ -1,11 +1,22 @@
+"use client";
+
+import dynamic from "next/dynamic";
+
 import HomePage from "./Pages/HomePage/HomePage";
 import About2 from "./Pages/About-2/About-2";
 import About3 from "./Pages/About-3/About-3";
-import ChatBotWidget from "./components/ChatBot/ChatBotWidget";
 import Technology from "./Pages/Technology/TechnologyPage";
 import PQCPage from "./Pages/PQC-Safe/PQCPage";
 import ProcessFlow from "./Pages/ProcessFlow/ProcessFlow";
 import Team from "./Pages/Teams/Teams";
+
+const ChatBotWidget = dynamic(
+  () => import("./components/ChatBot/ChatBotWidget"),
+  {
+    ssr: false,
+    loading: () => <p>Loading...</p>,
+  },
+);
 
 export default function Home() {
   return (
