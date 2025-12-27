@@ -14,7 +14,6 @@ const ChatBotWidget = dynamic(
   () => import("./components/ChatBot/ChatBotWidget"),
   {
     ssr: false,
-    loading: () => <p>Loading...</p>,
   },
 );
 

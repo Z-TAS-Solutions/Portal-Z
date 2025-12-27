@@ -22,6 +22,7 @@ const audiowide = Audiowide({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-audiowide",
+  preload: false,
 });
 
 export const metadata = {
