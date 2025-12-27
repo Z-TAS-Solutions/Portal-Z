@@ -1,7 +1,4 @@
-"use client";
-
-import { Activity } from "react";
-import { useState } from "react";
+import { Activity, useEffect, useState, useRef } from "react";
 import ChatBotInterface from "../../lib/ChatBot/ChatBot";
 import { TailwindColors as TColors } from "../../ColorPalette.jsx";
 
@@ -11,18 +8,18 @@ const SentMsgCol =
 const RecvMsgCol =
   "bg-[#0A192F]/90 text-blue-100 text-left border border-[#00D4FF]/30 backdrop-blur-sm";
 
-const TextBoxBorder = "border-[#00D4FF]/50";
+let TextBoxBorder = "border-[#00D4FF]/50";
 const ButtonBG = "bg-[#020617]";
 const ButtonInactiveBG = "border-[#1E293B]";
-const ButtonBorder = "border-[#00D4FF]";
+let ButtonBorder = "border-[#00D4FF]";
 
 const cyan2 = "border-[#00FFFF]/20";
-const IconPrimary = "#00FFFF";
+let IconPrimary = "#00FFFF";
 const TitleToggleHover = "bg-white/10";
 
 const TitleBG = "bg-[#1e293b]";
 const MainCol = "#020617";
-const MainBorder = "#00B4D8";
+let MainBorder = "#00B4D8";
 
 function ChatBoxCard({
   className = "",
@@ -83,6 +80,16 @@ export default function ChatBotWidget({ buttonSize }) {
   const handleInputUI = (e) => {
     setChatInput(e.target.value);
   };
+
+  const msgRef = useRef(null);
+  const msgLoading = useRef(false);
+
+  useEffect(() => {
+    msgRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, [status]);
 
   return (
     <div className="fixed bottom-5 right-5 z-99">
@@ -172,26 +179,53 @@ export default function ChatBotWidget({ buttonSize }) {
           </div>
           {/*chat display*/}
           <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
-            {messages?.map((message) => {
-              const isUser = message.role === "user";
+            {(() => {
+              if (status === "submitted") {
+                return (
+                  <div className="self-center max-w-[70%]" ref={msgRef}>
+                    <span className="animate-pulse">⬤ </span>
+                    <span className="animate-pulse">⬤ </span>
+                    <span className="animate-pulse">⬤</span>
+                  </div>
+                );
+              }
+              if (status === "error") {
+                MainBorder = "#8B0000";
+                IconPrimary = "#8B0000";
+                ButtonBorder = "border-[#8B0000]";
+                TextBoxBorder = "border-[#8B0000]/80";
+                return (
+                  <div className="self-center font-sans text-gray-300 max-w-[95%] rounded-2xl p-3 shadow-md bg-[#8B0000]/60 text-left rounded-bl-xl shadow-lg shadow-red-900 border border-[#FF4D4D]/30">
+                    ZTAS AI Sentinel just got killed in action fighting an
+                    intergalactic war looking for information on ZTAS , the
+                    world is ending, it was not nice meeting you. exceeded msg
+                    quota for the day, come back tommorow, or dont, whatever.
+                  </div>
+                );
+              } else {
+                messages?.map((message) => {
+                  const isUser = message.role === "user";
 
-              const msgClass = isUser
-                ? `self-end  ${SentMsgCol}`
-                : `self-start ${RecvMsgCol}`;
+                  const msgClass = isUser
+                    ? `self-end  ${SentMsgCol}`
+                    : `self-start ${RecvMsgCol}`;
 
-              return (
-                <div
-                  key={message.id}
-                  className={`max-w-[85%] sm:max-w-[75%] rounded-2xl p-3 shadow-md ${msgClass}`}
-                >
-                  {message.parts.map((part, index) =>
-                    part.type === "text" ? (
-                      <span key={index}>{part.text}</span>
-                    ) : null,
-                  )}
-                </div>
-              );
-            })}
+                  return (
+                    <div
+                      ref={msgRef}
+                      key={message.id}
+                      className={`max-w-[85%] sm:max-w-[75%] rounded-2xl p-3 shadow-md ${msgClass}`}
+                    >
+                      {message.parts.map((part, index) =>
+                        part.type === "text" ? (
+                          <span key={index}>{part.text}</span>
+                        ) : null,
+                      )}
+                    </div>
+                  );
+                });
+              }
+            })()}
           </div>
           {/*chat inputs*/}
 
