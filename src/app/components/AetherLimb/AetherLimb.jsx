@@ -114,7 +114,6 @@ export default function AetherLimb() {
         const box = new Box3().setFromObject(particles);
         const size = box.getSize(new Vector3());
         const center = box.getCenter(new Vector3());
-        console.log(size);
 
         particles.position.y = -center.y;
 
