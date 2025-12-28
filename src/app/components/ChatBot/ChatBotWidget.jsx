@@ -179,6 +179,16 @@ export default function ChatBotWidget({ buttonSize }) {
           </div>
           {/*chat display*/}
           <div className="flex flex-col gap-3 h-[76%] overflow-y-auto rounded-xl mb-4 mr-1 p-3 nocthyrra">
+            <div className="flex flex-col items-center w-full h-full gap-4">
+              <div className="self-center font-sans text-gray-400 max-w-[95%] rounded-2xl p-3">
+                Welcome to the ZTAS interface.
+              </div>
+
+              <div className="flex-1 text-center font-sans text-white text-2xl font-medium mt-1">
+                How may I assist you?
+              </div>
+            </div>
+
             {messages?.map((message) => {
               const isUser = message.role === "user";
 

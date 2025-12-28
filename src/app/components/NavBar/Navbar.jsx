@@ -116,7 +116,7 @@ function DesktopNav() {
   return (
     <>
       {/* -right-10 */}
-      <nav className="fixed top-0 w-full h-16 z-50 bg-transparent py-4 animate-[slideDown_0.6s_ease-in-out]">
+      <nav className="fixed top-0 w-full h-14 z-50 bg-transparent py-4 animate-[slideDown_0.6s_ease-in-out]">
         <div className="absolute top-0 bg-black h-4 w-full"></div>
         <div
           // left-1/2 -translate-x-1/2
