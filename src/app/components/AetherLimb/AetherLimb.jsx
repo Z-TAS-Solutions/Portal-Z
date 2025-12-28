@@ -32,7 +32,7 @@ export default function AetherLimb() {
     // let cone = null;
     const raycaster = new Raycaster();
 
-    window.addEventListener("mousemove", (event) => {
+    canvasRef.current.addEventListener("mousemove", (event) => {
       const rect = renderer.domElement.getBoundingClientRect();
       mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
       mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;

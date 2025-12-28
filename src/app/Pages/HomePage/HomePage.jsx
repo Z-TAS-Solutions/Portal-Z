@@ -16,7 +16,7 @@ export default function Homepage({ id = "home" }) {
           <AetherLimb />
         </div>
 
-        <div className="hero-content z-5">
+        <div className="hero-content z-5  pointer-events-none">
           <h1 className="text-xl tracking-widest font-medium mb-6 text-[var(--color-text-light)] text-center">
             ZERO-TOUCH AUTHENTICATION
           </h1>
