@@ -26,28 +26,3 @@
     transform: translateX(-5px);
   }
 }
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(30deg);
-  }
-}
-
-.AnimateSpin {
-  animation: spin 1s linear forwards;
-}
-
-.AnimateCounterSpin {
-  animation: spin 1s linear forwards reverse;
-}
-
-.glyphOrbiter[data-active-index="0"].glyph:nth-child(n + 4):nth-child(-n + 9) {
-  display: none !important;
-}
-
-.glyphOrbiter[data-active-index="1"].glyph:nth-child(n + 5):nth-child(-n + 10) {
-  display: none;
-}
