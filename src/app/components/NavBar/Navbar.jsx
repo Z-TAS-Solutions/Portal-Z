@@ -1,17 +1,17 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState, useEffect, act } from "react";
+import { useState, useEffect, useContext } from "react";
+import { ActiveHashContext } from "../Helpers/HashContext.jsx";
 import FracturedRunes from "../../components/GlitchyText/GlitchyText.jsx";
+import useDisplayMode from "../../components/Helpers/DisplayMode.jsx";
 
-function useActiveObserver({ query = "section" }) {
-  const [activeID, setActiveID] = useState(null);
-
+function useActiveObserver({ query = "section", hashHandler }) {
   const observerCallback = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
-        setActiveID(id);
+        hashHandler(id);
         window.history.replaceState(null, "", `#${id}`);
       }
     });
@@ -34,9 +34,7 @@ function useActiveObserver({ query = "section" }) {
     });
 
     return () => observer.disconnect();
-  }, [query]);
-
-  return activeID;
+  }, [query, hashHandler]);
 }
 
 function NavItem({ label, id, activeHash }) {
@@ -110,8 +108,8 @@ const NavTapezroider = ({ fill1 = "", fill2 = "", properties = "" }) => (
   </svg>
 );
 
-function DesktopNav() {
-  const activeHash = useActiveObserver({ query: "section" });
+function DesktopNav({}) {
+  const activeHash = useContext(ActiveHashContext);
 
   return (
     <>
@@ -204,7 +202,7 @@ function MobileNav() {
 
   const ToggleHandler = () => setToggleState(!toggleState);
 
-  const activeID = useActiveObserver({ query: "section" });
+  const activeID = useContext(ActiveHashContext);
 
   const MobileNavMenu = () => {
     const pathname = usePathname();
@@ -344,23 +342,10 @@ function MobileNav() {
   );
 }
 
-export default function Navbar() {
-  const [displayMode, setDisplayMode] = useState(false);
+export default function Navbar({ setActiveHash }) {
+  const displayMode = useDisplayMode();
 
-  if (typeof window !== "undefined") {
-    const mmObj = window.matchMedia("(max-width: 768px)");
-    useEffect(() => {
-      setDisplayMode(mmObj.matches);
+  useActiveObserver({ query: "section", hashHandler: setActiveHash });
 
-      mmObj.addEventListener("change", function () {
-        setDisplayMode(mmObj.matches);
-      });
-
-      return () =>
-        mmObj.removeEventListener("change", function () {
-          setDisplayMode(mmObj.matches);
-        });
-    }, []);
-  }
   return displayMode ? <MobileNav /> : <DesktopNav />;
 }

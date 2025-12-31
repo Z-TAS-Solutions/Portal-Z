@@ -1,3 +1,5 @@
+import { useRef, useEffect, useState, useContext } from "react";
+import useDisplayMode from "../../components/Helpers/DisplayMode.jsx";
 import {
   Snail,
   Skull,
@@ -6,6 +8,9 @@ import {
   AlertTriangle,
   Wrench,
 } from "lucide-react";
+import { ActiveHashContext } from "../../components/Helpers/HashContext.jsx";
+
+import styles from "./About-2.module.css";
 
 function GlyphMaestroRune({ accentLine, primaryLine, secondaryLine }) {
   return (
@@ -27,10 +32,10 @@ function GlyphMaestroRune({ accentLine, primaryLine, secondaryLine }) {
   );
 }
 
-function AegisGlyph({ IconObject, title, desc }) {
+function AegisGlyph({ IconObject, title, desc, className = "" }) {
   return (
     <>
-      <div className="relative w-50 aspect-square group">
+      <div className={"relative w-50 aspect-square group " + { className }}>
         <div
           className={`
             absolute inset-0
@@ -98,6 +103,118 @@ function AegisGlyph({ IconObject, title, desc }) {
   );
 }
 
+function InferiorAegisGlyph({
+  IconObject,
+  title,
+  desc,
+  className = "",
+  padding = "1",
+  style = {},
+  onClick = null,
+  index,
+}) {
+  return (
+    <div
+      className={`group flex justify-center items-center ${className || ""}`}
+      style={style}
+      onClick={onClick}
+    >
+      <div className="w-full h-full aspect-square flex justify-center items-center">
+        <div
+          className={`
+            aspect-square 
+            w-full
+            bg-slate-900/50 
+            backdrop-blur-md 
+            transition-all 
+            duration-300 
+            overflow-hidden 
+            border-2 border-red-500
+            flex justify-center items-center
+            rotate-45 
+            p-${padding}`}
+          style={{
+            clipPath:
+              "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
+          }}
+        >
+          <div
+            className={`
+              absolute inset-0
+              bg-gradient-to-b from-transparent via-white/5 to-transparent -translate-y-full
+              group-hover:translate-y-full 
+              transition-transform duration-1000
+              pointer-events-none
+            `}
+          ></div>
+
+          <div className="w-14 h-14 flex items-center justify-center ">
+            <IconObject className="-rotate-45 bg-red-500/10 rounded-full border border-red-400/20 p-1 w-7 h-7 text-red-400" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CyberGlyph({ color = "#0ff" }) {
+  return (
+    <svg viewBox="5 4 88 39" xmlns="http://www.w3.org/2000/svg">
+      <path
+        stroke={color}
+        fill="none"
+        strokeWidth={0.4}
+        d="M7 12v21l3 3h36l6 6h37l3-3V12l-6-5H13z"
+      />
+      <path
+        fill="none"
+        stroke={color}
+        strokeWidth={0.4}
+        d="M85 5H12L8 9m40 31-3-3H11"
+      />
+      <text
+        style={{
+          fill: color,
+          fontSize: 2,
+          fontStyle: "italic",
+          whiteSpace: "pre",
+        }}
+        x={11}
+        y={40}
+      >
+        {
+          "\u25B0\u25B0\u25B0\u25B0\u25B0\u25B0\u25B0\u25B0\u25B0\u25B0\u25B0\u25B0\u25B0\u25B0\u25B0\u25B0\u25B0"
+        }
+      </text>
+    </svg>
+  );
+}
+
+function ellipsePointGen(centerX, centerY, a, b, angleInDegrees) {
+  const t = angleInDegrees * (Math.PI / 180);
+
+  const cosT = Math.cos(t);
+  const sinT = Math.sin(t);
+
+  const r = (a * b) / Math.sqrt(Math.pow(b * cosT, 2) + Math.pow(a * sinT, 2));
+
+  return {
+    x: centerX + r * cosT,
+    y: centerY + r * sinT,
+  };
+}
+
+function OrbitPosGen({ baseRot = 0, radius = 180 }) {
+  return Array.from({ length: 12 }).map((_, index) => {
+    const angle = (baseRot - index * 30) * (Math.PI / 180);
+
+    return {
+      x: Math.cos(angle) * radius,
+      y: Math.sin(angle) * radius,
+    };
+  });
+}
+
 export default function About2({ id }) {
   const problemPoints = [
     {
@@ -136,14 +253,127 @@ export default function About2({ id }) {
       description:
         "Physical hardware wears down over time, requiring frequent cleaning, recalibration, and expensive repairs.",
     },
+    {
+      icon: Snail,
+      title: "Slow Entry",
+      description:
+        "Slow processing and frequent re-scans create bottlenecks, wasting employee time and slowing down facility throughput.",
+    },
+    {
+      icon: Skull,
+      title: "Unhygenic Contact",
+      description:
+        "Shared touchpoints raise health concerns by spreading germs, especially in high-traffic areas.",
+    },
+    {
+      icon: ShieldAlert,
+      title: "Weak Credentials",
+      description:
+        "Traditional biometrics can be easy to replicate; fake fingerprints or high-res photos can compromise security.",
+    },
+    {
+      icon: Timer,
+      title: "Operational Delays",
+      description:
+        "Slow authentication speeds decrease overall facility efficiency and cause queuing at entry points.",
+    },
+    {
+      icon: AlertTriangle,
+      title: "Security Risks",
+      description:
+        "Easy to repliiate, Legacy biometrics are physically deposited on the environment. Every time you touch a glass or a door handle, you are leaving a copy of your password behind.",
+    },
+    {
+      icon: Wrench,
+      title: "High Maintenance",
+      description:
+        "Physical hardware wears down over time, requiring frequent cleaning, recalibration, and expensive repairs.",
+    },
   ];
+
+  const glyphOrbiter = useRef(null);
+  const activeGlyph = useRef(-1);
+  const [activeGlyphLabel, setActiveGlyphLabel] = useState(0);
+
+  const displayMode = useDisplayMode();
+
+  const orbitPos = OrbitPosGen({
+    baseRot: displayMode ? -90 : 180,
+    radius: displayMode ? 180 : 220,
+  });
+
+  const MoveGlyph = ({ angle }) => {
+    const glyphs = glyphOrbiter.current.querySelectorAll(".glyph");
+    glyphs.forEach((glyph, index) => {
+      const inactiveStart = activeGlyph.current + (2 % 12);
+
+      const distance = (index - inactiveStart + 12) % 12;
+
+      if (distance > 0 && distance < 8) {
+        glyph.style.display = "none";
+      } else if (index === activeGlyph.current) {
+        glyph.style.transform = ` translate3d(${orbitPos[index].x}px, ${orbitPos[index].y}px, 0) rotate(-${angle}deg) scale(1.8) ${displayMode ? "translateY(-35%)" : "translateX(80px)"}`;
+        glyph.style.display = "block";
+      } else {
+        glyph.style.transform = `translate3d(${orbitPos[index].x}px, ${orbitPos[index].y}px, 0) rotate(-${angle}deg)`;
+        glyph.style.display = "block";
+      }
+    });
+  };
+
+  const GoTo = ({ index }) => {
+    activeGlyph.current = index - 1;
+    setActiveGlyphLabel(activeGlyph.current);
+    const angle = activeGlyph.current * 30;
+    glyphOrbiter.current.style.transform = `rotate(${angle}deg)`;
+
+    MoveGlyph({ angle: angle });
+  };
+
+  const Next = () => {
+    activeGlyph.current = (activeGlyph.current + 1) % 12;
+    setActiveGlyphLabel(activeGlyph.current);
+    const angle = activeGlyph.current * 30;
+    glyphOrbiter.current.style.transform = `rotate(${angle}deg)`;
+
+    MoveGlyph({ angle: angle });
+  };
+
+  const Prev = () => {
+    activeGlyph.current = (activeGlyph.current - 1 + 12) % 12;
+    setActiveGlyphLabel(activeGlyph.current);
+    const angle = activeGlyph.current * 30;
+    glyphOrbiter.current.style.transform = `rotate(${angle}deg)`;
+
+    MoveGlyph({ angle: angle });
+  };
+
+  const activeHash = useContext(ActiveHashContext);
+
+  useEffect(() => {
+    Next();
+    if (activeHash !== "about") return;
+
+    let timer;
+
+    const exec = () => {
+      Next();
+      timer = setTimeout(exec, 3000);
+    };
+
+    timer = setTimeout(exec, 3000);
+
+    return () => clearTimeout(timer);
+  }, [displayMode, activeHash]);
 
   return (
     <section
       id={id}
       className="
-      relative min-h-screen flex flex-col items-center justify-center 
-      p-6 w-full overflow-hidden scroll-mt-5 bg-zinc-950 gap-8"
+      relative min-h-screen
+      p-6 w-full overflow-hidden scroll-mt-5 py-[4%] gap-16
+      flex flex-col items-center
+      "
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2/4 w-full h-1/3 bg-blue-900/20 blur-[100px] rounded-full pointer-events-none"></div>
 
@@ -156,7 +386,7 @@ export default function About2({ id }) {
         "
       ></div> */}
 
-      <div className="w-full z-10 ">
+      <div className="flex-0 w-full z-10 ">
         <GlyphMaestroRune
           accentLine="THE PROBLEM WE SAW"
           primaryLine={
@@ -172,26 +402,87 @@ export default function About2({ id }) {
         />
       </div>
 
-      <div className="relative flex flex-col justify-center items-center ">
+      <div className="w-full grid gap-8 grid-cols-1 md:grid-cols-2 items-center justify-center gap-[4rem] grow ">
         <div
-          className="
-          grid grid-cols-1
-          md:grid-cols-2
-          lg:grid-cols-3
-          gap-8 md:gap-18 
-          space-x-30
-          w-[70%]"
+          className={`w-full h-full max-w-[250px] glyphOrbiter relative flex items-center md:items-center justify-center justify-self-center md:justify-self-end order-2 md:order-1`}
         >
-          {problemPoints.map((point, index) => (
-            <AegisGlyph
-              key={index}
-              IconObject={point.icon}
-              title={point.title}
-              desc={point.description}
-            />
-          ))}
+          <div
+            className={`transition-all duration-400 w-full aspect-square translate-y-1/2 md:translate-y-0  relative flex items-center justify-center`}
+            ref={glyphOrbiter}
+            onClick={Next}
+          >
+            {problemPoints.map((point, index) => {
+              return (
+                <InferiorAegisGlyph
+                  key={index}
+                  index={index}
+                  IconObject={point.icon}
+                  title={point.title}
+                  desc={point.description}
+                  className={`glyph absolute size-14 md:w-20 hover:scale-110 transition-all duration-400`}
+                  padding="0"
+                  style={{
+                    transform: `translate3d(${orbitPos[index].x}px, ${orbitPos[index].y}px, 0) scale(1)`,
+                  }}
+                  onClick={() => {
+                    GoTo({ index: index });
+                  }}
+                />
+              );
+            })}
+          </div>
+        </div>
+
+        <div
+          className={`relative w-full max-w-[90%] md:max-w-[70%] md:min-w-[400px] grid grid-cols-1 grid-rows-1 justify-self-center md:justify-self-start order-1 md:order-2 overflow-hidden ${styles.CyberGlyph}`}
+        >
+          <span className="absolute inset-0 z-10 p-4 md:p-7 text-sm md:text-base text-center flex justify-center items-center">
+            {problemPoints[activeGlyphLabel].description}
+          </span>
+
+          <div className="absolute inset-0 translate-x-[3px] md:-translate-x-[5px]">
+            <CyberGlyph color="#f0f" />
+          </div>
+
+          <div className="absolute inset-0 -translate-x-[3px] md:translate-x-[5px]">
+            <CyberGlyph color="#0ff" />
+          </div>
+
+          <div className="relative w-full h-full">
+            <CyberGlyph color="#fff" />
+          </div>
         </div>
       </div>
+
+      {/* <div className={`relative w-[70%] flex items-center justify-center`}>
+        <div className={`absolute  ${styles.AnimateSpinner}`}>
+          {problemPoints.map((point, index) => {
+            const angle = index * 60 * (Math.PI / 180);
+            const radius = 270;
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+            return (
+              <div
+                key={index}
+                style={{ transform: `translate(${x}px, ${y}px)` }}
+                className={`absolute `}
+                onMouseEnter={() => setActiveDescription(point.description)}
+              >
+                <div
+                  className={`${styles.AnimateCounterSpinner} hover:scale-110 transition-transform`}
+                >
+                  <AegisGlyph
+                    key={index}
+                    IconObject={point.icon}
+                    title={point.title}
+                    desc={point.description}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div> */}
     </section>
   );
 }

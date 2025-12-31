@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 
 import HomePage from "./Pages/HomePage/HomePage";
-import About2 from "./Pages/About-2/About-2";
+import About2 from "./Pages/About-2/About-2.jsx";
 import About3 from "./Pages/About-3/About-3";
 import Technology from "./Pages/Technology/TechnologyPage";
 import PQCPage from "./Pages/PQC-Safe/PQCPage";

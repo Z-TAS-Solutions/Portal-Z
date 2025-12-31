@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono, Audiowide } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/NavBar/Navbar";
+import MainWrapper from "./Main.jsx";
 
 export const viewport = {
   width: "device-width",
@@ -38,8 +38,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${audiowide.variable} antialiased w-full`}
       >
-        <Navbar />
-        {children}
+        <MainWrapper>{children}</MainWrapper>
       </body>
     </html>
   );

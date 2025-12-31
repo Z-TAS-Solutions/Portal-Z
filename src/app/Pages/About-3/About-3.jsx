@@ -120,7 +120,7 @@ export default function About3({ id }) {
   return (
     <section
       id={id}
-      className="relative flex flex-col items-center p-6 min-h-screen overflow-hidden bg-zinc-950"
+      className="relative flex flex-col items-center p-6 min-h-screen overflow-hidden"
     >
       <div className="absolute top-1/3 left-1/4 -translate-x-1/2 w-full h-1/3 bg-blue-900/20 blur-[160px] rounded-full pointer-events-none"></div>
       <div className="absolute -top-1/3 left-1/2 -translate-x-1/2 w-full h-1/3 bg-blue-900/20 blur-[200px] rounded-full pointer-events-none"></div>
@@ -194,7 +194,7 @@ export default function About3({ id }) {
                 object-cover
                 block absolute inset-0 
                 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                animate-slide-mask
+                animate-slide-mask 
                 "
                 loading="lazy"
                 priority="false"
