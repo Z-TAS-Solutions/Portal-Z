@@ -294,6 +294,7 @@ export default function About2({ id }) {
   const glyphOrbiter = useRef(null);
   const activeGlyph = useRef(-1);
   const [activeGlyphLabel, setActiveGlyphLabel] = useState(0);
+  const loader = useRef(null);
 
   const displayMode = useDisplayMode();
 
@@ -352,12 +353,14 @@ export default function About2({ id }) {
 
   useEffect(() => {
     Next();
+    loader.current.classList.add(styles.AnimateInfiniteScale);
     if (activeHash !== "about") return;
 
     let timer;
 
     const exec = () => {
       Next();
+
       timer = setTimeout(exec, 3000);
     };
 
@@ -434,7 +437,7 @@ export default function About2({ id }) {
         </div>
 
         <div
-          className={`relative w-full max-w-[90%] md:max-w-[70%] md:min-w-[400px] grid grid-cols-1 grid-rows-1 justify-self-center md:justify-self-start order-1 md:order-2 overflow-hidden ${styles.CyberGlyph}`}
+          className={`relative w-full max-w-[90%] md:max-w-[70%] md:min-w-[400px] grid grid-cols-1 grid-rows-1 justify-self-center md:justify-self-start order-1 md:order-2 ${styles.CyberGlyph}`}
         >
           <span className="absolute inset-0 z-10 p-4 md:p-7 text-sm md:text-base text-center flex justify-center items-center">
             {problemPoints[activeGlyphLabel].description}
@@ -450,6 +453,14 @@ export default function About2({ id }) {
 
           <div className="relative w-full h-full">
             <CyberGlyph color="#fff" />
+          </div>
+
+          <div className="relative w-[50%] left-1/4 -bottom-3 bg-cyan-950/20 rounded-full h-1.5 overflow-hidden">
+            <div
+              ref={loader}
+              className={`absolute h-full w-full bg-sky-500`}
+            ></div>
+            <div className="absolute h-full w-full bg-white/10 "></div>
           </div>
         </div>
       </div>

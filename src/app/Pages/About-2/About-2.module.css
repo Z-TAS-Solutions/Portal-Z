@@ -26,3 +26,15 @@
     transform: translateX(-5px);
   }
 }
+
+@keyframes Scale3s {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.AnimateInfiniteScale {
+  animation: Scale3s 3s linear infinite;
+}
