@@ -162,7 +162,7 @@ function CyberGlyph({ color = "#0ff" }) {
     <svg viewBox="5 4 88 39" xmlns="http://www.w3.org/2000/svg">
       <path
         stroke={color}
-        fill="none"
+        fill="rgba(10, 10, 5, 0.2)"
         strokeWidth={0.4}
         d="M7 12v21l3 3h36l6 6h37l3-3V12l-6-5H13z"
       />
@@ -245,7 +245,7 @@ export default function About2({ id }) {
       icon: AlertTriangle,
       title: "Security Risks",
       description:
-        "Easy to repliiate, Legacy biometrics are physically deposited on the environment. Every time you touch a glass or a door handle, you are leaving a copy of your password behind.",
+        "Easy to replicate, Legacy biometrics are physically deposited on the environment. Every time you touch a glass or a door handle, you are leaving a copy of your password behind.",
     },
     {
       icon: Wrench,
@@ -281,7 +281,7 @@ export default function About2({ id }) {
       icon: AlertTriangle,
       title: "Security Risks",
       description:
-        "Easy to repliiate, Legacy biometrics are physically deposited on the environment. Every time you touch a glass or a door handle, you are leaving a copy of your password behind.",
+        "Easy to replicate, Legacy biometrics are physically deposited on the environment. Every time you touch a glass or a door handle, you are leaving a copy of your password behind.",
     },
     {
       icon: Wrench,
@@ -353,6 +353,7 @@ export default function About2({ id }) {
 
   useEffect(() => {
     Next();
+    loader.current.classList.remove(styles.AnimateInfiniteScale);
     loader.current.classList.add(styles.AnimateInfiniteScale);
     if (activeHash !== "about") return;
 
@@ -389,21 +390,63 @@ export default function About2({ id }) {
         "
       ></div> */}
 
-      <div className="flex-0 w-full z-10 ">
-        <GlyphMaestroRune
-          accentLine="THE PROBLEM WE SAW"
-          primaryLine={
-            <h2>
-              The{" "}
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
-                State
-              </span>{" "}
-              of Authorization
-            </h2>
-          }
-          secondaryLine="Six inherent blind spots embedded in conventional authorization..."
-        />
+      <div className="flex flex-col md:flex-row md:items-start w-full z-10 gap-6">
+        <div className="flex-1 min-w-0">
+          <GlyphMaestroRune
+            accentLine="THE PROBLEM WE SAW"
+            primaryLine={
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+                The{" "}
+                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+                  State
+                </span>{" "}
+                of Authorization
+              </h2>
+            }
+            secondaryLine="Six inherent blind spots embedded in conventional authorization..."
+          />
+        </div>
+
+        <div className="w-full md:w-64 font-mono text-[11px] leading-relaxed select-none pointer-events-none">
+          <div className="border-t border-white/10 pt-4 flex flex-col gap-1">
+            <div className="flex justify-between text-cyan-400/60">
+              <span>CPU_LOAD</span>
+              <span>[||||||----] 96%</span>
+            </div>
+
+            <div className="text-white/50 truncate">
+              {"> RUNNING: security_audit_v2.exe"}
+            </div>
+            <div className="text-white/50 truncate">
+              {"> FETCHING: VULNERABILITY_METRICS..."}
+            </div>
+            <div className="text-red-500/80 animate-pulse">
+              {"> WARNING: ANOMALIES_DETECTED"}
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* <div className={`relative w-[70%] flex items-center justify-center`}>
+        <div className={`absolute  ${styles.AnimateSpinner}`}>
+          {problemPoints.map((point, index) => {
+            return (
+              <div
+                key={index}
+                className={`absolute `}
+                onMouseEnter={() => setActiveDescription(point.description)}
+              >
+                <AegisGlyph
+                  key={index}
+                  IconObject={point.icon}
+                  title={point.title}
+                  desc={point.description}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div> */}
 
       <div className="w-full grid gap-8 grid-cols-1 md:grid-cols-2 items-center justify-center gap-[4rem] grow ">
         <div
@@ -437,63 +480,48 @@ export default function About2({ id }) {
         </div>
 
         <div
-          className={`relative w-full max-w-[90%] md:max-w-[70%] md:min-w-[400px] grid grid-cols-1 grid-rows-1 justify-self-center md:justify-self-start order-1 md:order-2 ${styles.CyberGlyph}`}
+          className={`relative w-full max-w-[95%] md:max-w-[70%] md:min-w-[400px] h-fit gap-3 grid grid-cols-1 grid-rows-1 place-items-center justify-self-center md:justify-self-start order-1 md:order-2 ${styles.CyberGlyph}`}
         >
-          <span className="absolute inset-0 z-10 p-4 md:p-7 text-sm md:text-base text-center flex justify-center items-center">
-            {problemPoints[activeGlyphLabel].description}
-          </span>
+          <div className="flex h-fit w-full flex-grow gap-6 font-mono text-[10px] tracking-[0.2em] text-cyan-400/60 items-center">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+              <span>
+                MODE:
+                <span className="text-white">LIVE</span>
+              </span>
+            </div>
+            <span className="text-white/20">|</span>
+            <span className="flex flex-col grow text-center">
+              LAST ANALYSIS:
+              <span className="text-white"> JAN 01 2196 </span>
+            </span>
+            <span className="text-white/20">|</span>
+            <span>
+              UPLINK: <span className="text-cyan-400">STABLE</span>
+            </span>
+          </div>
 
-          <div className="absolute inset-0 translate-x-[3px] md:-translate-x-[5px]">
+          {/* <div classNameName="absolute inset-0 translate-x-[3px] md:-translate-x-[5px]">
             <CyberGlyph color="#f0f" />
           </div>
 
-          <div className="absolute inset-0 -translate-x-[3px] md:translate-x-[5px]">
+          <div classNameName="absolute inset-0 -translate-x-[3px] md:translate-x-[5px]">
             <CyberGlyph color="#0ff" />
+          </div> */}
+
+          <div className="relative w-full h-fit">
+            <CyberGlyph color="rgba(255,255,255,0.5)" />
+            <span className="absolute inset-0 z-10 p-4 md:py-7 text-sm md:text-base text-center flex justify-center items-center tracking-wide text-slate-100/80 font-mono">
+              {problemPoints[activeGlyphLabel].description}
+            </span>
           </div>
 
-          <div className="relative w-full h-full">
-            <CyberGlyph color="#fff" />
-          </div>
-
-          <div className="relative w-[50%] left-1/4 -bottom-3 bg-cyan-950/20 rounded-full h-1.5 overflow-hidden">
-            <div
-              ref={loader}
-              className={`absolute h-full w-full bg-sky-500`}
-            ></div>
-            <div className="absolute h-full w-full bg-white/10 "></div>
+          <div className="w-[50%] bg-cyan-950/20 rounded-full h-1 overflow-hidden">
+            <div ref={loader} className={`h-full w-full bg-sky-500`}></div>
+            <div className="h-full w-full bg-white/10 "></div>
           </div>
         </div>
       </div>
-
-      {/* <div className={`relative w-[70%] flex items-center justify-center`}>
-        <div className={`absolute  ${styles.AnimateSpinner}`}>
-          {problemPoints.map((point, index) => {
-            const angle = index * 60 * (Math.PI / 180);
-            const radius = 270;
-            const x = Math.cos(angle) * radius;
-            const y = Math.sin(angle) * radius;
-            return (
-              <div
-                key={index}
-                style={{ transform: `translate(${x}px, ${y}px)` }}
-                className={`absolute `}
-                onMouseEnter={() => setActiveDescription(point.description)}
-              >
-                <div
-                  className={`${styles.AnimateCounterSpinner} hover:scale-110 transition-transform`}
-                >
-                  <AegisGlyph
-                    key={index}
-                    IconObject={point.icon}
-                    title={point.title}
-                    desc={point.description}
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div> */}
     </section>
   );
 }
