@@ -352,20 +352,20 @@ export default function About2({ id }) {
   const activeHash = useContext(ActiveHashContext);
 
   useEffect(() => {
-    Next();
     loader.current.classList.remove(styles.AnimateInfiniteScale);
     if (activeHash !== "about") return;
     loader.current.classList.add(styles.AnimateInfiniteScale);
+    Next();
 
     let timer;
 
     const exec = () => {
       Next();
 
-      timer = setTimeout(exec, 3000);
+      timer = setTimeout(exec, 4000);
     };
 
-    timer = setTimeout(exec, 3000);
+    timer = setTimeout(exec, 4000);
 
     return () => clearTimeout(timer);
   }, [displayMode, activeHash]);
@@ -501,25 +501,27 @@ export default function About2({ id }) {
             </span>
           </div>
 
-          {/* <div classNameName="absolute inset-0 translate-x-[3px] md:-translate-x-[5px]">
-            <CyberGlyph color="#f0f" />
-          </div>
-
-          <div classNameName="absolute inset-0 -translate-x-[3px] md:translate-x-[5px]">
-            <CyberGlyph color="#0ff" />
-          </div> */}
-
-          <div className="relative w-full h-fit">
+          <div className={`relative w-full h-fit `}>
             <CyberGlyph color="rgba(255,255,255,0.5)" />
             <span className="absolute inset-0 z-10 p-4 md:py-7 text-sm md:text-base text-center flex justify-center items-center tracking-wide text-slate-100/80 font-mono">
               {problemPoints[activeGlyphLabel].description}
             </span>
+            {/* <div className="absolute w-full inset-0 translate-x-[3px] md:-translate-x-[5px] ${styles.AnimateFlicker}">
+              <CyberGlyph color="#f0f" />
+            </div>
+
+            <div className="absolute w-full inset-0 -translate-x-[3px] md:translate-x-[5px]">
+              <CyberGlyph color="#0ff" />
+            </div> */}
           </div>
 
           <div className="w-[50%] bg-cyan-950/20 rounded-full h-1 overflow-hidden">
             <div ref={loader} className={`h-full w-full bg-sky-500`}></div>
             <div className="h-full w-full bg-white/10 "></div>
           </div>
+          <span class="text-[11px] text-white/90">
+            [ #000{1 + (activeGlyph.current % 6)} ]
+          </span>
         </div>
       </div>
     </section>

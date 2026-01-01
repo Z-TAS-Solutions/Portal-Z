@@ -23,7 +23,29 @@
   }
 }
 
-@keyframes Scale3s {
+@keyframes Flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.4;
+  }
+}
+
+.AnimateFlicker {
+  animation: Flicker 8s linear infinite;
+}
+
+@keyframes Scale4s {
   from {
     transform: scaleX(0);
   }
@@ -32,5 +54,5 @@
   }
 }
 .AnimateInfiniteScale {
-  animation: Scale3s 3s linear infinite;
+  animation: Scale4s 4s linear infinite;
 }
