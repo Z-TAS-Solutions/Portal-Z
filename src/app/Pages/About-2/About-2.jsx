@@ -354,8 +354,8 @@ export default function About2({ id }) {
   useEffect(() => {
     Next();
     loader.current.classList.remove(styles.AnimateInfiniteScale);
-    loader.current.classList.add(styles.AnimateInfiniteScale);
     if (activeHash !== "about") return;
+    loader.current.classList.add(styles.AnimateInfiniteScale);
 
     let timer;
 
@@ -411,7 +411,7 @@ export default function About2({ id }) {
           <div className="border-t border-white/10 pt-4 flex flex-col gap-1">
             <div className="flex justify-between text-cyan-400/60">
               <span>CPU_LOAD</span>
-              <span>[||||||----] 96%</span>
+              <span>[||||||----] 65%</span>
             </div>
 
             <div className="text-white/50 truncate">
