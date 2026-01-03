@@ -245,7 +245,7 @@ export default function About2({ id }) {
       icon: AlertTriangle,
       title: "Security Risks",
       description:
-        "Easy to replicate, Legacy biometrics are physically deposited on the environment. Every time you touch a glass or a door handle, you are leaving a copy of your password behind.",
+        "Easy to replicate. Every time you touch a glass or a door handle, you are leaving a copy of your key behind.",
     },
     {
       icon: Wrench,
@@ -281,7 +281,7 @@ export default function About2({ id }) {
       icon: AlertTriangle,
       title: "Security Risks",
       description:
-        "Easy to replicate, Legacy biometrics are physically deposited on the environment. Every time you touch a glass or a door handle, you are leaving a copy of your password behind.",
+        "Easy to replicate. Every time you touch a glass or a door handle, you are leaving a copy of your key behind.",
     },
     {
       icon: Wrench,
@@ -388,7 +388,7 @@ export default function About2({ id }) {
           <GlyphMaestroRune
             accentLine="THE PROBLEM WE SAW"
             primaryLine={
-              <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold">
+              <h2 className="text-4xl md:text-3xl lg:text-5xl font-bold">
                 The{" "}
                 <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
                   State
@@ -446,7 +446,7 @@ export default function About2({ id }) {
           className={`w-full h-full max-w-[200px] glyphOrbiter relative flex items-center md:items-center justify-center justify-self-center md:justify-self-end order-3 md:order-1`}
         >
           <div
-            className={`transition-all duration-400 w-full ml-[200px] aspect-square translate-y-1/2 md:translate-y-0  relative flex items-center justify-center`}
+            className={`transition-all duration-400 w-full md:ml-[200px] aspect-square translate-y-1/2 md:translate-y-0  relative flex items-center justify-center`}
             ref={glyphOrbiter}
             onClick={Next}
           >
@@ -473,7 +473,6 @@ export default function About2({ id }) {
         </div>
 
         <div className="h-full min-w-[100px] w-[150px] font-mono transition-all duration-300 order-2 flex flex-col justify-center items-center z-0">
-          {/* {problemPoints[activeGlyphLabel].title} */}
           <div className="-rotate-90 md:rotate-none">
             <RuinicPathways className="w-full h-full" />
           </div>
@@ -482,13 +481,18 @@ export default function About2({ id }) {
         <div
           className={`relative w-full max-w-[95%] md:max-w-[70%] md:min-w-[400px] h-fit gap-3 grid grid-cols-1 grid-rows-1 place-items-center justify-self-center md:justify-self-start order-1 md:order-3 ${styles.CyberGlyph}`}
         >
+          <span
+            className={`w-full order-last font-mono md:order-first text-center ${styles.AnimateTyping}`}
+          >
+            {problemPoints[activeGlyphLabel].title}
+          </span>
           <div className="flex h-fit w-full flex-grow gap-6 font-mono text-[10px] tracking-[0.2em] text-cyan-400/80 items-center">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-              <span>
+              <span className="flex flex-col">
                 MODE:
                 <span className="text-white">LIVE</span>
               </span>
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
             </div>
             <span className="text-white/20">|</span>
             <span className="flex flex-col grow text-center">
@@ -519,7 +523,7 @@ export default function About2({ id }) {
             <div ref={loader} className={`h-full w-full bg-sky-500`}></div>
             <div className="h-full w-full bg-white/10 "></div>
           </div>
-          <span className="text-[14px] font-mono text-white/90">
+          <span className="text-[14px] font-mono text-white/90 md:mb-10">
             [ #00{1 + (activeGlyph.current % 6)} ]
           </span>
         </div>

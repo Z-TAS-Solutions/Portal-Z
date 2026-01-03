@@ -45,7 +45,7 @@
   animation: Flicker 8s linear infinite;
 }
 
-@keyframes Scale4s {
+@keyframes Scale {
   from {
     transform: scaleX(0);
   }
@@ -53,6 +53,21 @@
     transform: scaleX(1);
   }
 }
+
+@keyframes Width {
+  from {
+    width: 0;
+  }
+  to {
+    width: 1;
+  }
+}
+
 .AnimateInfiniteScale {
-  animation: Scale4s 4s linear infinite;
+  animation: Scale 4s linear infinite;
+}
+
+.AnimateTyping {
+  transform-origin: left;
+  animation: Width 1s steps(12);
 }
