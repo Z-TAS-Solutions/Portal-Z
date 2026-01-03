@@ -9,6 +9,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { ActiveHashContext } from "../../components/Helpers/HashContext.jsx";
+import RuinicPathways from "./RuinicPathways";
 
 import styles from "./About-2.module.css";
 
@@ -124,8 +125,7 @@ function InferiorAegisGlyph({
           className={`
             aspect-square 
             w-full
-            bg-slate-900/50 
-            backdrop-blur-md 
+            bg-slate-900/60
             transition-all 
             duration-300 
             overflow-hidden 
@@ -148,8 +148,8 @@ function InferiorAegisGlyph({
             `}
           ></div>
 
-          <div className="w-14 h-14 flex items-center justify-center ">
-            <IconObject className="-rotate-45 bg-red-500/10 rounded-full border border-red-400/20 p-1 w-7 h-7 text-red-400" />
+          <div className="size-[85%] flex items-center justify-center ">
+            <IconObject className="-rotate-45 bg-red-500/20 rounded-full border border-red-400/20 p-[7px] size-1/2 aspect-square text-red-400" />
           </div>
         </div>
       </div>
@@ -382,20 +382,13 @@ export default function About2({ id }) {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2/4 w-full h-1/3 bg-blue-900/20 blur-[100px] rounded-full pointer-events-none"></div>
 
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2/4 w-full h-1/3 bg-blue-900/19 blur-[170px] rounded-full pointer-events-none"></div>
-      {/* <div
-        className="
-        absolute inset-0 z-0 
-        bg-gradient-to-br from-cyan-500/8 via-transparent to-pink-500/5 
-        pointer-events-none
-        "
-      ></div> */}
 
       <div className="flex flex-col md:flex-row md:items-start w-full z-10 gap-6">
         <div className="flex-1 min-w-0">
           <GlyphMaestroRune
             accentLine="THE PROBLEM WE SAW"
             primaryLine={
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+              <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold">
                 The{" "}
                 <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
                   State
@@ -448,12 +441,12 @@ export default function About2({ id }) {
         </div>
       </div> */}
 
-      <div className="w-full grid gap-8 grid-cols-1 md:grid-cols-2 items-center justify-center gap-[4rem] grow ">
+      <div className="w-full grid grid-cols-1 md:grid-cols-[min-content_min-content_min-content] gap-5 place-items-center justify-center grow ">
         <div
-          className={`w-full h-full max-w-[250px] glyphOrbiter relative flex items-center md:items-center justify-center justify-self-center md:justify-self-end order-2 md:order-1`}
+          className={`w-full h-full max-w-[200px] glyphOrbiter relative flex items-center md:items-center justify-center justify-self-center md:justify-self-end order-3 md:order-1`}
         >
           <div
-            className={`transition-all duration-400 w-full aspect-square translate-y-1/2 md:translate-y-0  relative flex items-center justify-center`}
+            className={`transition-all duration-400 w-full ml-[200px] aspect-square translate-y-1/2 md:translate-y-0  relative flex items-center justify-center`}
             ref={glyphOrbiter}
             onClick={Next}
           >
@@ -479,10 +472,17 @@ export default function About2({ id }) {
           </div>
         </div>
 
+        <div className="h-full min-w-[100px] w-[150px] font-mono transition-all duration-300 order-2 flex flex-col justify-center items-center z-0">
+          {/* {problemPoints[activeGlyphLabel].title} */}
+          <div className="-rotate-90 md:rotate-none">
+            <RuinicPathways className="w-full h-full" />
+          </div>
+        </div>
+
         <div
-          className={`relative w-full max-w-[95%] md:max-w-[70%] md:min-w-[400px] h-fit gap-3 grid grid-cols-1 grid-rows-1 place-items-center justify-self-center md:justify-self-start order-1 md:order-2 ${styles.CyberGlyph}`}
+          className={`relative w-full max-w-[95%] md:max-w-[70%] md:min-w-[400px] h-fit gap-3 grid grid-cols-1 grid-rows-1 place-items-center justify-self-center md:justify-self-start order-1 md:order-3 ${styles.CyberGlyph}`}
         >
-          <div className="flex h-fit w-full flex-grow gap-6 font-mono text-[10px] tracking-[0.2em] text-cyan-400/60 items-center">
+          <div className="flex h-fit w-full flex-grow gap-6 font-mono text-[10px] tracking-[0.2em] text-cyan-400/80 items-center">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
               <span>
@@ -519,8 +519,8 @@ export default function About2({ id }) {
             <div ref={loader} className={`h-full w-full bg-sky-500`}></div>
             <div className="h-full w-full bg-white/10 "></div>
           </div>
-          <span class="text-[11px] text-white/90">
-            [ #000{1 + (activeGlyph.current % 6)} ]
+          <span className="text-[14px] font-mono text-white/90">
+            [ #00{1 + (activeGlyph.current % 6)} ]
           </span>
         </div>
       </div>
