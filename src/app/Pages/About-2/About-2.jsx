@@ -330,6 +330,7 @@ export default function About2({ id }) {
 
     MoveGlyph({ angle: angle });
   };
+  const charset = "@#$%^&*BCFGH@#$%^&*IJKLMNOP@#$%^&*VWXYZ0123456789!@#$%^&*";
 
   const Next = () => {
     activeGlyph.current = (activeGlyph.current + 1) % 12;
@@ -349,19 +350,48 @@ export default function About2({ id }) {
     MoveGlyph({ angle: angle });
   };
 
+  const FracturedRuneBox = useRef(null);
+
+  const randomChar = () => {
+    const charset = "@#$%^&*BCFGH@#$%^&*IJKLMNOP@#$%^&*VWXYZ0123456789!@#$%^&*";
+    const i = Math.floor(Math.random() * charset.length);
+    return charset[i];
+  };
+
+  const UpdateText = ({ text }) => {
+    const len = text.length;
+    FracturedRuneBox.current.replaceChildren();
+    const FragmentedRuneBox = document.createDocumentFragment();
+
+    text.split("").map((char, charIndex) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.style.setProperty("--i", charIndex);
+      span.style.setProperty("--ri", len - charIndex);
+      span.setAttribute("fracture", randomChar());
+      span.className = styles.FracturedRune;
+      FragmentedRuneBox.append(span);
+    });
+
+    FracturedRuneBox.current.append(FragmentedRuneBox);
+  };
+
   const activeHash = useContext(ActiveHashContext);
 
   useEffect(() => {
     loader.current.classList.remove(styles.AnimateInfiniteScale);
+    FracturedRuneBox.current.classList.remove(styles.FractureRitual);
     if (activeHash !== "about") return;
     loader.current.classList.add(styles.AnimateInfiniteScale);
     Next();
+    FracturedRuneBox.current.classList.add(styles.FractureRitual);
+    UpdateText({ text: problemPoints[activeGlyph.current].title });
 
     let timer;
 
     const exec = () => {
       Next();
-
+      UpdateText({ text: problemPoints[activeGlyph.current].title });
       timer = setTimeout(exec, 4000);
     };
 
@@ -482,9 +512,10 @@ export default function About2({ id }) {
           className={`relative w-full max-w-[95%] md:max-w-[70%] md:min-w-[400px] h-fit gap-3 grid grid-cols-1 grid-rows-1 place-items-center justify-self-center md:justify-self-start order-1 md:order-3 ${styles.CyberGlyph}`}
         >
           <span
-            className={`w-full order-last font-mono md:order-first text-center ${styles.AnimateTyping}`}
+            ref={FracturedRuneBox}
+            className={`w-full order-last font-mono md:order-first text-center FracturedRunes`}
           >
-            {problemPoints[activeGlyphLabel].title}
+            {/* {problemPoints[activeGlyphLabel].title} */}
           </span>
           <div className="flex h-fit w-full flex-grow gap-6 font-mono text-[10px] tracking-[0.2em] text-cyan-400/80 items-center">
             <div className="flex items-center gap-2">
