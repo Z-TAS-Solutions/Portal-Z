@@ -555,7 +555,7 @@ export default function About2({ id }) {
             <div className="h-full w-full bg-white/10 "></div>
           </div>
           <span className="text-[14px] font-mono text-white/90 md:mb-10">
-            [ #00{1 + (activeGlyph.current % 6)} ]
+            [ #00{1 + (activeGlyphLabel % 6)} ]
           </span>
         </div>
       </div>
