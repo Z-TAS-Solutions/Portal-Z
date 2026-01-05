@@ -14,7 +14,6 @@ import {
   Raycaster,
 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-// import { MeshSurfaceSampler } from "three/examples/jsm/math/MeshSurfaceSampler.js";
 
 export default function AetherLimb() {
   const canvasRef = useRef(null);

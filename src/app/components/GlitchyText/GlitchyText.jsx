@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const randomChar = () => {
   const charset = "@#$%^&*BCFGH@#$%^&*IJKLMNOP@#$%^&*VWXYZ0123456789!@#$%^&*";
@@ -10,6 +10,7 @@ export default function FracturedRunes({
   text = "",
   className = "",
   onClick = null,
+  forwards = false,
 }) {
   const [textState, setTextState] = useState(text);
   const timeframeRef = useRef(null);
@@ -35,6 +36,23 @@ export default function FracturedRunes({
     clearInterval(timeframeRef.current);
     setTextState(text);
   };
+
+  if (forwards) {
+    useEffect(() => {
+      startFracturedRitual();
+      return () => {
+        clearInterval(timeframeRef.current);
+        setTextState(text);
+      };
+    }, []);
+  } else {
+    useEffect(() => {
+      return () => {
+        clearInterval(timeframeRef.current);
+        setTextState(text);
+      };
+    });
+  }
 
   return (
     <span
