@@ -11,6 +11,7 @@ export default function FracturedRunes({
   className = "",
   onClick = null,
   forwards = false,
+  duration = 40,
 }) {
   const [textState, setTextState] = useState(text);
   const timeframeRef = useRef(null);
@@ -29,7 +30,7 @@ export default function FracturedRunes({
 
       index++;
       if (index > text.length) clearInterval(timeframeRef.current);
-    }, 30);
+    }, duration);
   };
 
   const stopFracturedRitual = () => {
