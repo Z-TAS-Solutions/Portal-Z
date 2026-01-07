@@ -12,6 +12,7 @@ export default function MobileNav() {
     features: "Features",
     process: "The Flow",
     team: "Team",
+    contact: "Contact Us",
   };
 
   const [toggleState, setToggleState] = useState(false);
