@@ -34,7 +34,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth w-full bg-zink-950">
+    <html
+      lang="en"
+      className="scroll-smooth w-full bg-zink-950 overflow-x-hidden"
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${audiowide.variable} antialiased w-full`}
       >

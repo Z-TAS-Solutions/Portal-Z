@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState, useContext } from "react";
-import useDisplayMode from "../../components/Helpers/DisplayMode.jsx";
+import { useDisplayModeEx } from "../../components/Helpers/DisplayMode.jsx";
 import {
   Snail,
   Skull,
@@ -296,12 +296,19 @@ export default function About2({ id }) {
   const [activeGlyphLabel, setActiveGlyphLabel] = useState(0);
   const loader = useRef(null);
 
-  const displayMode = useDisplayMode();
+  const displayMode = useDisplayModeEx();
 
   const orbitPos = OrbitPosGen({
-    baseRot: displayMode ? -90 : 180,
-    radius: displayMode ? 180 : 220,
+    baseRot: displayMode === "xl" ? 180 : displayMode ? -90 : 180,
+    radius: displayMode === "xl" ? 300 : displayMode ? 180 : 220,
   });
+
+  const translation =
+    displayMode === "xl"
+      ? "translateX(110px)"
+      : displayMode
+        ? "translateY(-35%)"
+        : "translateX(80px)";
 
   const MoveGlyph = ({ angle }) => {
     const glyphs = glyphOrbiter.current.querySelectorAll(".glyph");
@@ -313,7 +320,7 @@ export default function About2({ id }) {
       if (distance > 0 && distance < 8) {
         glyph.style.display = "none";
       } else if (index === activeGlyph.current) {
-        glyph.style.transform = ` translate3d(${orbitPos[index].x}px, ${orbitPos[index].y}px, 0) rotate(-${angle}deg) scale(1.8) ${displayMode ? "translateY(-35%)" : "translateX(80px)"}`;
+        glyph.style.transform = ` translate3d(${orbitPos[index].x}px, ${orbitPos[index].y}px, 0) rotate(-${angle}deg) scale(1.8) ${translation}`;
         glyph.style.display = "block";
       } else {
         glyph.style.transform = `translate3d(${orbitPos[index].x}px, ${orbitPos[index].y}px, 0) rotate(-${angle}deg)`;
@@ -413,7 +420,7 @@ export default function About2({ id }) {
 
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2/4 w-full h-1/3 bg-blue-900/19 blur-[170px] rounded-full pointer-events-none"></div>
 
-      <div className="flex flex-col md:flex-row md:items-start w-full z-10 gap-6">
+      <div className="flex-0 flex flex-col md:flex-row md:items-start w-full z-10 gap-6">
         <div className="flex-1 min-w-0">
           <GlyphMaestroRune
             accentLine="THE PROBLEM WE SAW"
@@ -471,7 +478,7 @@ export default function About2({ id }) {
         </div>
       </div> */}
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-[min-content_min-content_min-content] gap-5 place-items-center justify-center grow ">
+      <div className="flex-1 w-full h-auto grid grid-cols-1 md:grid-cols-[min-content_min-content_min-content] gap-5 place-items-center justify-center grow">
         <div
           className={`w-full h-full max-w-[200px] glyphOrbiter relative flex items-center md:items-center justify-center justify-self-center md:justify-self-end order-3 md:order-1`}
         >
@@ -488,7 +495,7 @@ export default function About2({ id }) {
                   IconObject={point.icon}
                   title={point.title}
                   desc={point.description}
-                  className={`glyph absolute size-14 md:w-20 hover:scale-110 transition-all duration-400`}
+                  className={`glyph absolute size-14 md:w-20 2xl:w-28 hover:scale-110 transition-all duration-400`}
                   padding="0"
                   style={{
                     transform: `translate3d(${orbitPos[index].x}px, ${orbitPos[index].y}px, 0) scale(1)`,
@@ -509,7 +516,7 @@ export default function About2({ id }) {
         </div>
 
         <div
-          className={`relative w-full max-w-[95%] md:max-w-[70%] md:min-w-[400px] h-fit gap-3 grid grid-cols-1 grid-rows-1 place-items-center justify-self-center md:justify-self-start order-1 md:order-3 ${styles.CyberGlyph}`}
+          className={`relative w-full max-w-[95%] md:max-w-[70%] md:min-w-[400px] 2xl:min-w-[500px] h-fit gap-3 grid grid-cols-1 grid-rows-1 place-items-center justify-self-center md:justify-self-start order-1 md:order-3 ${styles.CyberGlyph}`}
         >
           <span
             ref={FracturedRuneBox}

@@ -176,3 +176,68 @@ body {
     0% { transform: translateY(-100%); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
   }
+
+
+  .FracturedRune {
+  color: transparent;
+  position: relative;
+  display: inline;
+  --charDelay: 40ms;
+}
+
+.FracturedRune::before {
+  content: attr(fracture);
+  color: white;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes Unveil {
+  to {
+    color: white;
+  }
+}
+
+@keyframes Veil {
+  to {
+    color: transparent;
+  }
+}
+
+@keyframes FractureBurst {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes InversedFractureBurst {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.FractureRitual .FracturedRune {
+  animation:
+    Unveil 100ms ease forwards;
+  animation-delay:
+    calc((1 + var(--i)) * var(--charDelay));
+}
+
+.FractureRitual .FracturedRune::before {
+  animation:
+    FractureBurst 100ms ease forwards;
+  animation-delay:
+    calc(var(--i) * var(--charDelay));
+}
+

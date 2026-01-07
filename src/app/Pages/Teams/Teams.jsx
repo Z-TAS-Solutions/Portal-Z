@@ -230,10 +230,10 @@ export default function TeamsPage({ id }) {
   return (
     <section
       id={id}
-      className="relative flex flex-col w-full h-dvh overflow-hidden scroll-mt-18 mt-18"
+      className="relative flex flex-col w-full scroll-mt-18 mt-14"
     >
-      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 w-full h-full bg-blue-900/20 blur-[120px] rounded-full pointer-events-none"></div>
-      <div className=" ml-10">
+      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 w-full h-full bg-blue-900/20 blur-[120px] rounded-full pointer-events-none overflow-y-visible"></div>
+      <div className=" md:ml-10 mb-10">
         <GlyphMaestroRune
           primaryLine={
             <h2 className="tracking-widest">
@@ -254,7 +254,7 @@ export default function TeamsPage({ id }) {
         />
       </div>
 
-      <div className="relative top-1/3 xl:top-2/7 xl:left-[12%] w-full flex justify-center items-center ">
+      <div className="relative h-[300px] md:h-[400px] top-1/3 xl:top-2/7 xl:left-[12%] w-full flex justify-center items-center ">
         <div
           className="relative w-full h-full flex-1 
             max-w-[60%] 

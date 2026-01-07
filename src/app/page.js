@@ -9,6 +9,7 @@ import Technology from "./Pages/Technology/TechnologyPage";
 import PQCPage from "./Pages/PQC-Safe/PQCPage";
 import ProcessFlow from "./Pages/ProcessFlow/ProcessFlow";
 import Team from "./Pages/Teams/Teams";
+import ContactUs from "./Pages/Contact/Contact.jsx";
 
 const ChatBotWidget = dynamic(
   () => import("./components/ChatBot/ChatBotWidget"),
@@ -19,7 +20,7 @@ const ChatBotWidget = dynamic(
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full font-sans bg-zinc-950">
+    <main className="min-h-screen w-full font-sans bg-zinc-950 overflow-x-hidden">
       <HomePage id="home" />
       <About2 id="about" />
       <About3 id="solution" />
@@ -27,6 +28,7 @@ export default function Home() {
       <PQCPage id="features" />
       <ProcessFlow id="process" />
       <Team id="team" />
+      <ContactUs id="contact" />
       <ChatBotWidget buttonSize="55px" />
     </main>
   );
