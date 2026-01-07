@@ -134,6 +134,7 @@ export default function ContactUs({ id = "contact" }) {
     if (activeHash !== "contact") return;
     FracturedRuneBox.current.classList.add("FractureRitual");
     UpdateText({ text: fields[currentSection].label });
+    return;
   }, [activeHash]);
 
   const scrollSet = () => {
@@ -204,7 +205,6 @@ export default function ContactUs({ id = "contact" }) {
                       className="w-full px-6 py-4 text-lg rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-300 resize-none"
                       placeholder={fields[currentSection].placeholder}
                       onChange={handleChange}
-                      autoFocus
                     />
                   ) : (
                     <input
@@ -214,7 +214,6 @@ export default function ContactUs({ id = "contact" }) {
                       className="w-full px-6 py-4 text-lg rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-300"
                       placeholder={fields[currentSection].placeholder}
                       onChange={handleChange}
-                      autoFocus
                     />
                   )}
                 </div>
