@@ -125,7 +125,7 @@ function InferiorAegisGlyph({
           className={`
             aspect-square 
             w-full
-            bg-slate-900/60
+            bg-white/4 drop-shadow-2xl backdrop-blur-md
             transition-all 
             duration-300 
             overflow-hidden 
@@ -157,19 +157,21 @@ function InferiorAegisGlyph({
   );
 }
 
-function CyberGlyph({ color = "#0ff" }) {
+function CyberGlyph({ color = "rgba(255,255,255,0.1)" }) {
   return (
     <svg viewBox="5 4 88 39" xmlns="http://www.w3.org/2000/svg">
       <path
         stroke={color}
-        fill="rgba(10, 10, 5, 0.2)"
-        strokeWidth={0.4}
+        fill="none"
+        strokeWidth={0.1}
         d="M7 12v21l3 3h36l6 6h37l3-3V12l-6-5H13z"
+        className="w-full h-auto fill-white/5 drop-shadow-2xl backdrop-blur-md"
+        style={{ filter: "drop-shadow(0 0 10px rgba(255,255,255,0.1))" }}
       />
       <path
         fill="none"
         stroke={color}
-        strokeWidth={0.4}
+        strokeWidth={0.2}
         d="M85 5H12L8 9m40 31-3-3H11"
       />
       <text
@@ -520,7 +522,7 @@ export default function About2({ id }) {
         >
           <span
             ref={FracturedRuneBox}
-            className={`w-full order-last font-mono md:order-first text-center FracturedRunes`}
+            className={`w-full order-last font-mono md:order-first text-xl text-center FracturedRunes`}
           >
             {/* {problemPoints[activeGlyphLabel].title} */}
           </span>
@@ -538,16 +540,18 @@ export default function About2({ id }) {
               <span className="text-white"> JAN 01 2196 </span>
             </span>
             <span className="text-white/20">|</span>
-            <span>
-              UPLINK: <span className="text-cyan-400">STABLE</span>
+            <span className="flex flex-col">
+              UPLINK: <span className="text-white">STABLE</span>
             </span>
           </div>
 
-          <div className={`relative w-full h-fit `}>
-            <CyberGlyph color="rgba(255,255,255,0.5)" />
-            <span className="absolute inset-0 z-10 p-4 md:py-7 text-sm md:text-base text-center flex justify-center items-center tracking-wide text-slate-100/80 font-mono">
+          <div className="relative w-full h-fit flex justify-center items-center display-grid place-items-center">
+            <CyberGlyph color="rgba(255,255,255,0.1)" />
+
+            <span className="absolute flex justify-center items-center text-center p-4 z-10 text-sm md:text-base tracking-wide text-slate-100/80 font-mono pointer-events-none">
               {problemPoints[activeGlyphLabel].description}
             </span>
+
             {/* <div className="absolute w-full inset-0 translate-x-[3px] md:-translate-x-[5px] ${styles.AnimateFlicker}">
               <CyberGlyph color="#f0f" />
             </div>
