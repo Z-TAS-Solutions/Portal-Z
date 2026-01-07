@@ -125,7 +125,7 @@ function InferiorAegisGlyph({
           className={`
             aspect-square 
             w-full
-            bg-white/4 drop-shadow-2xl backdrop-blur-md
+            bg-white/4 
             transition-all 
             duration-300 
             overflow-hidden 
@@ -149,7 +149,7 @@ function InferiorAegisGlyph({
           ></div>
 
           <div className="size-[85%] flex items-center justify-center ">
-            <IconObject className="-rotate-45 bg-red-500/20 rounded-full border border-red-400/20 p-[7px] size-1/2 aspect-square text-red-400" />
+            <IconObject className="-rotate-45 bg-red-500/20 rounded-full border border-red-400/20  p-[7px] size-[75%] md:size-1/2 aspect-square text-red-400" />
           </div>
         </div>
       </div>
