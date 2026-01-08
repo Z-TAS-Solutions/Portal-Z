@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 import { ActiveHashContext } from "../../components/Helpers/HashContext.jsx";
-import FracturedRunes from "../../components/GlitchyText/GlitchyText.jsx";
+import PostToWebHook from "../Contact/webhook.jsx";
 
 export default function ContactUs({ id = "contact" }) {
   const [formData, setFormData] = useState({
@@ -90,6 +90,8 @@ export default function ContactUs({ id = "contact" }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    PostToWebHook(formData);
+
     setFormData({
       name: "",
       email: "",
@@ -157,7 +159,7 @@ export default function ContactUs({ id = "contact" }) {
               Get In Touch
             </h1>
             <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-              Please don't contact us, this project is an eternal concept
+              Please do not contact us, this project is an eternal concept
             </p>
           </div>
 
@@ -175,56 +177,60 @@ export default function ContactUs({ id = "contact" }) {
               <span className="text-slate-300">Colombo, Sri Lanka</span>
             </div>
           </div>
-
-          <div className="p-10 rounded-3xl bg-white/1 backdrop-blur-xl border border-white/10 shadow-2xl">
-            <div className="flex justify-center gap-2 mb-12">
-              {fields.map((_, index) => (
-                <div
-                  key={index}
-                  className={`h-1.5 rounded-full transition-all duration-500 w-8 ${index <= currentSection ? "bg-white/70" : "bg-white/20"} `}
-                />
-              ))}
+          {submitState ? (
+            <div className="p-10 rounded-3xl bg-white/1 backdrop-blur-xl border border-white/10 shadow-2xl">
+              We will get back to you as swift as the winds of netherwind
             </div>
-
-            <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
-              <div className="mb-8">
-                <div
-                  onClick={scrollSet}
-                  className="mb-8 flex flex-col justify-center items-center"
-                >
+          ) : (
+            <div className="p-10 rounded-3xl bg-white/1 backdrop-blur-xl border border-white/10 shadow-2xl">
+              <div className="flex justify-center gap-2 mb-12">
+                {fields.map((_, index) => (
                   <div
-                    className="block text-3xl font-semibold text-white mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500 FractrueRitual"
-                    ref={FracturedRuneBox}
-                  ></div>
-
-                  {fields[currentSection].type === "textarea" ? (
-                    <textarea
-                      name={fields[currentSection].field}
-                      value={formData[fields[currentSection].field]}
-                      rows={6}
-                      className="w-full px-6 py-4 text-lg rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-300 resize-none"
-                      placeholder={fields[currentSection].placeholder}
-                      onChange={handleChange}
-                    />
-                  ) : (
-                    <input
-                      type={fields[currentSection].type}
-                      name={fields[currentSection].field}
-                      value={formData[fields[currentSection].field]}
-                      className="w-full px-6 py-4 text-lg rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-300"
-                      placeholder={fields[currentSection].placeholder}
-                      onChange={handleChange}
-                    />
-                  )}
-                </div>
+                    key={index}
+                    className={`h-1.5 rounded-full transition-all duration-500 w-8 ${index <= currentSection ? "bg-white/70" : "bg-white/20"} `}
+                  />
+                ))}
               </div>
 
-              <div className="flex gap-16 items-center justify-center">
-                {currentSection > 0 && (
-                  <button
-                    type="button"
-                    onClick={prevSection}
-                    className="
+              <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
+                <div className="mb-8">
+                  <div
+                    onClick={scrollSet}
+                    className="mb-8 flex flex-col justify-center items-center"
+                  >
+                    <div
+                      className="block text-3xl font-semibold text-white mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500 FractrueRitual"
+                      ref={FracturedRuneBox}
+                    ></div>
+
+                    {fields[currentSection].type === "textarea" ? (
+                      <textarea
+                        name={fields[currentSection].field}
+                        value={formData[fields[currentSection].field]}
+                        rows={6}
+                        className="w-full px-6 py-4 text-lg rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-300 resize-none"
+                        placeholder={fields[currentSection].placeholder}
+                        onChange={handleChange}
+                      />
+                    ) : (
+                      <input
+                        type={fields[currentSection].type}
+                        name={fields[currentSection].field}
+                        value={formData[fields[currentSection].field]}
+                        className="w-full px-6 py-4 text-lg rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-300"
+                        placeholder={fields[currentSection].placeholder}
+                        onChange={handleChange}
+                      />
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex gap-16 items-center justify-center">
+                  {currentSection > 0 && (
+                    <button
+                      type="button"
+                      onClick={prevSection}
+                      className="
                     size-13 rounded-full border-2 border-white
                     text-white
                     flex items-center justify-center
@@ -238,23 +244,23 @@ export default function ContactUs({ id = "contact" }) {
                     disabled:pointer-events-none
                     group
                    "
-                  >
-                    <ChevronLeft
-                      className="
+                    >
+                      <ChevronLeft
+                        className="
                         size-8
                         transition-transform duration-200
                         group-hover:-translate-x-1
                       "
-                    />
-                  </button>
-                )}
+                      />
+                    </button>
+                  )}
 
-                {currentSection != fields.length - 1 ? (
-                  <button
-                    type="button"
-                    onClick={nextSection}
-                    disabled={!inputValidator()}
-                    className="
+                  {currentSection != fields.length - 1 ? (
+                    <button
+                      type="button"
+                      onClick={nextSection}
+                      disabled={!inputValidator()}
+                      className="
                     size-13 rounded-full border-2 border-white
                     text-white
                     flex items-center justify-center
@@ -269,20 +275,20 @@ export default function ContactUs({ id = "contact" }) {
                     disabled:pointer-events-none
                     group
                    "
-                  >
-                    <ChevronRight
-                      className="
+                    >
+                      <ChevronRight
+                        className="
                         size-8
                         transition-transform duration-200
                         group-hover:translate-x-1
                       "
-                    />
-                  </button>
-                ) : (
-                  <button
-                    type="submit"
-                    disabled={!inputValidator()}
-                    className="
+                      />
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      disabled={!inputValidator()}
+                      className="
                       h-13 px-6 rounded-full 
                       text-white font-semibold 
                       cursor-pointer
@@ -290,23 +296,24 @@ export default function ContactUs({ id = "contact" }) {
                       transition-all duration-300 
                       flex items-center justify-center gap-2 group 
                       border-2 border-white"
-                  >
-                    {submitState ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        Send
-                        <Send className="w-5 h-5 group-hover:rotate-45 transition-transform" />
-                      </>
-                    )}
-                  </button>
-                )}
-              </div>
-            </form>
-          </div>
+                    >
+                      {submitState ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send
+                          <Send className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+                        </>
+                      )}
+                    </button>
+                  )}
+                </div>
+              </form>
+            </div>
+          )}
         </div>
       </div>
     </section>

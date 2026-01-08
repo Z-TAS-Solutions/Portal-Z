@@ -149,7 +149,7 @@ function InferiorAegisGlyph({
           ></div>
 
           <div className="size-[85%] flex items-center justify-center ">
-            <IconObject className="-rotate-45 bg-red-500/20 rounded-full border border-red-400/20  p-[7px] size-[75%] md:size-1/2 aspect-square text-red-400" />
+            <IconObject className="-rotate-45 bg-red-500/10 rounded-full border border-red-400/20  p-[7px] size-[75%] md:size-[55%] aspect-square text-red-400" />
           </div>
         </div>
       </div>
@@ -271,7 +271,7 @@ export default function About2({ id }) {
       icon: ShieldAlert,
       title: "Weak Credentials",
       description:
-        "Traditional biometrics can be easy to replicate; fake fingerprints or high-res photos can compromise security.",
+        "Traditional biometrics can be easy to replicate. fake fingerprints or high-res photos can compromise security.",
     },
     {
       icon: Timer,
