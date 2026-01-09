@@ -10,7 +10,14 @@ export async function POST(request) {
   };
 
   try {
-    await fetch(process.env.DISCORD_WEBHOOK_URL, webhookRequest);
+    const response = await fetch(
+      process.env.DISCORD_WEBHOOK_URL,
+      webhookRequest,
+    );
+    return new Response(null, {
+      status: response.status,
+      headers: { "Content-Type": "text/plain" },
+    });
   } catch (err) {
     return { error: "Something went wrong" };
     console.log(err.message);

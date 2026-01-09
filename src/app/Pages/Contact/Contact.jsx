@@ -87,19 +87,29 @@ export default function ContactUs({ id = "contact" }) {
     FracturedRuneBox.current.append(FragmentedRuneBox);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitState("ongoing");
 
-    PostToWebHook(formData);
+    const status = await PostToWebHook(formData);
+    if (status.ok) {
+      setSubmitState(true);
+    } else {
+      setSubmitState("failed");
+    }
 
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-    setCurrentSection(0);
-    UpdateText({ text: fields[0].label });
+    const exec = () => {
+      setSubmitState(false);
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+      setCurrentSection(0);
+    };
+
+    setTimeout(exec, 5000);
   };
 
   const fields = [
@@ -131,13 +141,17 @@ export default function ContactUs({ id = "contact" }) {
 
   const activeHash = useContext(ActiveHashContext);
 
-  useEffect(() => {
-    FracturedRuneBox.current.classList.remove("FractureRitual");
-    if (activeHash !== "contact") return;
-    FracturedRuneBox.current.classList.add("FractureRitual");
+  const updateSection = () => {
+    if (!FracturedRuneBox.current) return;
     UpdateText({ text: fields[currentSection].label });
+  };
+
+  useEffect(() => {
+    if (activeHash !== "contact") return;
+    if (submitState) return;
+    updateSection();
     return;
-  }, [activeHash]);
+  }, [activeHash, submitState]);
 
   const scrollSet = () => {
     FracturedRuneBox.current.scrollIntoView({
@@ -177,9 +191,55 @@ export default function ContactUs({ id = "contact" }) {
               <span className="text-slate-300">Colombo, Sri Lanka</span>
             </div>
           </div>
-          {submitState ? (
-            <div className="p-10 rounded-3xl bg-white/1 backdrop-blur-xl border border-white/10 shadow-2xl">
-              We will get back to you as swift as the winds of netherwind
+          {submitState === "failed" ? (
+            <div className="group relative p-10 rounded-3xl bg-white/5 backdrop-blur-2xl border border-red-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 ">
+              <div className="flex flex-col items-center justify-center text-center space-y-6">
+                <div className="relative">
+                  <svg
+                    className="w-12 h-12 text-red-400/80"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+                    />
+                  </svg>
+                </div>
+
+                <div className="space-y-2 flex flex-col items-center">
+                  <h3 className="text-xl font-light tracking-widest text-white uppercase">
+                    Connection Interrupted
+                  </h3>
+                  <p className="text-sm text-white/40 max-w-[240px] leading-relaxed">
+                    It seems the digital void swallowed your request. Check your
+                    connection and try again, hooman.
+                  </p>
+                </div>
+
+                <button className="px-8 py-2.5 rounded-full bg-white/5 border border-white/10 text-white/70 text-sm hover:bg-white/10 hover:text-white transition-all duration-300 active:scale-95">
+                  Try Again
+                </button>
+              </div>
+            </div>
+          ) : submitState ? (
+            <div className="p-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl transition-all duration-700 ease-in-out">
+              <div className="flex items-center justify-center overflow-hidden">
+                {submitState === "ongoing" ? (
+                  <div className="flex space-x-2 animate-pulse">
+                    <div className="w-2 h-2 bg-white/40 rounded-full"></div>
+                    <div className="w-2 h-2 bg-white/40 rounded-full"></div>
+                    <div className="w-2 h-2 bg-white/40 rounded-full"></div>
+                  </div>
+                ) : (
+                  <div className="animate-in fade-in zoom-in-95 duration-1000 text-white/90">
+                    We will get back to you as swift as the winds of netherwind
+                  </div>
+                )}
+              </div>
             </div>
           ) : (
             <div className="p-10 rounded-3xl bg-white/1 backdrop-blur-xl border border-white/10 shadow-2xl">
@@ -199,7 +259,7 @@ export default function ContactUs({ id = "contact" }) {
                     className="mb-8 flex flex-col justify-center items-center"
                   >
                     <div
-                      className="block text-3xl font-semibold text-white mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500 FractrueRitual"
+                      className="block text-3xl font-semibold text-white mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500 FractureRitual"
                       ref={FracturedRuneBox}
                     ></div>
 

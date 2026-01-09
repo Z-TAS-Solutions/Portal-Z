@@ -1,9 +1,9 @@
 "use client";
 
-export default function PostToWebHook(formData) {
+export default async function PostToWebHook(formData) {
   const message = formData;
 
-  const response = {
+  const request = {
     method: "POST",
     mode: "no-cors",
     headers: {
@@ -42,5 +42,6 @@ export default function PostToWebHook(formData) {
     }),
   };
 
-  fetch("/api/discord", response);
+  const response = await fetch("/api/discord", request);
+  return response;
 }
