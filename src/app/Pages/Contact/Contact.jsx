@@ -23,8 +23,35 @@ export default function ContactUs({ id = "contact" }) {
   const [currentSection, setCurrentSection] = useState(0);
   const [submitState, setSubmitState] = useState(false);
 
+  const fields = [
+    {
+      field: "name",
+      label: "What's your name?",
+      placeholder: "Now don't tell me u don't have one..",
+      type: "text",
+    },
+    {
+      field: "email",
+      label: "What's your email address?",
+      placeholder: "noname@example.com",
+      type: "email",
+    },
+    {
+      field: "subject",
+      label: "What can we help you with?",
+      placeholder: "Project inquiry, support...",
+      type: "text",
+    },
+    {
+      field: "message",
+      label: "Tell us more about it",
+      placeholder: "Share your thoughts, questions, or requirements...",
+      type: "textarea",
+    },
+  ];
+
   const handleChange = (e) => {
-    // console.log(e);
+    console.log(e);
 
     const { name, value } = e.target;
 
@@ -87,6 +114,19 @@ export default function ContactUs({ id = "contact" }) {
     FracturedRuneBox.current.append(FragmentedRuneBox);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      const isLastSection = currentSection === fields.length - 1;
+
+      if (inputValidator()) {
+        if (currentSection < 3) {
+          e.preventDefault();
+          nextSection();
+        }
+      }
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitState("ongoing");
@@ -111,33 +151,6 @@ export default function ContactUs({ id = "contact" }) {
 
     setTimeout(exec, 5000);
   };
-
-  const fields = [
-    {
-      field: "name",
-      label: "What's your name?",
-      placeholder: "Now don't tell me u don't have one..",
-      type: "text",
-    },
-    {
-      field: "email",
-      label: "What's your email address?",
-      placeholder: "noname@example.com",
-      type: "email",
-    },
-    {
-      field: "subject",
-      label: "What can we help you with?",
-      placeholder: "Project inquiry, support...",
-      type: "text",
-    },
-    {
-      field: "message",
-      label: "Tell us more about it",
-      placeholder: "Share your thoughts, questions, or requirements...",
-      type: "textarea",
-    },
-  ];
 
   const activeHash = useContext(ActiveHashContext);
 
@@ -205,7 +218,7 @@ export default function ContactUs({ id = "contact" }) {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+                      d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0zm-9 3.75h.008v.008H12z"
                     />
                   </svg>
                 </div>
@@ -280,6 +293,7 @@ export default function ContactUs({ id = "contact" }) {
                         className="w-full px-6 py-4 text-lg rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-300"
                         placeholder={fields[currentSection].placeholder}
                         onChange={handleChange}
+                        onKeyDown={handleKeyDown}
                       />
                     )}
                   </div>

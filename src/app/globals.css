@@ -229,14 +229,14 @@ body {
 
 .FractureRitual .FracturedRune {
   animation:
-    Unveil 100ms ease forwards;
+    Unveil 70ms ease forwards;
   animation-delay:
     calc((1 + var(--i)) * var(--charDelay));
 }
 
 .FractureRitual .FracturedRune::before {
   animation:
-    FractureBurst 100ms ease forwards;
+    FractureBurst 70ms ease forwards;
   animation-delay:
     calc(var(--i) * var(--charDelay));
 }
