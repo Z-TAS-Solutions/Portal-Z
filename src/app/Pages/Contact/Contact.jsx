@@ -193,7 +193,7 @@ export default function ContactUs({ id = "contact" }) {
           <div className="mb-8 p-6 flex flex-wrap justify-center gap-8 text-md">
             <div className="flex items-center gap-2">
               <Mail className="w-5 h-5 text-blue-300" />
-              <span className="text-slate-300">ztas@gmail.com</span>
+              <span className="text-slate-300">ztas.global@gmail.com</span>
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-5 h-5 text-purple-300" />
