@@ -10,6 +10,7 @@ import PQCPage from "./Pages/PQC-Safe/PQCPage";
 import ProcessFlow from "./Pages/ProcessFlow/ProcessFlow";
 import Team from "./Pages/Teams/Teams";
 import ContactUs from "./Pages/Contact/Contact.jsx";
+import Socials from "./Pages/Socials/Socials.jsx";
 
 const ChatBotWidget = dynamic(
   () => import("./components/ChatBot/ChatBotWidget"),
@@ -29,6 +30,7 @@ export default function Home() {
       <ProcessFlow id="process" />
       <Team id="team" />
       <ContactUs id="contact" />
+      <Socials id="socials" />
       <ChatBotWidget buttonSize="55px" />
     </main>
   );
