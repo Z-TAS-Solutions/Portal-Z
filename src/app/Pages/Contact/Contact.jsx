@@ -169,7 +169,7 @@ export default function ContactUs({ id = "contact" }) {
   const scrollSet = () => {
     FracturedRuneBox.current.scrollIntoView({
       behavior: "smooth",
-      block: "start",
+      block: "center",
     });
   };
 

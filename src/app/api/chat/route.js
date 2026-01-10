@@ -1,7 +1,7 @@
 import { streamText, convertToModelMessages } from "ai";
 import { google } from "@ai-sdk/google";
 
-const model = google("gemini-2.5-flash-lite");
+const model = google("gemini-2.5-flash");
 
 const system = `You are a specialized assistant for the ZTAS (Zero-Trust Authentication System) 
   project, a contactless palm-vein biometric system designed using Component-Based Architecture
