@@ -1,36 +1,4 @@
-import {
-  Instagram,
-  Twitter,
-  Linkedin,
-  Youtube,
-  Github,
-  Mail,
-} from "lucide-react";
-
-function ellipsePointGen(centerX, centerY, a, b, angleInDegrees) {
-  const t = angleInDegrees * (Math.PI / 180);
-
-  const cosT = Math.cos(t);
-  const sinT = Math.sin(t);
-
-  const r = (a * b) / Math.sqrt(Math.pow(b * cosT, 2) + Math.pow(a * sinT, 2));
-
-  return {
-    x: centerX + r * cosT,
-    y: centerY + r * sinT,
-  };
-}
-
-function OrbitPosGen({ baseRot = 0, radius = 180 }) {
-  return Array.from({ length: 12 }).map((_, index) => {
-    const angle = (baseRot - index * 30) * (Math.PI / 180);
-
-    return {
-      x: Math.cos(angle) * radius,
-      y: Math.sin(angle) * radius,
-    };
-  });
-}
+import { Instagram, Twitter, Linkedin, Github, Mail } from "lucide-react";
 
 export default function Socials({ id = "socials" }) {
   const socials = [
@@ -94,7 +62,7 @@ export default function Socials({ id = "socials" }) {
             src="./Assets/earth.webp"
             alt="Earth"
             className="w-full object-cover opacity-70"
-            lazy="true"
+            loading="lazy"
           />
 
           <div className="absolute w-[95%] h-full z-10 mb-[15%] md:mb-0">
