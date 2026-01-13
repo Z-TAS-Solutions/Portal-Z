@@ -197,7 +197,9 @@ export default function ContactUs({ id = "contact" }) {
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-5 h-5 text-purple-300" />
-              <span className="text-slate-300">+94 71</span>
+              <span className="text-slate-300">
+                +94710451201 / +94704668874
+              </span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5 text-cyan-300" />

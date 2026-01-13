@@ -27,7 +27,7 @@ const hoomans = [
     npos: "absolute top-1/2 left-[99%] md:left-[106%] -translate-y-[15%] md:-translate-y-1/2 text-left",
     pos: "absolute top-1/2 -right-1/32 -translate-y-1/2",
     line: "top-1/2 left-1/2 rotate-180",
-    hooman: null,
+    hooman: "/Assets/placeholder.webp",
   },
   {
     id: 4,
@@ -54,7 +54,7 @@ const hoomans = [
     npos: "absolute top-1/2 -translate-x-[103%] md:-translate-x-[115%] -translate-y-[60%] md:-translate-y-1/2 text-right",
     pos: "absolute top-1/2 -left-1/32 -translate-y-1/2",
     line: "top-1/2 right-1/2",
-    hooman: null,
+    hooman: "/Assets/placeholder.webp",
   },
 ];
 
