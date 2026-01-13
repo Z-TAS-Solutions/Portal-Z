@@ -40,7 +40,7 @@ export default function Socials({ id = "socials" }) {
   ];
 
   return (
-    <section id={id} className="flex flex-col ">
+    <section id={id} className="flex flex-col overflow-y-hidden">
       <div className="h-1/2 flex items-center justify-center my-[2%] mx-auto mb-[15%] md:mb-[2%]">
         <div className="order-2 flex flex-col justify-center">
           <h1 className="text-4xl md:text-6xl font-light tracking-wide text-white mb-3">
