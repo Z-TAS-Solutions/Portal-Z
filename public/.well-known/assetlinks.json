@@ -1,0 +1,16 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ztas.app",
+      "sha256_cert_fingerprints": [
+        "BB:49:C0:7F:85:4C:A6:0A:55:C9:21:A4:4A:B9:04:4E:01:BF:DF:8F:C1:77:44:84:FB:CF:EF:AE:69:97:64:3B",
+        "B7:8B:1B:00:FA:74:CB:9F:2F:45:3F:78:0A:05:A1:86:E9:7B:7E:06:3E:44:E5:03:F0:63:C4:44:00:BF:30:13"
+      ]
+    }
+  }
+]
