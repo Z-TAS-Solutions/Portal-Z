@@ -18,7 +18,7 @@ const hoomans = [
     npos: "absolute -top-[2%] left-[90%] text-left",
     pos: "absolute right-0 -translate-x-1/2",
     line: "top-4/10 left-6/14 transform rotate-125",
-    hooman: "/Assets/saffy.webp",
+    hooman: "/Assets/placeholder.webp",
   },
   {
     id: 3,
